@@ -93,11 +93,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextField1.setHighlighter(null);
         jTextField1.setMargin(new java.awt.Insets(0, 6, 0, 6));
         jTextField1.setVerifyInputWhenFocusTarget(false);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
@@ -582,10 +577,6 @@ private String str="";
 private enum Operator{p,s,m,d}
 //  ErrorSolvedMultiplication is for equation 4+2=6 +2=8
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void btnEraseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEraseActionPerformed
         // TODO add your handling code here:
         if(equalsToButton) {equalsToButton=false; value1=0;}
@@ -816,31 +807,93 @@ private enum Operator{p,s,m,d}
         }
     }//GEN-LAST:event_btnSquareActionPerformed
 
-    private void btn7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn7KeyPressed
-        // TODO add your handling code here:
-        char ch = evt.getKeyChar();
- 
-  if (ch == '1' ||ch == 'b'||ch == 'c' ) {
- 
-System.out.println(evt.getKeyChar());
- 
-  }
- 
-  if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_HOME) {
- 
-System.out.println("Key codes: " + evt.getKeyCode());
- 
-  }
-    }//GEN-LAST:event_btn7KeyPressed
-
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
         // TODO add your handling code here:
-        String text=jTextField1.getText();
         char ch = evt.getKeyChar();
         String s=Character.toString(ch);
         System.out.println(evt.getKeyChar());
+        
+        //          NUMBERS INPUT
         if (ch >= '0' &&ch <= '9') {
+            if(!power){
+            equalsToButton();
+            
+            String text=jTextField1.getText();
+            
             numberInput(s, text);
+            }
+        }
+        
+        //          EQUALS TO
+        else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            System.out.println("Enter is Pressed.");
+            String text=jTextField1.getText();
+            if(power){
+                str=lastCharacterRemover(text);
+                value2=Float.parseFloat(str);
+            }
+            else{
+                    value2=Float.parseFloat(text);
+            }
+            equalsToCalculation();
+            equalsToButton=true;
+        }
+        
+        //          OPERATORS
+        else if(ch>='*'&&ch<='/'){
+            switch(ch){
+                case '+' -> {
+                    if(equalsToButton) {equalsToButton=false; value1=0;}
+                    String text=jTextField1.getText();
+                    operatorChecker(text);
+                    operator='+';
+                    jTextField1.setText("");
+                }
+                case '-' -> {
+                    if(equalsToButton) {equalsToButton=false; value1=0;}
+                    String text=jTextField1.getText();
+                    operatorChecker(text);
+                    operator='-';
+                    jTextField1.setText("");
+                }
+                case '*' -> {
+                    if(equalsToButton) {equalsToButton=false; value1=0;}
+                    if(errorSolvedInMultiplication){if(value1==0)value1=1; errorSolvedInMultiplication=false;}
+                    String text=jTextField1.getText();
+                    operatorChecker(text);
+                    operator='x';
+                    jTextField1.setText("");
+                }
+                case '/' -> {
+                    if(equalsToButton) {equalsToButton=false; value1=0;}
+                    String text=jTextField1.getText();
+                    operatorChecker(text);
+                    operator='÷';
+                    jTextField1.setText("");
+                }
+                case '.' -> {
+                    if(!power){
+                        if(equalsToButton){
+                            jTextField1.setText("");
+                            equalsToButton=false;
+                        }
+                        String text=jTextField1.getText();
+
+                        if(text.contains(".")){
+                            jTextField1.setText(text);
+                            decimal=true;
+                        } else {
+                            jTextField1.setText(text+".");
+                            decimal=true;
+                        }
+                    }
+                }
+            }
+        }
+        
+        //          WHEN OTHER KEYS PRESSED, BEEP SOUND GENERATED
+        else{
+            java.awt.Toolkit.getDefaultToolkit().beep();
         }
     }//GEN-LAST:event_jTextField1KeyPressed
     /**
