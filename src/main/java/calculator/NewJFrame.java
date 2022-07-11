@@ -29,7 +29,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         btnper = new javax.swing.JButton();
@@ -71,17 +70,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 494, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+            .addGap(0, 52, Short.MAX_VALUE)
         );
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
@@ -105,6 +98,11 @@ public class NewJFrame extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
 
         btnper.setBackground(new java.awt.Color(51, 51, 51));
         btnper.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -113,6 +111,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnper.setBorder(null);
         btnper.setFocusPainted(false);
         btnper.setHideActionText(true);
+        btnper.setRequestFocusEnabled(false);
 
         btnCE.setBackground(new java.awt.Color(51, 51, 51));
         btnCE.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -121,6 +120,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnCE.setBorder(null);
         btnCE.setFocusPainted(false);
         btnCE.setHideActionText(true);
+        btnCE.setRequestFocusEnabled(false);
         btnCE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCEActionPerformed(evt);
@@ -134,6 +134,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnC.setBorder(null);
         btnC.setFocusPainted(false);
         btnC.setHideActionText(true);
+        btnC.setRequestFocusEnabled(false);
         btnC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCActionPerformed(evt);
@@ -148,6 +149,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnErase.setBorder(null);
         btnErase.setFocusPainted(false);
         btnErase.setHideActionText(true);
+        btnErase.setRequestFocusEnabled(false);
         btnErase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEraseActionPerformed(evt);
@@ -161,6 +163,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnDivide.setBorder(null);
         btnDivide.setFocusPainted(false);
         btnDivide.setHideActionText(true);
+        btnDivide.setRequestFocusEnabled(false);
         btnDivide.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDivideActionPerformed(evt);
@@ -174,6 +177,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnratio.setBorder(null);
         btnratio.setFocusPainted(false);
         btnratio.setHideActionText(true);
+        btnratio.setRequestFocusEnabled(false);
 
         btnSquare.setBackground(new java.awt.Color(51, 51, 51));
         btnSquare.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -182,6 +186,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnSquare.setBorder(null);
         btnSquare.setFocusPainted(false);
         btnSquare.setHideActionText(true);
+        btnSquare.setRequestFocusEnabled(false);
         btnSquare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSquareActionPerformed(evt);
@@ -195,6 +200,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnsqrt.setBorder(null);
         btnsqrt.setFocusPainted(false);
         btnsqrt.setHideActionText(true);
+        btnsqrt.setRequestFocusEnabled(false);
 
         btn7.setBackground(new java.awt.Color(0, 0, 0));
         btn7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -203,6 +209,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btn7.setBorder(null);
         btn7.setBorderPainted(false);
         btn7.setFocusPainted(false);
+        btn7.setRequestFocusEnabled(false);
         btn7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn7ActionPerformed(evt);
@@ -216,6 +223,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btn8.setBorder(null);
         btn8.setBorderPainted(false);
         btn8.setFocusPainted(false);
+        btn8.setRequestFocusEnabled(false);
         btn8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn8ActionPerformed(evt);
@@ -229,6 +237,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btn9.setBorder(null);
         btn9.setBorderPainted(false);
         btn9.setFocusPainted(false);
+        btn9.setRequestFocusEnabled(false);
         btn9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn9ActionPerformed(evt);
@@ -242,6 +251,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btn4.setBorder(null);
         btn4.setFocusPainted(false);
         btn4.setHideActionText(true);
+        btn4.setRequestFocusEnabled(false);
         btn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn4ActionPerformed(evt);
@@ -255,6 +265,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btn1.setBorder(null);
         btn1.setFocusPainted(false);
         btn1.setHideActionText(true);
+        btn1.setRequestFocusEnabled(false);
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn1ActionPerformed(evt);
@@ -268,6 +279,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnplusminus.setBorder(null);
         btnplusminus.setFocusPainted(false);
         btnplusminus.setHideActionText(true);
+        btnplusminus.setRequestFocusEnabled(false);
         btnplusminus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnplusminusActionPerformed(evt);
@@ -281,6 +293,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btn5.setBorder(null);
         btn5.setFocusPainted(false);
         btn5.setHideActionText(true);
+        btn5.setRequestFocusEnabled(false);
         btn5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn5ActionPerformed(evt);
@@ -294,6 +307,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btn6.setBorder(null);
         btn6.setFocusPainted(false);
         btn6.setHideActionText(true);
+        btn6.setRequestFocusEnabled(false);
         btn6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn6ActionPerformed(evt);
@@ -307,6 +321,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btn2.setBorder(null);
         btn2.setFocusPainted(false);
         btn2.setHideActionText(true);
+        btn2.setRequestFocusEnabled(false);
         btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn2ActionPerformed(evt);
@@ -320,6 +335,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btn3.setBorder(null);
         btn3.setFocusPainted(false);
         btn3.setHideActionText(true);
+        btn3.setRequestFocusEnabled(false);
         btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn3ActionPerformed(evt);
@@ -333,6 +349,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btn0.setBorder(null);
         btn0.setFocusPainted(false);
         btn0.setHideActionText(true);
+        btn0.setRequestFocusEnabled(false);
         btn0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn0ActionPerformed(evt);
@@ -346,6 +363,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnDecimal.setBorder(null);
         btnDecimal.setFocusPainted(false);
         btnDecimal.setHideActionText(true);
+        btnDecimal.setRequestFocusEnabled(false);
         btnDecimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDecimalActionPerformed(evt);
@@ -359,6 +377,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnMultiply.setBorder(null);
         btnMultiply.setFocusPainted(false);
         btnMultiply.setHideActionText(true);
+        btnMultiply.setRequestFocusEnabled(false);
         btnMultiply.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMultiplyActionPerformed(evt);
@@ -372,6 +391,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnMinus.setBorder(null);
         btnMinus.setFocusPainted(false);
         btnMinus.setHideActionText(true);
+        btnMinus.setRequestFocusEnabled(false);
         btnMinus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMinusActionPerformed(evt);
@@ -385,6 +405,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnPlus.setBorder(null);
         btnPlus.setFocusPainted(false);
         btnPlus.setHideActionText(true);
+        btnPlus.setRequestFocusEnabled(false);
         btnPlus.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPlusActionPerformed(evt);
@@ -398,6 +419,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnEqualsTo.setBorder(null);
         btnEqualsTo.setFocusPainted(false);
         btnEqualsTo.setHideActionText(true);
+        btnEqualsTo.setRequestFocusEnabled(false);
         btnEqualsTo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEqualsToActionPerformed(evt);
@@ -556,7 +578,7 @@ public class NewJFrame extends javax.swing.JFrame {
 private float value1=0, value2=0;
 private char operator;
 private boolean decimal=false, power=false, equalsToButton=false, errorSolvedInMultiplication=false, plusMinus=false;
-private String str;
+private String str="";
 private enum Operator{p,s,m,d}
 //  ErrorSolvedMultiplication is for equation 4+2=6 +2=8
 
@@ -811,6 +833,16 @@ System.out.println("Key codes: " + evt.getKeyCode());
   }
     }//GEN-LAST:event_btn7KeyPressed
 
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        // TODO add your handling code here:
+        String text=jTextField1.getText();
+        char ch = evt.getKeyChar();
+        String s=Character.toString(ch);
+        System.out.println(evt.getKeyChar());
+        if (ch >= '0' &&ch <= '9') {
+            numberInput(s, text);
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
     /**
      * @param args the command line arguments
      */
@@ -1052,6 +1084,5 @@ System.out.println("Key codes: " + evt.getKeyCode());
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

@@ -59,27 +59,15 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
-                  <Component id="jTextField2" min="-2" pref="254" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="494" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="15" max="32767" attributes="0"/>
-              </Group>
+              <EmptySpace min="0" pref="52" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JTextField" name="jTextField2">
-        </Component>
-      </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
       <Properties>
@@ -282,6 +270,7 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextField1KeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnper">
@@ -301,6 +290,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnCE">
@@ -320,6 +310,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCEActionPerformed"/>
@@ -342,6 +333,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCActionPerformed"/>
@@ -365,6 +357,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEraseActionPerformed"/>
@@ -387,6 +380,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDivideActionPerformed"/>
@@ -409,6 +403,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnSquare">
@@ -428,6 +423,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSquareActionPerformed"/>
@@ -450,6 +446,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btn7">
@@ -469,6 +466,7 @@
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn7ActionPerformed"/>
@@ -491,6 +489,7 @@
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn8ActionPerformed"/>
@@ -513,6 +512,7 @@
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusPainted" type="boolean" value="false"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn9ActionPerformed"/>
@@ -535,6 +535,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn4ActionPerformed"/>
@@ -557,6 +558,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn1ActionPerformed"/>
@@ -579,6 +581,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnplusminusActionPerformed"/>
@@ -601,6 +604,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn5ActionPerformed"/>
@@ -623,6 +627,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn6ActionPerformed"/>
@@ -645,6 +650,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn2ActionPerformed"/>
@@ -667,6 +673,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn3ActionPerformed"/>
@@ -689,6 +696,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn0ActionPerformed"/>
@@ -711,6 +719,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDecimalActionPerformed"/>
@@ -733,6 +742,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMultiplyActionPerformed"/>
@@ -755,6 +765,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMinusActionPerformed"/>
@@ -777,6 +788,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPlusActionPerformed"/>
@@ -799,6 +811,7 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="hideActionText" type="boolean" value="true"/>
+            <Property name="requestFocusEnabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEqualsToActionPerformed"/>
