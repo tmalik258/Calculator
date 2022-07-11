@@ -188,6 +188,11 @@ public class NewJFrame extends javax.swing.JFrame {
         btnsqrt.setBorder(null);
         btnsqrt.setFocusPainted(false);
         btnsqrt.setHideActionText(true);
+        btnsqrt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsqrtActionPerformed(evt);
+            }
+        });
 
         btn7.setBackground(new java.awt.Color(0, 0, 0));
         btn7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -549,7 +554,9 @@ public class NewJFrame extends javax.swing.JFrame {
 private float value1=0, value2=0;
 private char operator;
 private boolean decimal=false, power=false, equalsToButton=false, errorSolvedInMultiplication=false, plusMinus=false;
+private boolean sqRt=false, sqpSqrt=false,sqrtSqp=false;
 private String str;
+private double result;
 private enum Operator{p,s,m,d}
 //  ErrorSolvedMultiplication is for equation 4+2=6 +2=8
 
@@ -561,10 +568,9 @@ private enum Operator{p,s,m,d}
         // TODO add your handling code here:
         if(equalsToButton) {equalsToButton=false; value1=0;}
         String text=jTextField1.getText();
-        str=lastCharacterRemover(text);
+        str=eraseRemover(text);
         jTextField1.setText(str);
-        if(text.contains("-")){if(str.length()==1)jTextField1.setText("");  plusMinus=false;   }
-        power=false;
+        if(text.contains("-")){if(str.length()==1)jTextField1.setText("0");  plusMinus=false;   }
     }//GEN-LAST:event_btnEraseActionPerformed
 
     private void btnDivideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivideActionPerformed
@@ -607,9 +613,21 @@ private enum Operator{p,s,m,d}
     private void btnEqualsToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsToActionPerformed
         // TODO add your handling code here:
         String text=jTextField1.getText();
-        if(power){
+        if(sqpSqrt){
+                str=lastCharacterRemover(text);
+                value2=Float.parseFloat(str);
+            }
+            else if(sqrtSqp){
+                str=lastCharacterRemover(text);
+                value2=Float.parseFloat(str);
+            }
+            else if(power){
             str=lastCharacterRemover(text);
             value2=Float.parseFloat(str);
+        }
+        else if(sqRt){
+                str=lastCharacterRemover(text);
+                value2=Float.parseFloat(str);
         }
         else{
                 value2=Float.parseFloat(text);
@@ -620,7 +638,7 @@ private enum Operator{p,s,m,d}
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
         // TODO add your handling code here:
-        if(!power){
+        if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
             numberInput("0", text);
@@ -629,7 +647,7 @@ private enum Operator{p,s,m,d}
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         // TODO add your handling code here:
-        if(!power){
+        if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
             
@@ -639,7 +657,7 @@ private enum Operator{p,s,m,d}
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         // TODO add your handling code here:
-        if(!power){
+        if((!power)&&(!sqRt)){
             equalsToButton();
             
             String text=jTextField1.getText();
@@ -650,7 +668,7 @@ private enum Operator{p,s,m,d}
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         // TODO add your handling code here:
-        if(!power){
+        if((!power)&&(!sqRt)){
             equalsToButton();
             
             String text=jTextField1.getText();
@@ -661,7 +679,7 @@ private enum Operator{p,s,m,d}
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         // TODO add your handling code here:
-        if(!power){
+        if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
             
@@ -671,7 +689,7 @@ private enum Operator{p,s,m,d}
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         // TODO add your handling code here:
-        if(!power){
+        if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
             
@@ -681,7 +699,7 @@ private enum Operator{p,s,m,d}
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         // TODO add your handling code here:
-        if(!power){
+        if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
             
@@ -691,7 +709,7 @@ private enum Operator{p,s,m,d}
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         // TODO add your handling code here:
-        if(!power){
+        if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
             numberInput("1", text);
@@ -700,7 +718,7 @@ private enum Operator{p,s,m,d}
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         // TODO add your handling code here:
-        if(!power){
+        if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
             
@@ -710,7 +728,7 @@ private enum Operator{p,s,m,d}
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         // TODO add your handling code here:
-        if(!power){
+        if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
             
@@ -720,7 +738,7 @@ private enum Operator{p,s,m,d}
 
     private void btnDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDecimalActionPerformed
         // TODO add your handling code here:
-        if(!power){
+        if((!power)&&(!sqRt)){
             if(equalsToButton){
                 jTextField1.setText("");
                 equalsToButton=false;
@@ -741,7 +759,7 @@ private enum Operator{p,s,m,d}
         // TODO add your handling code here:
         errorSolvedInMultiplication=false;
         value1=0;
-        operator='.';
+        operator='&';
         clear();
     }//GEN-LAST:event_btnCActionPerformed
 
@@ -780,6 +798,8 @@ private enum Operator{p,s,m,d}
         // TODO add your handling code here:
         String text=jTextField1.getText();
         if(!power){
+            if(sqRt)
+               sqrtSqp=true;
             if(!"".equals(text)){
                 jTextField1.setText("("+text+")"+"\u00B2");
                 power=true;
@@ -804,6 +824,19 @@ System.out.println("Key codes: " + evt.getKeyCode());
   }
     }//GEN-LAST:event_btn7KeyPressed
 
+    private void btnsqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsqrtActionPerformed
+        // TODO add your handling code here:
+        String text=jTextField1.getText();
+        if(!sqRt){
+            if(power)
+               sqpSqrt=true;
+            if(!"".equals(text)){
+                jTextField1.setText("√"+"("+text+")");
+                sqRt=true;
+            }
+        }
+    }//GEN-LAST:event_btnsqrtActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -826,10 +859,13 @@ System.out.println("Key codes: " + evt.getKeyCode());
     }
     
     private void clear(){
+        sqpSqrt=false;
+        sqrtSqp=false;
         decimal=false;
         power=false;
         plusMinus=false;
-        jTextField1.setText("");
+        sqRt=false;
+        jTextField1.setText("0");
     }
     
     private void operatorChecker(String text){
@@ -841,23 +877,38 @@ System.out.println("Key codes: " + evt.getKeyCode());
                         value1+= (float) Math.pow(Float.parseFloat(str), 2);
                         power=false;
                     }
+                    else if(sqRt){
+                        str=lastCharacterRemover(text);
+                        value1+= Math.sqrt(Float.parseFloat(str));
+                        sqRt=false;
+                    }
                     else
                         value1+=Float.parseFloat(text);
                     break;
                 case '-':
                     if(power){
                         str=lastCharacterRemover(text);
-                        value1+= (float) Math.pow(Float.parseFloat(str), 2);
+                        value1-= (float) Math.pow(Float.parseFloat(str), 2);
                         power=false;
+                    }
+                    else if(sqRt){
+                        str=lastCharacterRemover(text);
+                        value1-= Math.sqrt(Float.parseFloat(str));
+                        sqRt=false;
                     }
                     else
                         value1-=Float.parseFloat(text);
                     break;
-                case '*':
+                case 'x':
                     if(power){
                         str=lastCharacterRemover(text);
-                        value1+= (float) Math.pow(Float.parseFloat(str), 2);
+                        value1*= (float) Math.pow(Float.parseFloat(str), 2);
                         power=false;
+                    }
+                    else if(sqRt){
+                        str=lastCharacterRemover(text);
+                        value1*= Math.sqrt(Float.parseFloat(str));
+                        sqRt=false;
                     }
                     else
                         value1*=Float.parseFloat(text);
@@ -865,8 +916,13 @@ System.out.println("Key codes: " + evt.getKeyCode());
                 case '÷':
                     if(power){
                         str=lastCharacterRemover(text);
-                        value1+= (float) Math.pow(Float.parseFloat(str), 2);
+                        value1/= (float) Math.pow(Float.parseFloat(str), 2);
                         power=false;
+                    }
+                    else if(sqRt){
+                        str=lastCharacterRemover(text);
+                        value1/= Math.sqrt(Float.parseFloat(str));
+                        sqRt=false;
                     }
                     else
                         value1/=Float.parseFloat(text);
@@ -877,13 +933,23 @@ System.out.println("Key codes: " + evt.getKeyCode());
                         value1= (float) Math.pow(Float.parseFloat(str), 2);
                         power=false;
                     }
+                    else if(sqRt){
+                        str=lastCharacterRemover(text);
+                        value1= (float) Math.sqrt(Float.parseFloat(str));
+                        sqRt=false;
+                    }
             }
         }
         else{
             if(power){
                 str=lastCharacterRemover(text);
-                    value1= (float) Math.pow(Float.parseFloat(str), 2);
-                    power=false;
+                value1= (float) Math.pow(Float.parseFloat(str), 2);
+                power=false;
+            }
+            else if(sqRt){
+                str=lastCharacterRemover(text);
+                value1= (float) Math.sqrt(Float.parseFloat(str));
+                sqRt=false;
             }
             else
                 value1=Float.parseFloat(text);
@@ -892,12 +958,34 @@ System.out.println("Key codes: " + evt.getKeyCode());
     private String lastCharacterRemover(String text){
         String[] strSplit=text.split("");
         ArrayList<String>  strlist=new ArrayList<>(Arrays.asList(strSplit));
-        strlist.remove(strlist.size()-1);
-        if(power){
+        if(sqrtSqp||sqpSqrt){
+            strlist.remove(strlist.size()-1);
+            strlist.remove(strlist.size()-1);
+            strlist.remove(strlist.size()-1);
+            strlist.remove(strlist.get(0));
+            strlist.remove(strlist.get(0));
+            strlist.remove(strlist.get(0));
+        }
+        else if(power){
+            strlist.remove(strlist.size()-1);
             strlist.remove(strlist.size()-1);
             strlist.remove(strlist.get(0));
         }
-        String str = "";
+        else if(sqRt){
+            strlist.remove(strlist.size()-1);
+            strlist.remove(strlist.get(0));
+            strlist.remove(strlist.get(0));
+        }
+        else{
+            if(strlist.size()==1){
+                strlist.remove(strlist.size()-1);
+                strlist.add("0");
+            }
+            else
+                strlist.remove(strlist.size()-1);
+                
+        }
+        str="";
         for (String temp : strlist) {
             str+= temp;
         }
@@ -906,13 +994,31 @@ System.out.println("Key codes: " + evt.getKeyCode());
     
     private void equalsToCalculation(){
         if(decimal){
-            double result=0;
             switch(operator){
                 case '+':
-                    if(power){
+                    if(sqrtSqp){
+                        result= Math.sqrt(value2);
+                        result= Math.pow(result, 2);
+                        result=value1+result;
+                        jTextField1.setText(""+result);
+                        sqpSqrt=false;
+                    }
+                    else if(sqpSqrt){
+                        result= Math.pow(value2, 2);
+                        result= Math.sqrt(result);
+                        result= value1+result;
+                        jTextField1.setText(""+result);
+                        sqrtSqp=false;
+                    }
+                    else if(power){
                         result=value1+ Math.pow(value2, 2);
                         jTextField1.setText(""+result);
                         power=false;
+                    }
+                    else if(sqRt){
+                        result=value1+ Math.sqrt(value2);
+                        jTextField1.setText(""+result);
+                        sqRt=false;
                     }
                     else{
                         result=value1+value2;
@@ -920,10 +1026,29 @@ System.out.println("Key codes: " + evt.getKeyCode());
                         break;
                     }
                 case '-':
-                    if(power){
+                    if(sqrtSqp){
+                        result= Math.sqrt(value2);
+                        result= Math.pow(result, 2);
+                        result=value1-result;
+                        jTextField1.setText(""+result);
+                        sqpSqrt=false;
+                    }
+                    else if(sqpSqrt){
+                        result= Math.pow(value2, 2);
+                        result= Math.sqrt(result);
+                        result= value1-result;
+                        jTextField1.setText(""+result);
+                        sqrtSqp=false;
+                    }
+                    else if(power){
                         result=value1- Math.pow(value2, 2);
                         jTextField1.setText(""+result);
                         power=false;
+                    }
+                    else if(sqRt){
+                        result=value1- Math.sqrt(value2);
+                        jTextField1.setText(""+result);
+                        sqRt=false;
                     }
                     else{
                         result=value1-value2;
@@ -931,10 +1056,29 @@ System.out.println("Key codes: " + evt.getKeyCode());
                     }
                     break;
                 case 'x':
-                if(power){
+                    if(sqrtSqp){
+                        result= Math.sqrt(value2);
+                        result= Math.pow(result, 2);
+                        result=value1*result;
+                        jTextField1.setText(""+result);
+                        sqpSqrt=false;
+                    }
+                    else if(sqpSqrt){
+                        result= Math.pow(value2, 2);
+                        result= Math.sqrt(result);
+                        result= value1*result;
+                        jTextField1.setText(""+result);
+                        sqrtSqp=false;
+                    }
+                    else if(power){
                         result=value1* Math.pow(value2, 2);
                         jTextField1.setText(""+result);
                         power=false;
+                    }
+                    else if(sqRt){
+                        result=value1* Math.sqrt(value2);
+                        jTextField1.setText(""+result);
+                        sqRt=false;
                     }
                     else{
                         result=value1*value2;
@@ -942,10 +1086,29 @@ System.out.println("Key codes: " + evt.getKeyCode());
                     }
                     break;
                 case '÷':
-                    if(power){
+                    if(sqrtSqp){
+                        result= Math.sqrt(value2);
+                        result= Math.pow(result, 2);
+                        result=value1/result;
+                        jTextField1.setText(""+result);
+                        sqpSqrt=false;
+                    }
+                    else if(sqpSqrt){
+                        result= Math.pow(value2, 2);
+                        result= Math.sqrt(result);
+                        result= value1/result;
+                        jTextField1.setText(""+result);
+                        sqrtSqp=false;
+                    }
+                    else if(power){
                         result=value1/ Math.pow(value2, 2);
                         jTextField1.setText(""+result);
                         power=false;
+                    }
+                    else if(sqRt){
+                        result=value1/ Math.sqrt(value2);
+                        jTextField1.setText(""+result);
+                        sqRt=false;
                     }
                     else{
                         result=value1/value2;
@@ -953,10 +1116,27 @@ System.out.println("Key codes: " + evt.getKeyCode());
                     }
                     break;
                 default:
-                    if(power){
+                    if(sqrtSqp){
+                        result= Math.sqrt(value2);
+                        result= Math.pow(result, 2);
+                        jTextField1.setText(""+result);
+                        sqpSqrt=false;
+                    }
+                    else if(sqpSqrt){
+                        result= Math.pow(value2, 2);
+                        result= Math.sqrt(result);
+                        jTextField1.setText(""+result);
+                        sqrtSqp=false;
+                    }
+                    else if(power){
                         result= Math.pow(value2, 2);
                         jTextField1.setText(""+result);
                         power=false;
+                    }
+                    else if(sqRt){
+                        result= Math.sqrt(value2);
+                        jTextField1.setText(""+result);
+                        sqRt=false;
                     }
             }
         }
@@ -964,7 +1144,21 @@ System.out.println("Key codes: " + evt.getKeyCode());
             int result;
             switch(operator){
                 case '+':
-                    if(power){
+                    if(sqrtSqp){
+                        result= (int) Math.sqrt(value2);
+                        result= (int) Math.pow(result, 2);
+                        result=(int) (value1+result);
+                        jTextField1.setText(""+result);
+                        sqpSqrt=false;
+                    }
+                    else if(sqpSqrt){
+                        result= (int) Math.pow(value2, 2);
+                        result= (int) Math.sqrt(result);
+                        result=(int) (value1+result);
+                        jTextField1.setText(""+result);
+                        sqrtSqp=false;
+                    }
+                    else if(power){
                         result=(int)value1+ (int)Math.pow(value2, 2);
                         jTextField1.setText(""+result);
                         power=false;
@@ -975,7 +1169,21 @@ System.out.println("Key codes: " + evt.getKeyCode());
                     }
                     break;
                 case '-':
-                    if(power){
+                    if(sqrtSqp){
+                        result= (int) Math.sqrt(value2);
+                        result= (int) Math.pow(result, 2);
+                        result=(int) (value1-result);
+                        jTextField1.setText(""+result);
+                        sqpSqrt=false;
+                    }
+                    else if(sqpSqrt){
+                        result= (int) Math.pow(value2, 2);
+                        result= (int) Math.sqrt(result);
+                        result=(int) (value1-result);
+                        jTextField1.setText(""+result);
+                        sqrtSqp=false;
+                    }
+                    else if(power){
                         result=(int)value1- (int)Math.pow(value2, 2);
                         jTextField1.setText(""+result);
                         power=false;
@@ -986,7 +1194,21 @@ System.out.println("Key codes: " + evt.getKeyCode());
                     }
                     break;
                 case 'x':
-                    if(power){
+                    if(sqrtSqp){
+                        result= (int) Math.sqrt(value2);
+                        result= (int) Math.pow(result, 2);
+                        result=(int) (value1*result);
+                        jTextField1.setText(""+result);
+                        sqpSqrt=false;
+                    }
+                    else if(sqpSqrt){
+                        result= (int) Math.pow(value2, 2);
+                        result= (int) Math.sqrt(result);
+                        result=(int) (value1*result);
+                        jTextField1.setText(""+result);
+                        sqrtSqp=false;
+                    }
+                    else if(power){
                         result=(int)value1* (int)Math.pow(value2, 2);
                         jTextField1.setText(""+result);
                         power=false;
@@ -997,7 +1219,21 @@ System.out.println("Key codes: " + evt.getKeyCode());
                     }
                     break;
                 case '÷':
-                    if(power){
+                    if(sqrtSqp){
+                        result= (int) Math.sqrt(value2);
+                        result= (int) Math.pow(result, 2);
+                        result=(int) (value1/result);
+                        jTextField1.setText(""+result);
+                        sqpSqrt=false;
+                    }
+                    else if(sqpSqrt){
+                        result= (int) Math.pow(value2, 2);
+                        result= (int) Math.sqrt(result);
+                        result=(int) (value1/result);
+                        jTextField1.setText(""+result);
+                        sqrtSqp=false;
+                    }
+                    else if(power){
                         result=(int)value1/ (int)Math.pow(value2, 2);
                         jTextField1.setText(""+result);
                         power=false;
@@ -1008,13 +1244,72 @@ System.out.println("Key codes: " + evt.getKeyCode());
                     }
                     break;
                 default:
-                    if(power){
+                    if(sqrtSqp){
+                        result= (int) Math.sqrt(value2);
+                        result= (int) Math.pow(result, 2);
+                        jTextField1.setText(""+result);
+                        sqpSqrt=false;
+                    }
+                    else if(sqpSqrt){
+                        result= (int) Math.pow(value2, 2);
+                        result= (int) Math.sqrt(result);
+                        jTextField1.setText(""+result);
+                        sqrtSqp=false;
+                    }
+                    else if(power){
                         result=(int) Math.pow(value2, 2);
                         jTextField1.setText(""+result);
                         power=false;
                     }
+                    else if(sqRt){
+                        result= (int) Math.sqrt(value2);
+                        jTextField1.setText(""+result);
+                        sqRt=false;
+                    }
             }
         }
+    }
+    private String eraseRemover(String text){
+        String[] strSplit=text.split("");
+        ArrayList<String>  strlist=new ArrayList<>(Arrays.asList(strSplit));
+        if(sqpSqrt){
+            strlist.remove(strlist.size()-1);
+            strlist.remove(strlist.get(0));
+            strlist.remove(strlist.get(0));
+            sqpSqrt=false;
+        }
+        else if(sqrtSqp){
+            strlist.remove(strlist.size()-1);
+            strlist.remove(strlist.size()-1);
+            strlist.remove(strlist.get(0));
+            sqrtSqp=false;
+        }
+        else if(power){
+            strlist.remove(strlist.size()-1);
+            strlist.remove(strlist.size()-1);
+            strlist.remove(strlist.get(0));
+            power=false;
+        }
+        else if(sqRt){
+            strlist.remove(strlist.size()-1);
+            strlist.remove(strlist.get(0));
+            strlist.remove(strlist.get(0));
+            sqRt=false;
+        }
+        else{
+            if(strlist.size()==1){
+                strlist.remove(strlist.size()-1);
+                strlist.add("0");
+            }
+            else
+                strlist.remove(strlist.size()-1);
+                
+        }
+        str="";
+        for (String temp : strlist) {
+            str+= temp;
+        }
+        return str;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
