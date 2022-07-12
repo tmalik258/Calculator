@@ -1169,7 +1169,6 @@ private double result=0;
             }
             power=false;
             sqRt=false;
-            System.out.println("Percent pressed.");
         }
         
         //          WHEN OTHER KEYS PRESSED, BEEP SOUND GENERATED
