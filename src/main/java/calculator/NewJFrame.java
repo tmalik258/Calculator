@@ -106,6 +106,11 @@ public class NewJFrame extends javax.swing.JFrame {
         btnper.setBorder(null);
         btnper.setFocusPainted(false);
         btnper.setHideActionText(true);
+        btnper.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnperActionPerformed(evt);
+            }
+        });
 
         btnCE.setBackground(new java.awt.Color(51, 51, 51));
         btnCE.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -614,14 +619,14 @@ private enum Operator{p,s,m,d}
         // TODO add your handling code here:
         String text=jTextField1.getText();
         if(sqpSqrt){
-                str=lastCharacterRemover(text);
-                value2=Float.parseFloat(str);
-            }
-            else if(sqrtSqp){
-                str=lastCharacterRemover(text);
-                value2=Float.parseFloat(str);
-            }
-            else if(power){
+            str=lastCharacterRemover(text);
+            value2=Float.parseFloat(str);
+        }
+        else if(sqrtSqp){
+            str=lastCharacterRemover(text);
+            value2=Float.parseFloat(str);
+        }
+        else if(power){
             str=lastCharacterRemover(text);
             value2=Float.parseFloat(str);
         }
@@ -836,6 +841,20 @@ System.out.println("Key codes: " + evt.getKeyCode());
             }
         }
     }//GEN-LAST:event_btnsqrtActionPerformed
+
+    private void btnperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnperActionPerformed
+        // TODO add your handling code here:
+        if(value1!=0){
+            String text=jTextField1.getText();
+            result=Float.parseFloat(text)/100;
+            result=Math.round(result);
+            jTextField1.setText(""+result);
+//            jTextField1.setText(String.format("%.5f", result));
+        }
+        else if(value1==0){
+            jTextField1.setText("0");
+        }
+    }//GEN-LAST:event_btnperActionPerformed
 
     /**
      * @param args the command line arguments
