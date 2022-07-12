@@ -1029,7 +1029,6 @@ private double result=0;
         // TODO add your handling code here:
         char ch = evt.getKeyChar();
         String s=Character.toString(ch);
-        System.out.println(evt.getKeyChar());
         
         //          NUMBERS INPUT
         if (ch >= '0' &&ch <= '9') {
@@ -1044,7 +1043,6 @@ private double result=0;
         
         //          EQUALS TO
         else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-            System.out.println("Enter is Pressed.");
             String text=jTextField1.getText();
             if(power){
                 str=lastCharacterRemover(text);
@@ -1107,6 +1105,71 @@ private double result=0;
                     }
                 }
             }
+        }
+        
+        //          BACKSPACE
+        else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_BACK_SPACE){
+            if(zeroErrorRatio){
+                jTextField1.setText("0");
+                zeroErrorRatio=false;
+                ratioDisabledOption(true);
+            }
+            if(equalsToButton) {equalsToButton=false; value1=0;}
+            String text=jTextField1.getText();
+            str=eraseRemover(text);
+            jTextField1.setText(str);
+            if(text.contains("-")){if(str.length()==1)jTextField1.setText("0");  plusMinus=false;   }
+        }
+        
+        //          PERCENTAGE
+        else if(ch=='%'){
+            double temp=0;
+            if(value1!=0){
+                String text=jTextField1.getText();
+                if(sqrtSqp){
+                    str=lastCharacterRemover(text);
+                    temp= (float) Math.pow(Math.sqrt(Float.parseFloat(str)), 2);
+                    temp/=100;
+                    power=false;
+                    sqRt=false;
+                }
+                else if(sqpSqrt){
+                    str=lastCharacterRemover(text);
+                    temp= (float) Math.sqrt(Math.pow(Float.parseFloat(str), 2));
+                    temp/=100;
+                    power=false;
+                    sqRt=false;
+                }
+                else if(power){
+                    str=lastCharacterRemover(text);
+                    temp= (float) Math.pow(Float.parseFloat(str), 2);
+                    temp/=100;
+                    power=false;
+                }
+                else if(sqRt){
+                    str=lastCharacterRemover(text);
+                    temp= (float) Math.sqrt(Float.parseFloat(str));
+                    temp/=100;
+                    sqRt=false;
+                }
+                else
+                    temp=Float.parseFloat(text)/100;
+                BigDecimal b1;
+                b1= new BigDecimal(temp);
+                if(b1.precision()>7){
+                    jTextField1.setText(String.format("%.7f", temp));
+                }
+                else{
+                    jTextField1.setText(""+temp);
+                }
+                decimal=true;
+            }
+            else if(value1==0){
+                jTextField1.setText("0");
+            }
+            power=false;
+            sqRt=false;
+            System.out.println("Percent pressed.");
         }
         
         //          WHEN OTHER KEYS PRESSED, BEEP SOUND GENERATED
