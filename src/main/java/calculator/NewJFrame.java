@@ -31,7 +31,7 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
+        Panel1 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         btnper = new javax.swing.JButton();
         btnCE = new javax.swing.JButton();
@@ -59,7 +59,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnEqualsTo = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jTextField2 = new javax.swing.JTextField();
+        smallTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculator");
@@ -70,22 +70,22 @@ public class NewJFrame extends javax.swing.JFrame {
         setName("MainFrame"); // NOI18N
         setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(65, 65, 65));
+        Panel1.setBackground(new java.awt.Color(65, 65, 65));
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(65, 65, 65));
-        jTextField1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 50)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 49)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         jTextField1.setText("0");
         jTextField1.setAutoscrolls(false);
         jTextField1.setBorder(null);
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextField1.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
         jTextField1.setFocusCycleRoot(true);
         jTextField1.setFocusTraversalPolicyProvider(true);
         jTextField1.setHighlighter(null);
         jTextField1.setMargin(new java.awt.Insets(0, 6, 0, 6));
-        jTextField1.setVerifyInputWhenFocusTarget(false);
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
@@ -451,21 +451,33 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jTextField2.setBackground(new java.awt.Color(65, 65, 65));
-        jTextField2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(194, 194, 194));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        jTextField2.setBorder(null);
-        jTextField2.setFocusable(false);
-        jTextField2.setRequestFocusEnabled(false);
+        smallTextField.setBackground(new java.awt.Color(65, 65, 65));
+        smallTextField.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        smallTextField.setForeground(new java.awt.Color(194, 194, 194));
+        smallTextField.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        smallTextField.setBorder(null);
+        smallTextField.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        smallTextField.setFocusable(false);
+        smallTextField.setRequestFocusEnabled(false);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout Panel1Layout = new javax.swing.GroupLayout(Panel1);
+        Panel1.setLayout(Panel1Layout);
+        Panel1Layout.setHorizontalGroup(
+            Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel1Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jToggleButton1)
+                .addContainerGap())
+            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(smallTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
+            .addGroup(Panel1Layout.createSequentialGroup()
+                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Panel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnper, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -474,90 +486,79 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(btnC, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnErase, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(Panel1Layout.createSequentialGroup()
                         .addGap(372, 372, 372)
                         .addComponent(btnDivide, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(Panel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnratio, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSquare, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnsqrt, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(Panel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btn7, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn8, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(Panel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(Panel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(Panel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(btnplusminus, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn0, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDecimal, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(Panel1Layout.createSequentialGroup()
                         .addGap(372, 372, 372)
                         .addComponent(btnMultiply, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(Panel1Layout.createSequentialGroup()
                         .addGap(372, 372, 372)
                         .addComponent(btnMinus, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(Panel1Layout.createSequentialGroup()
                         .addGap(372, 372, 372)
                         .addComponent(btnPlus, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(Panel1Layout.createSequentialGroup()
                         .addGap(372, 372, 372)
                         .addComponent(btnEqualsTo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 6, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
-                .addContainerGap())
-            .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        Panel1Layout.setVerticalGroup(
+            Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Panel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(smallTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Panel1Layout.createSequentialGroup()
+                        .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnCE, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnper, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnC, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Panel1Layout.createSequentialGroup()
                                 .addComponent(btnratio, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btn7, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -569,30 +570,30 @@ public class NewJFrame extends javax.swing.JFrame {
                                 .addComponent(btnplusminus, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnSquare, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnsqrt, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(Panel1Layout.createSequentialGroup()
                                 .addGap(62, 62, 62)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btn8, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(Panel1Layout.createSequentialGroup()
                                 .addGap(124, 124, 124)
                                 .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(Panel1Layout.createSequentialGroup()
                                 .addGap(124, 124, 124)
                                 .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(Panel1Layout.createSequentialGroup()
                                 .addGap(186, 186, 186)
                                 .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(Panel1Layout.createSequentialGroup()
                                 .addGap(186, 186, 186)
                                 .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(Panel1Layout.createSequentialGroup()
                                 .addGap(248, 248, 248)
                                 .addComponent(btn0, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(Panel1Layout.createSequentialGroup()
                                 .addGap(248, 248, 248)
                                 .addComponent(btnDecimal, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(Panel1Layout.createSequentialGroup()
                         .addComponent(btnErase, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDivide, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -610,11 +611,11 @@ public class NewJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -625,6 +626,7 @@ private boolean decimal=false, power=false, equalsToButton=false, errorSolvedInM
 private boolean sqRt=false, sqpSqrt=false,sqrtSqp=false, zeroErrorRatio=false;
 private String str;
 private double result=0;
+private int expression=0;
 //private enum Operator{p,s,m,d}
 //  ErrorSolvedMultiplication is for equation 4+2=6 +2=8
 
@@ -648,6 +650,12 @@ private double result=0;
         String text=jTextField1.getText();
         operatorChecker(text);
         operator='÷';
+        if(decimal)
+            smallTextField.setText(value1+" "+operator);
+        else{
+            expression=(int) value1;
+            smallTextField.setText(expression+" "+operator);
+        }
         jTextField1.setText("0");
     }//GEN-LAST:event_btnDivideActionPerformed
 
@@ -658,6 +666,12 @@ private double result=0;
         String text=jTextField1.getText();
         operatorChecker(text);
         operator='x';
+        if(decimal)
+            smallTextField.setText(value1+" "+operator);
+        else{
+            expression=(int) value1;
+            smallTextField.setText(expression+" "+operator);
+        }
         jTextField1.setText("0");
     }//GEN-LAST:event_btnMultiplyActionPerformed
 
@@ -667,6 +681,12 @@ private double result=0;
         String text=jTextField1.getText();
         operatorChecker(text);
         operator='-';
+        if(decimal)
+            smallTextField.setText(value1+" "+operator);
+        else{
+            expression=(int) value1;
+            smallTextField.setText(expression+" "+operator);
+        }
         jTextField1.setText("0");
     }//GEN-LAST:event_btnMinusActionPerformed
 
@@ -676,12 +696,18 @@ private double result=0;
         String text=jTextField1.getText();
         operatorChecker(text);
         operator='+';
+        if(decimal)
+            smallTextField.setText(value1+" "+operator);
+        else{
+            expression=(int) value1;
+            smallTextField.setText(expression+" "+operator);
+        }
         jTextField1.setText("0");
     }//GEN-LAST:event_btnPlusActionPerformed
 
     private void btnEqualsToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsToActionPerformed
         // TODO add your handling code here:
-        String text=jTextField1.getText();
+        String text=jTextField1.getText(), sText=smallTextField.getText();
         if(sqpSqrt){
             str=lastCharacterRemover(text);
             value2=Float.parseFloat(str);
@@ -702,6 +728,12 @@ private double result=0;
                 value2=Float.parseFloat(text);
         }
         equalsToCalculation();
+        if(decimal)
+            smallTextField.setText(sText+" "+value2+" =");
+        else{
+            expression= (int) value2;
+            smallTextField.setText(sText+" "+expression+" =");
+        }
         equalsToButton=true;
     }//GEN-LAST:event_btnEqualsToActionPerformed
 
@@ -710,6 +742,7 @@ private double result=0;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
+            zeroErrorRatio=false;
         }
         if((!power)&&(!sqRt)){
             equalsToButton();
@@ -723,6 +756,7 @@ private double result=0;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
+            zeroErrorRatio=false;
         }
         if((!power)&&(!sqRt)){
             equalsToButton();
@@ -737,6 +771,7 @@ private double result=0;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
+            zeroErrorRatio=false;
         }
         if((!power)&&(!sqRt)){
             equalsToButton();
@@ -752,6 +787,7 @@ private double result=0;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
+            zeroErrorRatio=false;
         }
         if((!power)&&(!sqRt)){
             equalsToButton();
@@ -767,6 +803,7 @@ private double result=0;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
+            zeroErrorRatio=false;
         }
         if((!power)&&(!sqRt)){
             equalsToButton();
@@ -781,6 +818,7 @@ private double result=0;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
+            zeroErrorRatio=false;
         }
         if((!power)&&(!sqRt)){
             equalsToButton();
@@ -795,6 +833,7 @@ private double result=0;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
+            zeroErrorRatio=false;
         }
         if((!power)&&(!sqRt)){
             equalsToButton();
@@ -809,6 +848,7 @@ private double result=0;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
+            zeroErrorRatio=false;
         }
         if((!power)&&(!sqRt)){
             equalsToButton();
@@ -822,6 +862,7 @@ private double result=0;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
+            zeroErrorRatio=false;
         }
         if((!power)&&(!sqRt)){
             equalsToButton();
@@ -836,6 +877,7 @@ private double result=0;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
+            zeroErrorRatio=false;
         }
         if((!power)&&(!sqRt)){
             equalsToButton();
@@ -869,6 +911,7 @@ private double result=0;
         errorSolvedInMultiplication=false;
         value1=0;
         operator='&';
+        smallTextField.setText("");
         clear();
     }//GEN-LAST:event_btnCActionPerformed
 
@@ -918,6 +961,9 @@ private double result=0;
 
     private void btnsqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsqrtActionPerformed
         // TODO add your handling code here:
+        if(equalsToButton){
+            smallTextField.setText("");
+        }
         String text=jTextField1.getText();
         if(!sqRt){
             if(power)
@@ -1047,7 +1093,7 @@ private double result=0;
         
         //          EQUALS TO
         else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-            String text=jTextField1.getText();
+            String text=jTextField1.getText(), sText=smallTextField.getText();
             if(power){
                 str=lastCharacterRemover(text);
                 value2=Float.parseFloat(str);
@@ -1056,6 +1102,12 @@ private double result=0;
                     value2=Float.parseFloat(text);
             }
             equalsToCalculation();
+            if(decimal)
+            smallTextField.setText(sText+" "+value2+" =");
+            else{
+                expression= (int) value2;
+                smallTextField.setText(sText+" "+expression+" =");
+            }
             equalsToButton=true;
         }
         
@@ -1067,14 +1119,26 @@ private double result=0;
                     String text=jTextField1.getText();
                     operatorChecker(text);
                     operator='+';
-                    jTextField1.setText("");
+                    if(decimal)
+                        smallTextField.setText(value1+" "+operator);
+                    else{
+                        expression=(int) value1;
+                        smallTextField.setText(expression+" "+operator);
+                    }
+                    jTextField1.setText("0");
                 }
                 case '-' -> {
                     if(equalsToButton) {equalsToButton=false; value1=0;}
                     String text=jTextField1.getText();
                     operatorChecker(text);
                     operator='-';
-                    jTextField1.setText("");
+                    if(decimal)
+                        smallTextField.setText(value1+" "+operator);
+                    else{
+                        expression=(int) value1;
+                        smallTextField.setText(expression+" "+operator);
+                    }
+                    jTextField1.setText("0");
                 }
                 case '*' -> {
                     if(equalsToButton) {equalsToButton=false; value1=0;}
@@ -1082,14 +1146,26 @@ private double result=0;
                     String text=jTextField1.getText();
                     operatorChecker(text);
                     operator='x';
-                    jTextField1.setText("");
+                    if(decimal)
+                        smallTextField.setText(value1+" "+operator);
+                    else{
+                        expression=(int) value1;
+                        smallTextField.setText(expression+" "+operator);
+                    }
+                    jTextField1.setText("0");
                 }
                 case '/' -> {
                     if(equalsToButton) {equalsToButton=false; value1=0;}
                     String text=jTextField1.getText();
                     operatorChecker(text);
                     operator='÷';
-                    jTextField1.setText("");
+                    if(decimal)
+                        smallTextField.setText(value1+" "+operator);
+                    else{
+                        expression=(int) value1;
+                        smallTextField.setText(expression+" "+operator);
+                    }
+                    jTextField1.setText("0");
                 }
                 case '.' -> {
                     if(!power){
@@ -1118,7 +1194,7 @@ private double result=0;
                 zeroErrorRatio=false;
                 ratioDisabledOption(true);
             }
-            if(equalsToButton) {equalsToButton=false; value1=0;}
+            if(equalsToButton) {equalsToButton=false; value1=0; smallTextField.setText(""); jTextField1.setText("0");}
             String text=jTextField1.getText();
             str=eraseRemover(text);
             jTextField1.setText(str);
@@ -1196,9 +1272,11 @@ private double result=0;
     private void equalsToButton(){
         if(equalsToButton){
                 jTextField1.setText("");
+                smallTextField.setText("");
                 equalsToButton=false;
                 value1=0;
                 errorSolvedInMultiplication=true;
+                decimal=false;
             }
     }
     
@@ -1305,8 +1383,10 @@ private double result=0;
                 value1= (float) Math.sqrt(Float.parseFloat(str));
                 sqRt=false;
             }
-            else
+            else{
                 value1=Float.parseFloat(text);
+//                smallTextField.setText(""+value1);
+            }
         }
     }
     private String lastCharacterRemover(String text){
@@ -1831,6 +1911,9 @@ private double result=0;
         for (String temp : strlist) {
             str+= temp;
         }
+        if(decimal)
+            if(!str.contains("."))
+                decimal=false;
         return str;
     }
     private void ratioDisabledOption(Boolean bool){
@@ -1995,6 +2078,7 @@ private double result=0;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Panel1;
     private javax.swing.JButton btn0;
     private javax.swing.JButton btn1;
     private javax.swing.JButton btn2;
@@ -2020,9 +2104,8 @@ private double result=0;
     private javax.swing.JButton btnratio;
     private javax.swing.JButton btnsqrt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JTextField smallTextField;
     // End of variables declaration//GEN-END:variables
 }
