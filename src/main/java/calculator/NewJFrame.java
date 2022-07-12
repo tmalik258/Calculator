@@ -812,23 +812,6 @@ private enum Operator{p,s,m,d}
         }
     }//GEN-LAST:event_btnSquareActionPerformed
 
-    private void btn7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btn7KeyPressed
-        // TODO add your handling code here:
-        char ch = evt.getKeyChar();
- 
-  if (ch == '1' ||ch == 'b'||ch == 'c' ) {
- 
-System.out.println(evt.getKeyChar());
- 
-  }
- 
-  if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_HOME) {
- 
-System.out.println("Key codes: " + evt.getKeyCode());
- 
-  }
-    }//GEN-LAST:event_btn7KeyPressed
-
     private void btnsqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsqrtActionPerformed
         // TODO add your handling code here:
         String text=jTextField1.getText();
