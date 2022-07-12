@@ -4,7 +4,10 @@
  */
 package calculator;
 
+import java.awt.Color;
+import java.math.BigDecimal;
 import java.util.*;
+import javax.swing.plaf.metal.MetalButtonUI;
 
 /**
  *
@@ -29,6 +32,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        btnTheme = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         btnper = new javax.swing.JButton();
@@ -58,29 +62,49 @@ public class NewJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculator");
-        setBackground(new java.awt.Color(102, 102, 102));
+        setBackground(new java.awt.Color(0, 0, 0));
+        setFocusable(false);
         setForeground(new java.awt.Color(102, 102, 102));
         setName("MainFrame"); // NOI18N
         setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(74, 74, 74));
         jPanel1.setAlignmentY(0.0F);
+
+        btnTheme.setBackground(new java.awt.Color(0, 0, 0));
+        btnTheme.setForeground(new java.awt.Color(255, 255, 255));
+        btnTheme.setText("Black Theme");
+        btnTheme.setBorderPainted(false);
+        btnTheme.setFocusPainted(false);
+        btnTheme.setFocusable(false);
+        btnTheme.setRequestFocusEnabled(false);
+        btnTheme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 494, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnTheme)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 52, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnTheme)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel2.setBackground(new java.awt.Color(65, 65, 65));
 
         jTextField1.setEditable(false);
-        jTextField1.setBackground(new java.awt.Color(102, 102, 102));
+        jTextField1.setBackground(new java.awt.Color(65, 65, 65));
         jTextField1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 48)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(255, 255, 255));
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
@@ -102,7 +126,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnper.setBackground(new java.awt.Color(51, 51, 51));
         btnper.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnper.setForeground(new java.awt.Color(255, 255, 255));
-        btnper.setText("%");
+        btnper.setText("<html>\n%\n</html>");
         btnper.setBorder(null);
         btnper.setFocusPainted(false);
         btnper.setHideActionText(true);
@@ -115,7 +139,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnCE.setBackground(new java.awt.Color(51, 51, 51));
         btnCE.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCE.setForeground(new java.awt.Color(255, 255, 255));
-        btnCE.setText("CE");
+        btnCE.setText("<html>\nCE\n</html>");
         btnCE.setBorder(null);
         btnCE.setFocusPainted(false);
         btnCE.setHideActionText(true);
@@ -128,7 +152,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnC.setBackground(new java.awt.Color(51, 51, 51));
         btnC.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnC.setForeground(new java.awt.Color(255, 255, 255));
-        btnC.setText("C");
+        btnC.setText("<html>\nC\n</html>");
         btnC.setBorder(null);
         btnC.setFocusPainted(false);
         btnC.setHideActionText(true);
@@ -141,7 +165,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnErase.setBackground(new java.awt.Color(51, 51, 51));
         btnErase.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnErase.setForeground(new java.awt.Color(255, 255, 255));
-        btnErase.setText("←");
+        btnErase.setText("<html>\n←\n</html>");
         btnErase.setAlignmentY(0.0F);
         btnErase.setBorder(null);
         btnErase.setFocusPainted(false);
@@ -155,8 +179,9 @@ public class NewJFrame extends javax.swing.JFrame {
         btnDivide.setBackground(new java.awt.Color(51, 51, 51));
         btnDivide.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnDivide.setForeground(new java.awt.Color(255, 255, 255));
-        btnDivide.setText("÷");
+        btnDivide.setText("<html>\n÷\n</html>");
         btnDivide.setBorder(null);
+        btnDivide.setBorderPainted(false);
         btnDivide.setFocusPainted(false);
         btnDivide.setHideActionText(true);
         btnDivide.addActionListener(new java.awt.event.ActionListener() {
@@ -168,10 +193,15 @@ public class NewJFrame extends javax.swing.JFrame {
         btnratio.setBackground(new java.awt.Color(51, 51, 51));
         btnratio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnratio.setForeground(new java.awt.Color(255, 255, 255));
-        btnratio.setText("1/x");
+        btnratio.setText("<html>\n1/x\n</html>");
         btnratio.setBorder(null);
         btnratio.setFocusPainted(false);
         btnratio.setHideActionText(true);
+        btnratio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnratioActionPerformed(evt);
+            }
+        });
 
         btnSquare.setBackground(new java.awt.Color(51, 51, 51));
         btnSquare.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -189,7 +219,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnsqrt.setBackground(new java.awt.Color(51, 51, 51));
         btnsqrt.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnsqrt.setForeground(new java.awt.Color(255, 255, 255));
-        btnsqrt.setText("<html>\n<sup>2</sup>√x\n</html>");
+        btnsqrt.setText("<html>\n<sup >2</sup>√x\n</html>");
         btnsqrt.setBorder(null);
         btnsqrt.setFocusPainted(false);
         btnsqrt.setHideActionText(true);
@@ -267,7 +297,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnplusminus.setBackground(new java.awt.Color(0, 0, 0));
         btnplusminus.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         btnplusminus.setForeground(new java.awt.Color(255, 255, 255));
-        btnplusminus.setText("+/-");
+        btnplusminus.setText("<html>\n+/-\n</html>");
         btnplusminus.setBorder(null);
         btnplusminus.setFocusPainted(false);
         btnplusminus.setHideActionText(true);
@@ -345,7 +375,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnDecimal.setBackground(new java.awt.Color(0, 0, 0));
         btnDecimal.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         btnDecimal.setForeground(new java.awt.Color(255, 255, 255));
-        btnDecimal.setText(".");
+        btnDecimal.setText("<html>\n.\n</html>");
         btnDecimal.setBorder(null);
         btnDecimal.setFocusPainted(false);
         btnDecimal.setHideActionText(true);
@@ -358,7 +388,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnMultiply.setBackground(new java.awt.Color(51, 51, 51));
         btnMultiply.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnMultiply.setForeground(new java.awt.Color(255, 255, 255));
-        btnMultiply.setText("×");
+        btnMultiply.setText("<html>\n×\n</html>");
         btnMultiply.setBorder(null);
         btnMultiply.setFocusPainted(false);
         btnMultiply.setHideActionText(true);
@@ -371,7 +401,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnMinus.setBackground(new java.awt.Color(51, 51, 51));
         btnMinus.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnMinus.setForeground(new java.awt.Color(255, 255, 255));
-        btnMinus.setText("-");
+        btnMinus.setText("<html>\n-\n</html>");
         btnMinus.setBorder(null);
         btnMinus.setFocusPainted(false);
         btnMinus.setHideActionText(true);
@@ -384,7 +414,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnPlus.setBackground(new java.awt.Color(51, 51, 51));
         btnPlus.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnPlus.setForeground(new java.awt.Color(255, 255, 255));
-        btnPlus.setText("+");
+        btnPlus.setText("<html>\n+\n</html>");
         btnPlus.setBorder(null);
         btnPlus.setFocusPainted(false);
         btnPlus.setHideActionText(true);
@@ -397,7 +427,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnEqualsTo.setBackground(new java.awt.Color(102, 0, 102));
         btnEqualsTo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnEqualsTo.setForeground(new java.awt.Color(255, 255, 255));
-        btnEqualsTo.setText("=");
+        btnEqualsTo.setText("<html>\n=\n</html>");
         btnEqualsTo.setBorder(null);
         btnEqualsTo.setFocusPainted(false);
         btnEqualsTo.setHideActionText(true);
@@ -559,10 +589,10 @@ public class NewJFrame extends javax.swing.JFrame {
 private float value1=0, value2=0;
 private char operator;
 private boolean decimal=false, power=false, equalsToButton=false, errorSolvedInMultiplication=false, plusMinus=false;
-private boolean sqRt=false, sqpSqrt=false,sqrtSqp=false;
+private boolean sqRt=false, sqpSqrt=false,sqrtSqp=false, zeroErrorRatio=false;
 private String str;
-private double result;
-private enum Operator{p,s,m,d}
+private double result=0;
+//private enum Operator{p,s,m,d}
 //  ErrorSolvedMultiplication is for equation 4+2=6 +2=8
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -571,6 +601,11 @@ private enum Operator{p,s,m,d}
 
     private void btnEraseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEraseActionPerformed
         // TODO add your handling code here:
+        if(zeroErrorRatio){
+            jTextField1.setText("0");
+            zeroErrorRatio=false;
+            ratioDisabledOption(true);
+        }
         if(equalsToButton) {equalsToButton=false; value1=0;}
         String text=jTextField1.getText();
         str=eraseRemover(text);
@@ -584,7 +619,7 @@ private enum Operator{p,s,m,d}
         String text=jTextField1.getText();
         operatorChecker(text);
         operator='÷';
-        jTextField1.setText("");
+        jTextField1.setText("0");
     }//GEN-LAST:event_btnDivideActionPerformed
 
     private void btnMultiplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultiplyActionPerformed
@@ -594,7 +629,7 @@ private enum Operator{p,s,m,d}
         String text=jTextField1.getText();
         operatorChecker(text);
         operator='x';
-        jTextField1.setText("");
+        jTextField1.setText("0");
     }//GEN-LAST:event_btnMultiplyActionPerformed
 
     private void btnMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusActionPerformed
@@ -603,7 +638,7 @@ private enum Operator{p,s,m,d}
         String text=jTextField1.getText();
         operatorChecker(text);
         operator='-';
-        jTextField1.setText("");
+        jTextField1.setText("0");
     }//GEN-LAST:event_btnMinusActionPerformed
 
     private void btnPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlusActionPerformed
@@ -612,7 +647,7 @@ private enum Operator{p,s,m,d}
         String text=jTextField1.getText();
         operatorChecker(text);
         operator='+';
-        jTextField1.setText("");
+        jTextField1.setText("0");
     }//GEN-LAST:event_btnPlusActionPerformed
 
     private void btnEqualsToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsToActionPerformed
@@ -643,6 +678,10 @@ private enum Operator{p,s,m,d}
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
         // TODO add your handling code here:
+        if(zeroErrorRatio){
+            jTextField1.setText("");
+            ratioDisabledOption(true);
+        }
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
@@ -652,6 +691,10 @@ private enum Operator{p,s,m,d}
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         // TODO add your handling code here:
+        if(zeroErrorRatio){
+            jTextField1.setText("");
+            ratioDisabledOption(true);
+        }
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
@@ -662,6 +705,10 @@ private enum Operator{p,s,m,d}
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         // TODO add your handling code here:
+        if(zeroErrorRatio){
+            jTextField1.setText("");
+            ratioDisabledOption(true);
+        }
         if((!power)&&(!sqRt)){
             equalsToButton();
             
@@ -673,6 +720,10 @@ private enum Operator{p,s,m,d}
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         // TODO add your handling code here:
+        if(zeroErrorRatio){
+            jTextField1.setText("");
+            ratioDisabledOption(true);
+        }
         if((!power)&&(!sqRt)){
             equalsToButton();
             
@@ -684,6 +735,10 @@ private enum Operator{p,s,m,d}
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         // TODO add your handling code here:
+        if(zeroErrorRatio){
+            jTextField1.setText("");
+            ratioDisabledOption(true);
+        }
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
@@ -694,6 +749,10 @@ private enum Operator{p,s,m,d}
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         // TODO add your handling code here:
+        if(zeroErrorRatio){
+            jTextField1.setText("");
+            ratioDisabledOption(true);
+        }
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
@@ -704,6 +763,10 @@ private enum Operator{p,s,m,d}
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         // TODO add your handling code here:
+        if(zeroErrorRatio){
+            jTextField1.setText("");
+            ratioDisabledOption(true);
+        }
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
@@ -714,6 +777,10 @@ private enum Operator{p,s,m,d}
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         // TODO add your handling code here:
+        if(zeroErrorRatio){
+            jTextField1.setText("");
+            ratioDisabledOption(true);
+        }
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
@@ -723,6 +790,10 @@ private enum Operator{p,s,m,d}
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         // TODO add your handling code here:
+        if(zeroErrorRatio){
+            jTextField1.setText("");
+            ratioDisabledOption(true);
+        }
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
@@ -733,6 +804,10 @@ private enum Operator{p,s,m,d}
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         // TODO add your handling code here:
+        if(zeroErrorRatio){
+            jTextField1.setText("");
+            ratioDisabledOption(true);
+        }
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
@@ -745,7 +820,7 @@ private enum Operator{p,s,m,d}
         // TODO add your handling code here:
         if((!power)&&(!sqRt)){
             if(equalsToButton){
-                jTextField1.setText("");
+                jTextField1.setText("0");
                 equalsToButton=false;
             }
             String text=jTextField1.getText();
@@ -827,18 +902,108 @@ private enum Operator{p,s,m,d}
 
     private void btnperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnperActionPerformed
         // TODO add your handling code here:
+        double temp=0;
         if(value1!=0){
             String text=jTextField1.getText();
-            result=Float.parseFloat(text)/100;
-            result=Math.round(result);
-            jTextField1.setText(""+result);
-//            jTextField1.setText(String.format("%.5f", result));
+            if(sqrtSqp){
+                str=lastCharacterRemover(text);
+                temp= (float) Math.pow(Math.sqrt(Float.parseFloat(str)), 2);
+                temp/=100;
+                power=false;
+                sqRt=false;
+            }
+            else if(sqpSqrt){
+                str=lastCharacterRemover(text);
+                temp= (float) Math.sqrt(Math.pow(Float.parseFloat(str), 2));
+                temp/=100;
+                power=false;
+                sqRt=false;
+            }
+            else if(power){
+                str=lastCharacterRemover(text);
+                temp= (float) Math.pow(Float.parseFloat(str), 2);
+                temp/=100;
+                power=false;
+            }
+            else if(sqRt){
+                str=lastCharacterRemover(text);
+                temp= (float) Math.sqrt(Float.parseFloat(str));
+                temp/=100;
+                sqRt=false;
+            }
+            else
+                temp=Float.parseFloat(text)/100;
+            BigDecimal b1;
+            b1= new BigDecimal(temp);
+            if(b1.precision()>7){
+                jTextField1.setText(String.format("%.7f", temp));
+            }
+            else{
+                jTextField1.setText(""+temp);
+            }
+            decimal=true;
         }
         else if(value1==0){
             jTextField1.setText("0");
         }
+        power=false;
+        sqRt=false;
     }//GEN-LAST:event_btnperActionPerformed
 
+    private void btnratioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnratioActionPerformed
+        // TODO add your handling code here:
+        float temp;
+        String text=jTextField1.getText();
+        decimal=true;
+        if(sqpSqrt){
+            str=lastCharacterRemover(text);
+            temp= (float) Math.pow(Float.parseFloat(str), 2);
+            temp= (float) Math.sqrt(temp);
+            temp=1/temp;
+            jTextField1.setText(""+temp);
+            power=false;
+            sqRt=false;
+        }
+        else if(sqrtSqp){
+            str=lastCharacterRemover(text);
+            temp= (float) Math.sqrt(Float.parseFloat(str));
+            temp= (float) Math.pow(temp, 2);
+            temp=1/temp;
+            jTextField1.setText(""+temp);
+            power=false;
+            sqRt=false;
+        }
+        else if(power){
+            str=lastCharacterRemover(text);
+            temp= (float) Math.pow(Float.parseFloat(str), 2);
+            temp=1/temp;
+            jTextField1.setText(""+temp);
+            power=false;
+        }
+        else if(sqRt){
+            str=lastCharacterRemover(text);
+            temp= (float) Math.sqrt(Float.parseFloat(str));
+            temp=1/temp;
+            jTextField1.setText(""+temp);
+            sqRt=false;
+        }
+        else if(!"0".equals(text)){
+            temp=1/Float.parseFloat(text);
+            jTextField1.setText(""+temp);
+        }
+        else if("0".equals(text)){
+            jTextField1.setText("Cannot divide by Zero");
+            zeroErrorRatio=true;
+            ratioDisabledOption(false);
+            colorChanger();
+            decimal=false;
+        }
+    }//GEN-LAST:event_btnratioActionPerformed
+
+    private void btnThemeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemeActionPerformed
+        // TODO add your handling code here:
+        colorChanger();
+    }//GEN-LAST:event_btnThemeActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -861,6 +1026,8 @@ private enum Operator{p,s,m,d}
     }
     
     private void clear(){
+        ratioDisabledOption(true);
+        zeroErrorRatio=false;
         sqpSqrt=false;
         sqrtSqp=false;
         decimal=false;
@@ -1002,29 +1169,64 @@ private enum Operator{p,s,m,d}
                         result= Math.sqrt(value2);
                         result= Math.pow(result, 2);
                         result=value1+result;
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
                         result= Math.sqrt(result);
                         result= value1+result;
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqrtSqp=false;
                     }
                     else if(power){
                         result=value1+ Math.pow(value2, 2);
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         power=false;
                     }
                     else if(sqRt){
                         result=value1+ Math.sqrt(value2);
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqRt=false;
                     }
                     else{
                         result=value1+value2;
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         break;
                     }
                 case '-':
@@ -1032,29 +1234,64 @@ private enum Operator{p,s,m,d}
                         result= Math.sqrt(value2);
                         result= Math.pow(result, 2);
                         result=value1-result;
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
                         result= Math.sqrt(result);
                         result= value1-result;
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqrtSqp=false;
                     }
                     else if(power){
                         result=value1- Math.pow(value2, 2);
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         power=false;
                     }
                     else if(sqRt){
                         result=value1- Math.sqrt(value2);
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqRt=false;
                     }
                     else{
                         result=value1-value2;
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                     }
                     break;
                 case 'x':
@@ -1062,29 +1299,64 @@ private enum Operator{p,s,m,d}
                         result= Math.sqrt(value2);
                         result= Math.pow(result, 2);
                         result=value1*result;
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
                         result= Math.sqrt(result);
                         result= value1*result;
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqrtSqp=false;
                     }
                     else if(power){
                         result=value1* Math.pow(value2, 2);
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         power=false;
                     }
                     else if(sqRt){
                         result=value1* Math.sqrt(value2);
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqRt=false;
                     }
                     else{
                         result=value1*value2;
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                     }
                     break;
                 case '÷':
@@ -1092,58 +1364,121 @@ private enum Operator{p,s,m,d}
                         result= Math.sqrt(value2);
                         result= Math.pow(result, 2);
                         result=value1/result;
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
                         result= Math.sqrt(result);
                         result= value1/result;
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqrtSqp=false;
                     }
                     else if(power){
                         result=value1/ Math.pow(value2, 2);
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         power=false;
                     }
                     else if(sqRt){
                         result=value1/ Math.sqrt(value2);
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqRt=false;
                     }
                     else{
                         result=value1/value2;
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                     }
                     break;
                 default:
                     if(sqrtSqp){
                         result= Math.sqrt(value2);
                         result= Math.pow(result, 2);
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
                         result= Math.sqrt(result);
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqrtSqp=false;
                     }
                     else if(power){
                         result= Math.pow(value2, 2);
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         power=false;
                     }
                     else if(sqRt){
                         result= Math.sqrt(value2);
-                        jTextField1.setText(""+result);
+                        BigDecimal b1;
+                        b1= new BigDecimal(result);
+                        if(b1.precision()>7){
+                            jTextField1.setText(String.format("%.7f", result));
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                         sqRt=false;
                     }
             }
         }
         else{
-            int result;
+            int result=0;
             switch(operator){
                 case '+':
                     if(sqrtSqp){
@@ -1313,6 +1648,166 @@ private enum Operator{p,s,m,d}
         }
         return str;
     }
+    private void ratioDisabledOption(Boolean bool){
+        btnDivide.setEnabled(bool);
+        btnMultiply.setEnabled(bool);
+        btnPlus.setEnabled(bool);
+        btnMinus.setEnabled(bool);
+        btnSquare.setEnabled(bool);
+        btnsqrt.setEnabled(bool);
+        btnper.setEnabled(bool);
+        btnplusminus.setEnabled(bool);
+        btnratio.setEnabled(bool);
+        btnDecimal.setEnabled(bool);
+        btnEqualsTo.setEnabled(bool);
+    }
+    
+    private void colorChanger(){
+        btnDivide.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnMultiply.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnPlus.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnMinus.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnSquare.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnsqrt.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnper.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnplusminus.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnratio.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnDecimal.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnEqualsTo.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnC.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnCE.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btnErase.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btn0.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btn1.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btn2.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btn3.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btn4.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btn5.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btn6.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btn7.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btn8.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+        btn9.setUI(new MetalButtonUI() {
+            @Override
+            protected Color getDisabledTextColor() {
+                return Color.DARK_GRAY;
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn0;
@@ -1335,6 +1830,7 @@ private enum Operator{p,s,m,d}
     private javax.swing.JButton btnMultiply;
     private javax.swing.JButton btnPlus;
     private javax.swing.JButton btnSquare;
+    private javax.swing.JButton btnTheme;
     private javax.swing.JButton btnper;
     private javax.swing.JButton btnplusminus;
     private javax.swing.JButton btnratio;
