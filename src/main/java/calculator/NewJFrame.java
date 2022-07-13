@@ -636,7 +636,7 @@ private long expression=0;
             zeroErrorRatio=false;
             ratioDisabledOption(true);
         }
-        if(equalsToButton) {equalsToButton=false; value1=0;}
+        if(equalsToButton) {equalsToButton=false; value1=0; smallTextField.setText("");}
         String text=jTextField1.getText();
         str=eraseRemover(text);
         jTextField1.setText(str);
@@ -646,14 +646,21 @@ private long expression=0;
     private void btnDivideActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivideActionPerformed
         // TODO add your handling code here:
         if(equalsToButton) {equalsToButton=false; value1=0;}
-        String text=jTextField1.getText();
+        String text=jTextField1.getText(), sText=smallTextField.getText();
         operatorChecker(text);
         operator='÷';
         if(decimal)
             smallTextField.setText(value1+" "+operator);
         else{
             expression=(long) value1;
-            smallTextField.setText(expression+" "+operator);
+            if(sqRt||power||sqpSqrt||sqrtSqp){
+                smallTextField.setText(sText+" "+text+" "+operator);
+                power=false;
+                sqRt=false;
+                sqpSqrt=false;
+                sqrtSqp=false;}
+            else
+                smallTextField.setText(expression+" "+operator);
         }
         jTextField1.setText("0");
     }//GEN-LAST:event_btnDivideActionPerformed
@@ -662,13 +669,20 @@ private long expression=0;
         // TODO add your handling code here:
         if(equalsToButton) {equalsToButton=false; value1=0;}
         if(errorSolvedInMultiplication){if(value1==0)value1=1; errorSolvedInMultiplication=false;}
-        String text=jTextField1.getText();
+        String text=jTextField1.getText(), sText=smallTextField.getText();
         operatorChecker(text);
         operator='x';
         if(decimal)
             smallTextField.setText(value1+" "+operator);
         else{
             expression=(long) value1;
+            if(sqRt||power||sqpSqrt||sqrtSqp){
+                smallTextField.setText(sText+" "+text+" "+operator);
+                power=false;
+                sqRt=false;
+                sqpSqrt=false;
+                sqrtSqp=false;}
+            else
             smallTextField.setText(expression+" "+operator);
         }
         jTextField1.setText("0");
@@ -677,13 +691,20 @@ private long expression=0;
     private void btnMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinusActionPerformed
         // TODO add your handling code here:
         if(equalsToButton) {equalsToButton=false; value1=0;}
-        String text=jTextField1.getText();
+        String text=jTextField1.getText(), sText=smallTextField.getText();
         operatorChecker(text);
         operator='-';
         if(decimal)
             smallTextField.setText(value1+" "+operator);
         else{
             expression=(long) value1;
+            if(sqRt||power||sqpSqrt||sqrtSqp){
+                smallTextField.setText(sText+" "+text+" "+operator);
+                power=false;
+                sqRt=false;
+                sqpSqrt=false;
+                sqrtSqp=false;}
+            else
             smallTextField.setText(expression+" "+operator);
         }
         jTextField1.setText("0");
@@ -692,20 +713,29 @@ private long expression=0;
     private void btnPlusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlusActionPerformed
         // TODO add your handling code here:
         if(equalsToButton) {equalsToButton=false; value1=0;}
-        String text=jTextField1.getText();
+        String text=jTextField1.getText(), sText=smallTextField.getText();
         operatorChecker(text);
         operator='+';
         if(decimal)
             smallTextField.setText(value1+" "+operator);
         else{
             expression=(long) value1;
-            smallTextField.setText(expression+" "+operator);
+            if(sqRt||power||sqpSqrt||sqrtSqp){
+                smallTextField.setText(sText+" "+text+" "+operator);
+                power=false;
+                sqRt=false;
+                sqpSqrt=false;
+                sqrtSqp=false;}
+            else
+                smallTextField.setText(expression+" "+operator);
         }
         jTextField1.setText("0");
     }//GEN-LAST:event_btnPlusActionPerformed
 
     private void btnEqualsToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsToActionPerformed
         // TODO add your handling code here:
+        if(equalsToButton)
+            smallTextField.setText("");
         String text=jTextField1.getText(), sText=smallTextField.getText();
         if(sqpSqrt){
             str=lastCharacterRemover(text);
@@ -731,8 +761,22 @@ private long expression=0;
             smallTextField.setText(sText+" "+value2+" =");
         else{
             expression= (long) value2;
-            smallTextField.setText(sText+" "+expression+" =");
+            if(sqRt||power||sqpSqrt||sqrtSqp){
+                smallTextField.setText(sText+" "+text+" =");
+                if(sqrtSqp)
+                    sqrtSqp=false;
+                else if(sqpSqrt)
+                    sqpSqrt=false;
+                else if(power)
+                    power=false;
+                else if(sqRt)
+                    sqRt=false;
+            }
+            else
+                smallTextField.setText(sText+" "+expression+" =");
         }
+        if(equalsToButton)
+            jTextField1.setText(text);
         equalsToButton=true;
     }//GEN-LAST:event_btnEqualsToActionPerformed
 
@@ -973,10 +1017,8 @@ private long expression=0;
         if(!power){
             if(sqRt)
                sqrtSqp=true;
-            if(!"".equals(text)){
-                jTextField1.setText("("+text+")"+"\u00B2");
-                power=true;
-            }
+            jTextField1.setText("("+text+")"+"\u00B2");
+            power=true;
         }
     }//GEN-LAST:event_btnSquareActionPerformed
 
@@ -989,10 +1031,8 @@ private long expression=0;
         if(!sqRt){
             if(power)
                sqpSqrt=true;
-            if(!"".equals(text)){
-                jTextField1.setText("√"+"("+text+")");
-                sqRt=true;
-            }
+            jTextField1.setText("√"+"("+text+")");
+            sqRt=true;
         }
     }//GEN-LAST:event_btnsqrtActionPerformed
 
@@ -1120,6 +1160,8 @@ private long expression=0;
         
         //          EQUALS TO
         else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            if(equalsToButton)
+                smallTextField.setText("");
             String text=jTextField1.getText(), sText=smallTextField.getText();
             if(power){
                 str=lastCharacterRemover(text);
@@ -1133,13 +1175,23 @@ private long expression=0;
             smallTextField.setText(sText+" "+value2+" =");
             else{
                 expression= (long) value2;
-                smallTextField.setText(sText+" "+expression+" =");
+                if(sqRt||power||sqpSqrt||sqrtSqp){
+                    smallTextField.setText(sText+" "+text+" =");
+                    power=false;
+                    sqRt=false;
+                    sqpSqrt=false;
+                    sqrtSqp=false;}
+                else
+                    smallTextField.setText(sText+" "+expression+" =");
             }
+            if(equalsToButton)
+                jTextField1.setText(text);
             equalsToButton=true;
         }
         
         //          OPERATORS
         else if(ch>='*'&&ch<='/'){
+            String sText=smallTextField.getText();
             switch(ch){
                 case '+' -> {
                     if(equalsToButton) {equalsToButton=false; value1=0;}
@@ -1150,7 +1202,14 @@ private long expression=0;
                         smallTextField.setText(value1+" "+operator);
                     else{
                         expression=(long) value1;
-                        smallTextField.setText(expression+" "+operator);
+                        if(sqRt||power||sqpSqrt||sqrtSqp){
+                            smallTextField.setText(sText+" "+text+" "+operator);
+                            power=false;
+                            sqRt=false;
+                            sqpSqrt=false;
+                            sqrtSqp=false;}
+                        else
+                            smallTextField.setText(expression+" "+operator);
                     }
                     jTextField1.setText("0");
                 }
@@ -1163,7 +1222,14 @@ private long expression=0;
                         smallTextField.setText(value1+" "+operator);
                     else{
                         expression=(long) value1;
-                        smallTextField.setText(expression+" "+operator);
+                        if(sqRt||power||sqpSqrt||sqrtSqp){
+                            smallTextField.setText(sText+" "+text+" "+operator);
+                            power=false;
+                            sqRt=false;
+                            sqpSqrt=false;
+                            sqrtSqp=false;}
+                        else
+                            smallTextField.setText(expression+" "+operator);
                     }
                     jTextField1.setText("0");
                 }
@@ -1177,7 +1243,14 @@ private long expression=0;
                         smallTextField.setText(value1+" "+operator);
                     else{
                         expression=(long) value1;
-                        smallTextField.setText(expression+" "+operator);
+                        if(sqRt||power||sqpSqrt||sqrtSqp){
+                            smallTextField.setText(sText+" "+text+" "+operator);
+                            power=false;
+                            sqRt=false;
+                            sqpSqrt=false;
+                            sqrtSqp=false;}
+                        else
+                            smallTextField.setText(expression+" "+operator);
                     }
                     jTextField1.setText("0");
                 }
@@ -1190,7 +1263,14 @@ private long expression=0;
                         smallTextField.setText(value1+" "+operator);
                     else{
                         expression=(long) value1;
-                        smallTextField.setText(expression+" "+operator);
+                        if(sqRt||power||sqpSqrt||sqrtSqp){
+                            smallTextField.setText(sText+" "+text+" "+operator);
+                            power=false;
+                            sqRt=false;
+                            sqpSqrt=false;
+                            sqrtSqp=false;}
+                        else
+                            smallTextField.setText(expression+" "+operator);
                     }
                     jTextField1.setText("0");
                 }
@@ -1334,12 +1414,12 @@ private long expression=0;
                     if(power){
                         str=lastCharacterRemover(text);
                         value1+= Math.pow(Double.parseDouble(str), 2);
-                        power=false;
+//                        power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
                         value1+= Math.sqrt(Double.parseDouble(str));
-                        sqRt=false;
+//                        sqRt=false;
                     }
                     else
                         value1+=Double.parseDouble(text);
@@ -1348,12 +1428,12 @@ private long expression=0;
                     if(power){
                         str=lastCharacterRemover(text);
                         value1-= Math.pow(Double.parseDouble(str), 2);
-                        power=false;
+//                        power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
                         value1-= Math.sqrt(Double.parseDouble(str));
-                        sqRt=false;
+//                        sqRt=false;
                     }
                     else
                         value1-=Double.parseDouble(text);
@@ -1362,12 +1442,12 @@ private long expression=0;
                     if(power){
                         str=lastCharacterRemover(text);
                         value1*=  Math.pow(Double.parseDouble(str), 2);
-                        power=false;
+//                        power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
                         value1*= Math.sqrt(Double.parseDouble(str));
-                        sqRt=false;
+//                        sqRt=false;
                     }
                     else
                         value1*=Double.parseDouble(text);
@@ -1376,12 +1456,12 @@ private long expression=0;
                     if(power){
                         str=lastCharacterRemover(text);
                         value1/=  Math.pow(Double.parseDouble(str), 2);
-                        power=false;
+//                        power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
                         value1/= Math.sqrt(Double.parseDouble(str));
-                        sqRt=false;
+//                        sqRt=false;
                     }
                     else
                         value1/=Double.parseDouble(text);
@@ -1390,12 +1470,12 @@ private long expression=0;
                     if(power){
                         str=lastCharacterRemover(text);
                         value1=  Math.pow(Double.parseDouble(str), 2);
-                        power=false;
+//                        power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
                         value1=  Math.sqrt(Double.parseDouble(str));
-                        sqRt=false;
+//                        sqRt=false;
                     }
             }
         }
@@ -1403,12 +1483,12 @@ private long expression=0;
             if(power){
                 str=lastCharacterRemover(text);
                 value1=  Math.pow(Double.parseDouble(str), 2);
-                power=false;
+//                power=false;
             }
             else if(sqRt){
                 str=lastCharacterRemover(text);
                 value1=  Math.sqrt(Double.parseDouble(str));
-                sqRt=false;
+//                sqRt=false;
             }
             else{
                 value1=Double.parseDouble(text);
@@ -1426,20 +1506,16 @@ private long expression=0;
             strlist.remove(strlist.get(0));
             strlist.remove(strlist.get(0));
             strlist.remove(strlist.get(0));
-            power=false;
-            sqRt=false;
         }
         else if(power){
             strlist.remove(strlist.size()-1);
             strlist.remove(strlist.size()-1);
             strlist.remove(strlist.get(0));
-            power=false;
         }
         else if(sqRt){
             strlist.remove(strlist.size()-1);
             strlist.remove(strlist.get(0));
             strlist.remove(strlist.get(0));
-            sqRt=false;
         }
         else{
             if(strlist.size()==1){
@@ -1473,7 +1549,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqpSqrt=false;
+//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
@@ -1487,7 +1563,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqrtSqp=false;
+//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=value1+ Math.pow(value2, 2);
@@ -1499,7 +1575,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        power=false;
+//                        power=false;
                     }
                     else if(sqRt){
                         result=value1+ Math.sqrt(value2);
@@ -1511,7 +1587,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqRt=false;
+//                        sqRt=false;
                     }
                     else{
                         result=value1+value2;
@@ -1538,7 +1614,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqpSqrt=false;
+//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
@@ -1552,7 +1628,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqrtSqp=false;
+//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=value1- Math.pow(value2, 2);
@@ -1564,7 +1640,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        power=false;
+//                        power=false;
                     }
                     else if(sqRt){
                         result=value1- Math.sqrt(value2);
@@ -1576,7 +1652,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqRt=false;
+//                        sqRt=false;
                     }
                     else{
                         result=value1-value2;
@@ -1603,7 +1679,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqpSqrt=false;
+//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
@@ -1617,7 +1693,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqrtSqp=false;
+//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=value1* Math.pow(value2, 2);
@@ -1629,7 +1705,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        power=false;
+//                        power=false;
                     }
                     else if(sqRt){
                         result=value1* Math.sqrt(value2);
@@ -1641,7 +1717,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqRt=false;
+//                        sqRt=false;
                     }
                     else{
                         result=value1*value2;
@@ -1668,7 +1744,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqpSqrt=false;
+//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
@@ -1682,7 +1758,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqrtSqp=false;
+//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=value1/ Math.pow(value2, 2);
@@ -1694,7 +1770,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        power=false;
+//                        power=false;
                     }
                     else if(sqRt){
                         result=value1/ Math.sqrt(value2);
@@ -1706,7 +1782,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqRt=false;
+//                        sqRt=false;
                     }
                     else{
                         result=value1/value2;
@@ -1732,7 +1808,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqpSqrt=false;
+//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
@@ -1745,7 +1821,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqrtSqp=false;
+//                        sqrtSqp=false;
                     }
                     else if(power){
                         result= Math.pow(value2, 2);
@@ -1757,7 +1833,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        power=false;
+//                        power=false;
                     }
                     else if(sqRt){
                         result= Math.sqrt(value2);
@@ -1769,7 +1845,7 @@ private long expression=0;
                         else{
                             jTextField1.setText(""+result);
                         }
-                        sqRt=false;
+//                        sqRt=false;
                     }
             }
         }
@@ -1782,14 +1858,14 @@ private long expression=0;
                         result= (long) Math.pow(result, 2);
                         result=(long) (value1+result);
                         jTextField1.setText(""+result);
-                        sqpSqrt=false;
+//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= (long) Math.pow(value2, 2);
                         result= (long) Math.sqrt(result);
                         result=(long) (value1+result);
                         jTextField1.setText(""+result);
-                        sqrtSqp=false;
+//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=(long)value1+ (long)Math.pow(value2, 2);
@@ -1802,7 +1878,17 @@ private long expression=0;
                         }
                         else
                             jTextField1.setText(""+result);
-                        power=false;
+//                        power=false;
+                    }
+                    else if(sqRt){
+                        if((Math.sqrt(value2)%1)!=0){
+                            double res=value1+Math.sqrt(value2);
+                            jTextField1.setText(""+res);
+                        }
+                        else{
+                            result= (long) (value1+ Math.sqrt(value2));
+                            jTextField1.setText(""+result);
+                        }
                     }
                     else{
                         result=(long) (value1+value2);
@@ -1824,19 +1910,29 @@ private long expression=0;
                         result= (long) Math.pow(result, 2);
                         result=(long) (value1-result);
                         jTextField1.setText(""+result);
-                        sqpSqrt=false;
+//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= (long) Math.pow(value2, 2);
                         result= (long) Math.sqrt(result);
                         result=(long) (value1-result);
                         jTextField1.setText(""+result);
-                        sqrtSqp=false;
+//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=(long)value1- (long)Math.pow(value2, 2);
                         jTextField1.setText(""+result);
-                        power=false;
+//                        power=false;
+                    }
+                    else if(sqRt){
+                        if((Math.sqrt(value2)%1)!=0){
+                            double res=value1-Math.sqrt(value2);
+                            jTextField1.setText(""+res);
+                        }
+                        else{
+                            result= (long) (value1-Math.sqrt(value2));
+                            jTextField1.setText(""+result);
+                        }
                     }
                     else{
                         result=(long) (value1-value2);
@@ -1849,19 +1945,29 @@ private long expression=0;
                         result= (long) Math.pow(result, 2);
                         result=(long) (value1*result);
                         jTextField1.setText(""+result);
-                        sqpSqrt=false;
+//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= (long) Math.pow(value2, 2);
                         result= (long) Math.sqrt(result);
                         result=(long) (value1*result);
                         jTextField1.setText(""+result);
-                        sqrtSqp=false;
+//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=(long)value1* (long)Math.pow(value2, 2);
                         jTextField1.setText(""+result);
-                        power=false;
+//                        power=false;
+                    }
+                    else if(sqRt){
+                        if((Math.sqrt(value2)%1)!=0){
+                            double res=value1*Math.sqrt(value2);
+                            jTextField1.setText(""+res);
+                        }
+                        else{
+                            result= (long) (value1* Math.sqrt(value2));
+                            jTextField1.setText(""+result);
+                        }
                     }
                     else{
                         result=(long) (value1*value2);
@@ -1883,14 +1989,14 @@ private long expression=0;
                         result= (long) Math.pow(result, 2);
                         result=(long) (value1/result);
                         jTextField1.setText(""+result);
-                        sqpSqrt=false;
+//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= (long) Math.pow(value2, 2);
                         result= (long) Math.sqrt(result);
                         result=(long) (value1/result);
                         jTextField1.setText(""+result);
-                        sqrtSqp=false;
+//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=(long)value1/ (long)Math.pow(value2, 2);
@@ -1903,8 +2009,18 @@ private long expression=0;
                         }
                         else
                             jTextField1.setText(""+result);
-                        power=false;
+//                        power=false;
                         
+                    }
+                    else if(sqRt){
+                        if((Math.sqrt(value2)%1)!=0){
+                            double res=value1/Math.sqrt(value2);
+                            jTextField1.setText(""+res);
+                        }
+                        else{
+                            result= (long) (value1/ Math.sqrt(value2));
+                            jTextField1.setText(""+result);
+                        }
                     }
                     else{
                         double res=(value1/value2);
@@ -1916,13 +2032,13 @@ private long expression=0;
                         result= (long) Math.sqrt(value2);
                         result= (long) Math.pow(result, 2);
                         jTextField1.setText(""+result);
-                        sqpSqrt=false;
+//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= (long) Math.pow(value2, 2);
                         result= (long) Math.sqrt(result);
                         jTextField1.setText(""+result);
-                        sqrtSqp=false;
+//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=(long) Math.pow(value2, 2);
@@ -1935,12 +2051,16 @@ private long expression=0;
                         }
                         else
                             jTextField1.setText(""+result);
-                        power=false;
+//                        power=false;
                     }
                     else if(sqRt){
-                        result= (long) Math.sqrt(value2);
-                        jTextField1.setText(""+result);
-                        sqRt=false;
+                        if((Math.sqrt(value2)%1)!=0)
+                            jTextField1.setText(""+Math.sqrt(value2));
+                        else{
+                            result= (long) Math.sqrt(value2);
+                            jTextField1.setText(""+result);
+                        }
+//                        sqRt=false;
                     }
             }
         }
