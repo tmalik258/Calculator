@@ -464,17 +464,7 @@ public class NewJFrame extends javax.swing.JFrame {
         Panel1.setLayout(Panel1Layout);
         Panel1Layout.setHorizontalGroup(
             Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Panel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jToggleButton1)
-                .addContainerGap())
             .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Panel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(smallTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17))
             .addGroup(Panel1Layout.createSequentialGroup()
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel1Layout.createSequentialGroup()
@@ -537,6 +527,15 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addGap(372, 372, 372)
                         .addComponent(btnEqualsTo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 6, Short.MAX_VALUE))
+            .addGroup(Panel1Layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(smallTextField)
+                    .addGroup(Panel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jToggleButton1)))
+                .addContainerGap())
         );
         Panel1Layout.setVerticalGroup(
             Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -620,13 +619,13 @@ public class NewJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private float value1=0, value2=0;
+private double value1=0, value2=0;
 private char operator;
 private boolean decimal=false, power=false, equalsToButton=false, errorSolvedInMultiplication=false, plusMinus=false;
 private boolean sqRt=false, sqpSqrt=false,sqrtSqp=false, zeroErrorRatio=false;
-private String str;
+private String str, limit;
 private double result=0;
-private int expression=0;
+private long expression=0;
 //private enum Operator{p,s,m,d}
 //  ErrorSolvedMultiplication is for equation 4+2=6 +2=8
 
@@ -653,7 +652,7 @@ private int expression=0;
         if(decimal)
             smallTextField.setText(value1+" "+operator);
         else{
-            expression=(int) value1;
+            expression=(long) value1;
             smallTextField.setText(expression+" "+operator);
         }
         jTextField1.setText("0");
@@ -669,7 +668,7 @@ private int expression=0;
         if(decimal)
             smallTextField.setText(value1+" "+operator);
         else{
-            expression=(int) value1;
+            expression=(long) value1;
             smallTextField.setText(expression+" "+operator);
         }
         jTextField1.setText("0");
@@ -684,7 +683,7 @@ private int expression=0;
         if(decimal)
             smallTextField.setText(value1+" "+operator);
         else{
-            expression=(int) value1;
+            expression=(long) value1;
             smallTextField.setText(expression+" "+operator);
         }
         jTextField1.setText("0");
@@ -699,7 +698,7 @@ private int expression=0;
         if(decimal)
             smallTextField.setText(value1+" "+operator);
         else{
-            expression=(int) value1;
+            expression=(long) value1;
             smallTextField.setText(expression+" "+operator);
         }
         jTextField1.setText("0");
@@ -710,28 +709,28 @@ private int expression=0;
         String text=jTextField1.getText(), sText=smallTextField.getText();
         if(sqpSqrt){
             str=lastCharacterRemover(text);
-            value2=Float.parseFloat(str);
+            value2=Double.parseDouble(str);
         }
         else if(sqrtSqp){
             str=lastCharacterRemover(text);
-            value2=Float.parseFloat(str);
+            value2=Double.parseDouble(str);
         }
         else if(power){
             str=lastCharacterRemover(text);
-            value2=Float.parseFloat(str);
+            value2=Double.parseDouble(str);
         }
         else if(sqRt){
                 str=lastCharacterRemover(text);
-                value2=Float.parseFloat(str);
+                value2=Double.parseDouble(str);
         }
         else{
-                value2=Float.parseFloat(text);
+                value2=Double.parseDouble(text);
         }
         equalsToCalculation();
         if(decimal)
             smallTextField.setText(sText+" "+value2+" =");
         else{
-            expression= (int) value2;
+            expression= (long) value2;
             smallTextField.setText(sText+" "+expression+" =");
         }
         equalsToButton=true;
@@ -747,7 +746,7 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            if(text.length()==9){
+            if(text.length()==14){
                 return;
             }
             numberInput("0", text);
@@ -764,7 +763,7 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            if(text.length()==9){
+            if(text.length()==14){
                 return;
             }
             numberInput("7", text);
@@ -782,7 +781,7 @@ private int expression=0;
             equalsToButton();
             
             String text=jTextField1.getText();
-            if(text.length()==9){
+            if(text.length()==14){
                 return;
             }
             numberInput("8", text);
@@ -800,7 +799,7 @@ private int expression=0;
             equalsToButton();
             
             String text=jTextField1.getText();
-            if(text.length()==9){
+            if(text.length()==14){
                 return;
             }
             numberInput("9", text);
@@ -817,7 +816,7 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            if(text.length()==9){
+            if(text.length()==14){
                 return;
             }
             numberInput("4", text);
@@ -834,7 +833,7 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            if(text.length()==9){
+            if(text.length()==14){
                 return;
             }
             numberInput("5", text);
@@ -851,7 +850,7 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            if(text.length()==9){
+            if(text.length()==14){
                 return;
             }
             numberInput("6", text);
@@ -868,7 +867,7 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            if(text.length()==9){
+            if(text.length()==14){
                 return;
             }
             numberInput("1", text);
@@ -885,7 +884,7 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            if(text.length()==9){
+            if(text.length()==14){
                 return;
             }
             numberInput("2", text);
@@ -902,7 +901,7 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            if(text.length()==9){
+            if(text.length()==14){
                 return;
             }
             numberInput("3", text);
@@ -1004,32 +1003,32 @@ private int expression=0;
             String text=jTextField1.getText();
             if(sqrtSqp){
                 str=lastCharacterRemover(text);
-                temp= (float) Math.pow(Math.sqrt(Float.parseFloat(str)), 2);
+                temp= Math.pow(Math.sqrt(Double.parseDouble(str)), 2);
                 temp/=100;
                 power=false;
                 sqRt=false;
             }
             else if(sqpSqrt){
                 str=lastCharacterRemover(text);
-                temp= (float) Math.sqrt(Math.pow(Float.parseFloat(str), 2));
+                temp=  Math.sqrt(Math.pow(Double.parseDouble(str), 2));
                 temp/=100;
                 power=false;
                 sqRt=false;
             }
             else if(power){
                 str=lastCharacterRemover(text);
-                temp= (float) Math.pow(Float.parseFloat(str), 2);
+                temp= Math.pow(Double.parseDouble(str), 2);
                 temp/=100;
                 power=false;
             }
             else if(sqRt){
                 str=lastCharacterRemover(text);
-                temp= (float) Math.sqrt(Float.parseFloat(str));
+                temp= Math.sqrt(Double.parseDouble(str));
                 temp/=100;
                 sqRt=false;
             }
             else
-                temp=Float.parseFloat(text)/100;
+                temp= Double.parseDouble(text)/100;
             BigDecimal b1;
             b1= new BigDecimal(temp);
             if(b1.precision()>7){
@@ -1049,13 +1048,13 @@ private int expression=0;
 
     private void btnratioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnratioActionPerformed
         // TODO add your handling code here:
-        float temp;
+        double temp;
         String text=jTextField1.getText();
         decimal=true;
         if(sqpSqrt){
             str=lastCharacterRemover(text);
-            temp= (float) Math.pow(Float.parseFloat(str), 2);
-            temp= (float) Math.sqrt(temp);
+            temp= Math.pow(Double.parseDouble(str), 2);
+            temp= Math.sqrt(temp);
             temp=1/temp;
             jTextField1.setText(""+temp);
             power=false;
@@ -1063,8 +1062,8 @@ private int expression=0;
         }
         else if(sqrtSqp){
             str=lastCharacterRemover(text);
-            temp= (float) Math.sqrt(Float.parseFloat(str));
-            temp= (float) Math.pow(temp, 2);
+            temp= Math.sqrt(Double.parseDouble(str));
+            temp= Math.pow(temp, 2);
             temp=1/temp;
             jTextField1.setText(""+temp);
             power=false;
@@ -1072,20 +1071,20 @@ private int expression=0;
         }
         else if(power){
             str=lastCharacterRemover(text);
-            temp= (float) Math.pow(Float.parseFloat(str), 2);
+            temp= Math.pow(Double.parseDouble(str), 2);
             temp=1/temp;
             jTextField1.setText(""+temp);
             power=false;
         }
         else if(sqRt){
             str=lastCharacterRemover(text);
-            temp= (float) Math.sqrt(Float.parseFloat(str));
+            temp= Math.sqrt(Double.parseDouble(str));
             temp=1/temp;
             jTextField1.setText(""+temp);
             sqRt=false;
         }
         else if(!"0".equals(text)){
-            temp=1/Float.parseFloat(text);
+            temp=1/Double.parseDouble(text);
             jTextField1.setText(""+temp);
         }
         else if("0".equals(text)){
@@ -1104,14 +1103,18 @@ private int expression=0;
         
         //          NUMBERS INPUT
         if (ch >= '0' &&ch <= '9') {
-            if(!power){
-            equalsToButton();
-            
-            String text=jTextField1.getText();
-            if(text.length()==9){
-                return;
+            if(zeroErrorRatio){
+                jTextField1.setText("");
+                ratioDisabledOption(true);
+                zeroErrorRatio=false;
             }
-            numberInput(s, text);
+            if(!power){
+                equalsToButton();
+            
+                String text=jTextField1.getText();
+                if(text.length()==14)
+                    return;
+                numberInput(s, text);
             }
         }
         
@@ -1120,16 +1123,16 @@ private int expression=0;
             String text=jTextField1.getText(), sText=smallTextField.getText();
             if(power){
                 str=lastCharacterRemover(text);
-                value2=Float.parseFloat(str);
+                value2=Double.parseDouble(str);
             }
             else{
-                    value2=Float.parseFloat(text);
+                    value2=Double.parseDouble(text);
             }
             equalsToCalculation();
             if(decimal)
             smallTextField.setText(sText+" "+value2+" =");
             else{
-                expression= (int) value2;
+                expression= (long) value2;
                 smallTextField.setText(sText+" "+expression+" =");
             }
             equalsToButton=true;
@@ -1146,7 +1149,7 @@ private int expression=0;
                     if(decimal)
                         smallTextField.setText(value1+" "+operator);
                     else{
-                        expression=(int) value1;
+                        expression=(long) value1;
                         smallTextField.setText(expression+" "+operator);
                     }
                     jTextField1.setText("0");
@@ -1159,7 +1162,7 @@ private int expression=0;
                     if(decimal)
                         smallTextField.setText(value1+" "+operator);
                     else{
-                        expression=(int) value1;
+                        expression=(long) value1;
                         smallTextField.setText(expression+" "+operator);
                     }
                     jTextField1.setText("0");
@@ -1173,7 +1176,7 @@ private int expression=0;
                     if(decimal)
                         smallTextField.setText(value1+" "+operator);
                     else{
-                        expression=(int) value1;
+                        expression=(long) value1;
                         smallTextField.setText(expression+" "+operator);
                     }
                     jTextField1.setText("0");
@@ -1186,7 +1189,7 @@ private int expression=0;
                     if(decimal)
                         smallTextField.setText(value1+" "+operator);
                     else{
-                        expression=(int) value1;
+                        expression=(long) value1;
                         smallTextField.setText(expression+" "+operator);
                     }
                     jTextField1.setText("0");
@@ -1232,32 +1235,32 @@ private int expression=0;
                 String text=jTextField1.getText();
                 if(sqrtSqp){
                     str=lastCharacterRemover(text);
-                    temp= (float) Math.pow(Math.sqrt(Float.parseFloat(str)), 2);
+                    temp= Math.pow(Math.sqrt(Double.parseDouble(str)), 2);
                     temp/=100;
                     power=false;
                     sqRt=false;
                 }
                 else if(sqpSqrt){
                     str=lastCharacterRemover(text);
-                    temp= (float) Math.sqrt(Math.pow(Float.parseFloat(str), 2));
+                    temp= Math.sqrt(Math.pow(Double.parseDouble(str), 2));
                     temp/=100;
                     power=false;
                     sqRt=false;
                 }
                 else if(power){
                     str=lastCharacterRemover(text);
-                    temp= (float) Math.pow(Float.parseFloat(str), 2);
+                    temp= Math.pow(Double.parseDouble(str), 2);
                     temp/=100;
                     power=false;
                 }
                 else if(sqRt){
                     str=lastCharacterRemover(text);
-                    temp= (float) Math.sqrt(Float.parseFloat(str));
+                    temp= Math.sqrt(Double.parseDouble(str));
                     temp/=100;
                     sqRt=false;
                 }
                 else
-                    temp=Float.parseFloat(text)/100;
+                    temp=Double.parseDouble(text)/100;
                 BigDecimal b1;
                 b1= new BigDecimal(temp);
                 if(b1.precision()>7){
@@ -1330,68 +1333,68 @@ private int expression=0;
                 case '+':
                     if(power){
                         str=lastCharacterRemover(text);
-                        value1+= (float) Math.pow(Float.parseFloat(str), 2);
+                        value1+= Math.pow(Double.parseDouble(str), 2);
                         power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
-                        value1+= Math.sqrt(Float.parseFloat(str));
+                        value1+= Math.sqrt(Double.parseDouble(str));
                         sqRt=false;
                     }
                     else
-                        value1+=Float.parseFloat(text);
+                        value1+=Double.parseDouble(text);
                     break;
                 case '-':
                     if(power){
                         str=lastCharacterRemover(text);
-                        value1-= (float) Math.pow(Float.parseFloat(str), 2);
+                        value1-= Math.pow(Double.parseDouble(str), 2);
                         power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
-                        value1-= Math.sqrt(Float.parseFloat(str));
+                        value1-= Math.sqrt(Double.parseDouble(str));
                         sqRt=false;
                     }
                     else
-                        value1-=Float.parseFloat(text);
+                        value1-=Double.parseDouble(text);
                     break;
                 case 'x':
                     if(power){
                         str=lastCharacterRemover(text);
-                        value1*= (float) Math.pow(Float.parseFloat(str), 2);
+                        value1*=  Math.pow(Double.parseDouble(str), 2);
                         power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
-                        value1*= Math.sqrt(Float.parseFloat(str));
+                        value1*= Math.sqrt(Double.parseDouble(str));
                         sqRt=false;
                     }
                     else
-                        value1*=Float.parseFloat(text);
+                        value1*=Double.parseDouble(text);
                     break;
                 case '÷':
                     if(power){
                         str=lastCharacterRemover(text);
-                        value1/= (float) Math.pow(Float.parseFloat(str), 2);
+                        value1/=  Math.pow(Double.parseDouble(str), 2);
                         power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
-                        value1/= Math.sqrt(Float.parseFloat(str));
+                        value1/= Math.sqrt(Double.parseDouble(str));
                         sqRt=false;
                     }
                     else
-                        value1/=Float.parseFloat(text);
+                        value1/=Double.parseDouble(text);
                     break;
                 default:
                     if(power){
                         str=lastCharacterRemover(text);
-                        value1= (float) Math.pow(Float.parseFloat(str), 2);
+                        value1=  Math.pow(Double.parseDouble(str), 2);
                         power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
-                        value1= (float) Math.sqrt(Float.parseFloat(str));
+                        value1=  Math.sqrt(Double.parseDouble(str));
                         sqRt=false;
                     }
             }
@@ -1399,16 +1402,16 @@ private int expression=0;
         else{
             if(power){
                 str=lastCharacterRemover(text);
-                value1= (float) Math.pow(Float.parseFloat(str), 2);
+                value1=  Math.pow(Double.parseDouble(str), 2);
                 power=false;
             }
             else if(sqRt){
                 str=lastCharacterRemover(text);
-                value1= (float) Math.sqrt(Float.parseFloat(str));
+                value1=  Math.sqrt(Double.parseDouble(str));
                 sqRt=false;
             }
             else{
-                value1=Float.parseFloat(text);
+                value1=Double.parseDouble(text);
 //                smallTextField.setText(""+value1);
             }
         }
@@ -1423,16 +1426,20 @@ private int expression=0;
             strlist.remove(strlist.get(0));
             strlist.remove(strlist.get(0));
             strlist.remove(strlist.get(0));
+            power=false;
+            sqRt=false;
         }
         else if(power){
             strlist.remove(strlist.size()-1);
             strlist.remove(strlist.size()-1);
             strlist.remove(strlist.get(0));
+            power=false;
         }
         else if(sqRt){
             strlist.remove(strlist.size()-1);
             strlist.remove(strlist.get(0));
             strlist.remove(strlist.get(0));
+            sqRt=false;
         }
         else{
             if(strlist.size()==1){
@@ -1767,128 +1774,171 @@ private int expression=0;
             }
         }
         else{
-            int result=0;
+            long result=0;
             switch(operator){
                 case '+':
                     if(sqrtSqp){
-                        result= (int) Math.sqrt(value2);
-                        result= (int) Math.pow(result, 2);
-                        result=(int) (value1+result);
+                        result= (long) Math.sqrt(value2);
+                        result= (long) Math.pow(result, 2);
+                        result=(long) (value1+result);
                         jTextField1.setText(""+result);
                         sqpSqrt=false;
                     }
                     else if(sqpSqrt){
-                        result= (int) Math.pow(value2, 2);
-                        result= (int) Math.sqrt(result);
-                        result=(int) (value1+result);
+                        result= (long) Math.pow(value2, 2);
+                        result= (long) Math.sqrt(result);
+                        result=(long) (value1+result);
                         jTextField1.setText(""+result);
                         sqrtSqp=false;
                     }
                     else if(power){
-                        result=(int)value1+ (int)Math.pow(value2, 2);
-                        jTextField1.setText(""+result);
+                        result=(long)value1+ (long)Math.pow(value2, 2);
+                        limit=String.valueOf(result);
+                        if(limit.length()>14){
+                            jTextField1.setText("Error! Limit Exceeded");
+                            zeroErrorRatio=true;
+                            ratioDisabledOption(false);
+                            colorChanger();
+                        }
+                        else
+                            jTextField1.setText(""+result);
                         power=false;
                     }
                     else{
-                        result=(int) (value1+value2);
-                        jTextField1.setText(""+result);
+                        result=(long) (value1+value2);
+                        limit=String.valueOf(result);
+                        if(limit.length()>14){
+                            jTextField1.setText("Error! Limit Exceeded");
+                            zeroErrorRatio=true;
+                            ratioDisabledOption(false);
+                            colorChanger();
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                     }
                     break;
                 case '-':
                     if(sqrtSqp){
-                        result= (int) Math.sqrt(value2);
-                        result= (int) Math.pow(result, 2);
-                        result=(int) (value1-result);
+                        result= (long) Math.sqrt(value2);
+                        result= (long) Math.pow(result, 2);
+                        result=(long) (value1-result);
                         jTextField1.setText(""+result);
                         sqpSqrt=false;
                     }
                     else if(sqpSqrt){
-                        result= (int) Math.pow(value2, 2);
-                        result= (int) Math.sqrt(result);
-                        result=(int) (value1-result);
+                        result= (long) Math.pow(value2, 2);
+                        result= (long) Math.sqrt(result);
+                        result=(long) (value1-result);
                         jTextField1.setText(""+result);
                         sqrtSqp=false;
                     }
                     else if(power){
-                        result=(int)value1- (int)Math.pow(value2, 2);
+                        result=(long)value1- (long)Math.pow(value2, 2);
                         jTextField1.setText(""+result);
                         power=false;
                     }
                     else{
-                        result=(int) (value1-value2);
+                        result=(long) (value1-value2);
                         jTextField1.setText(""+result);
                     }
                     break;
                 case 'x':
                     if(sqrtSqp){
-                        result= (int) Math.sqrt(value2);
-                        result= (int) Math.pow(result, 2);
-                        result=(int) (value1*result);
+                        result= (long) Math.sqrt(value2);
+                        result= (long) Math.pow(result, 2);
+                        result=(long) (value1*result);
                         jTextField1.setText(""+result);
                         sqpSqrt=false;
                     }
                     else if(sqpSqrt){
-                        result= (int) Math.pow(value2, 2);
-                        result= (int) Math.sqrt(result);
-                        result=(int) (value1*result);
+                        result= (long) Math.pow(value2, 2);
+                        result= (long) Math.sqrt(result);
+                        result=(long) (value1*result);
                         jTextField1.setText(""+result);
                         sqrtSqp=false;
                     }
                     else if(power){
-                        result=(int)value1* (int)Math.pow(value2, 2);
+                        result=(long)value1* (long)Math.pow(value2, 2);
                         jTextField1.setText(""+result);
                         power=false;
                     }
                     else{
-                        result=(int) (value1*value2);
-                        jTextField1.setText(""+result);
+                        result=(long) (value1*value2);
+                        limit=String.valueOf(result);
+                        if(limit.length()>14){
+                            jTextField1.setText("Error! Limit Exceeded");
+                            zeroErrorRatio=true;
+                            ratioDisabledOption(false);
+                            colorChanger();
+                        }
+                        else{
+                            jTextField1.setText(""+result);
+                        }
                     }
                     break;
                 case '÷':
                     if(sqrtSqp){
-                        result= (int) Math.sqrt(value2);
-                        result= (int) Math.pow(result, 2);
-                        result=(int) (value1/result);
+                        result= (long) Math.sqrt(value2);
+                        result= (long) Math.pow(result, 2);
+                        result=(long) (value1/result);
                         jTextField1.setText(""+result);
                         sqpSqrt=false;
                     }
                     else if(sqpSqrt){
-                        result= (int) Math.pow(value2, 2);
-                        result= (int) Math.sqrt(result);
-                        result=(int) (value1/result);
+                        result= (long) Math.pow(value2, 2);
+                        result= (long) Math.sqrt(result);
+                        result=(long) (value1/result);
                         jTextField1.setText(""+result);
                         sqrtSqp=false;
                     }
                     else if(power){
-                        result=(int)value1/ (int)Math.pow(value2, 2);
-                        jTextField1.setText(""+result);
+                        result=(long)value1/ (long)Math.pow(value2, 2);
+                        limit=String.valueOf(result);
+                        if(limit.length()>14){
+                            jTextField1.setText("Error! Limit Exceeded");
+                            zeroErrorRatio=true;
+                            ratioDisabledOption(false);
+                            colorChanger();
+                        }
+                        else
+                            jTextField1.setText(""+result);
                         power=false;
+                        
                     }
                     else{
-                        float res=(float)(value1/value2);
+                        double res=(value1/value2);
                         jTextField1.setText(""+res);
                     }
                     break;
                 default:
                     if(sqrtSqp){
-                        result= (int) Math.sqrt(value2);
-                        result= (int) Math.pow(result, 2);
+                        result= (long) Math.sqrt(value2);
+                        result= (long) Math.pow(result, 2);
                         jTextField1.setText(""+result);
                         sqpSqrt=false;
                     }
                     else if(sqpSqrt){
-                        result= (int) Math.pow(value2, 2);
-                        result= (int) Math.sqrt(result);
+                        result= (long) Math.pow(value2, 2);
+                        result= (long) Math.sqrt(result);
                         jTextField1.setText(""+result);
                         sqrtSqp=false;
                     }
                     else if(power){
-                        result=(int) Math.pow(value2, 2);
-                        jTextField1.setText(""+result);
+                        result=(long) Math.pow(value2, 2);
+                        limit=String.valueOf(result);
+                        if(limit.length()>14){
+                            jTextField1.setText("Error! Limit Exceeded");
+                            zeroErrorRatio=true;
+                            ratioDisabledOption(false);
+                            colorChanger();
+                        }
+                        else
+                            jTextField1.setText(""+result);
                         power=false;
                     }
                     else if(sqRt){
-                        result= (int) Math.sqrt(value2);
+                        result= (long) Math.sqrt(value2);
                         jTextField1.setText(""+result);
                         sqRt=false;
                     }
@@ -1903,12 +1953,14 @@ private int expression=0;
             strlist.remove(strlist.get(0));
             strlist.remove(strlist.get(0));
             sqpSqrt=false;
+            sqRt=false;
         }
         else if(sqrtSqp){
             strlist.remove(strlist.size()-1);
             strlist.remove(strlist.size()-1);
             strlist.remove(strlist.get(0));
             sqrtSqp=false;
+            power=false;
         }
         else if(power){
             strlist.remove(strlist.size()-1);
