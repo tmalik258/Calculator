@@ -747,6 +747,9 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
+            if(text.length()==9){
+                return;
+            }
             numberInput("0", text);
         }
     }//GEN-LAST:event_btn0ActionPerformed
@@ -761,7 +764,9 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            
+            if(text.length()==9){
+                return;
+            }
             numberInput("7", text);
         }
     }//GEN-LAST:event_btn7ActionPerformed
@@ -777,7 +782,9 @@ private int expression=0;
             equalsToButton();
             
             String text=jTextField1.getText();
-            
+            if(text.length()==9){
+                return;
+            }
             numberInput("8", text);
         }
     }//GEN-LAST:event_btn8ActionPerformed
@@ -793,7 +800,9 @@ private int expression=0;
             equalsToButton();
             
             String text=jTextField1.getText();
-            
+            if(text.length()==9){
+                return;
+            }
             numberInput("9", text);
         }
     }//GEN-LAST:event_btn9ActionPerformed
@@ -808,7 +817,9 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            
+            if(text.length()==9){
+                return;
+            }
             numberInput("4", text);
         }
     }//GEN-LAST:event_btn4ActionPerformed
@@ -823,7 +834,9 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            
+            if(text.length()==9){
+                return;
+            }
             numberInput("5", text);
         }
     }//GEN-LAST:event_btn5ActionPerformed
@@ -838,7 +851,9 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            
+            if(text.length()==9){
+                return;
+            }
             numberInput("6", text);
         }
     }//GEN-LAST:event_btn6ActionPerformed
@@ -853,6 +868,9 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
+            if(text.length()==9){
+                return;
+            }
             numberInput("1", text);
         }
     }//GEN-LAST:event_btn1ActionPerformed
@@ -867,7 +885,9 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            
+            if(text.length()==9){
+                return;
+            }
             numberInput("2", text);
         }
     }//GEN-LAST:event_btn2ActionPerformed
@@ -882,7 +902,9 @@ private int expression=0;
         if((!power)&&(!sqRt)){
             equalsToButton();
             String text=jTextField1.getText();
-            
+            if(text.length()==9){
+                return;
+            }
             numberInput("3", text);
         }
     }//GEN-LAST:event_btn3ActionPerformed
@@ -1086,7 +1108,9 @@ private int expression=0;
             equalsToButton();
             
             String text=jTextField1.getText();
-            
+            if(text.length()==9){
+                return;
+            }
             numberInput(s, text);
             }
         }
