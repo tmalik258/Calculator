@@ -7,6 +7,7 @@ package calculator;
 import java.awt.Color;
 import java.math.BigDecimal;
 import java.util.*;
+import javax.swing.Action;
 import javax.swing.plaf.metal.MetalButtonUI;
 
 /**
@@ -1294,7 +1295,7 @@ private long expression=0;
                     if(equalsToButton) {equalsToButton=false; value1=0;}
                     String text=jTextField1.getText();
                     if(operatorChanged){
-                        operator='+';
+                        operator='-';
                         str=textFieldOperatorChanger(sText);
                         smallTextField.setText(""+str+operator);
                         return;
@@ -1322,7 +1323,7 @@ private long expression=0;
                     if(errorSolvedInMultiplication){if(value1==0)value1=1; errorSolvedInMultiplication=false;}
                     String text=jTextField1.getText();
                     if(operatorChanged){
-                        operator='+';
+                        operator='x';
                         str=textFieldOperatorChanger(sText);
                         smallTextField.setText(""+str+operator);
                         return;
@@ -1349,7 +1350,7 @@ private long expression=0;
                     if(equalsToButton) {equalsToButton=false; value1=0;}
                     String text=jTextField1.getText();
                     if(operatorChanged){
-                        operator='+';
+                        operator='÷';
                         str=textFieldOperatorChanger(sText);
                         smallTextField.setText(""+str+operator);
                         return;
@@ -1403,6 +1404,13 @@ private long expression=0;
             }
             if(equalsToButton) {equalsToButton=false; value1=0; smallTextField.setText(""); jTextField1.setText("0");}
             String text=jTextField1.getText();
+            if(!"0".equals(text)){
+                Action beep = jTextField1.getActionMap().get(javax.swing.text.DefaultEditorKit.deletePrevCharAction);
+                beep.setEnabled(false);
+            }
+            else{
+                Action beep = jTextField1.getActionMap().get(javax.swing.text.DefaultEditorKit.deletePrevCharAction);
+                beep.setEnabled(true);return;}
             str=eraseRemover(text);
             jTextField1.setText(str);
             if(text.contains("-")){if(str.length()==1)jTextField1.setText("0");  plusMinus=false;   }
@@ -1638,6 +1646,7 @@ private long expression=0;
     }
     
     private void equalsToCalculation(){
+        double res=0;
         if(decimal){
             switch(operator){
                 case '+':
@@ -1662,11 +1671,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqrtSqp=false;
                     }
                     else if(power){
@@ -1674,11 +1683,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        power=false;
                     }
                     else if(sqRt){
@@ -1686,11 +1695,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqRt=false;
                     }
                     else{
@@ -1698,11 +1707,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
                         break;
                     }
                 case '-':
@@ -1713,11 +1722,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
@@ -1727,11 +1736,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqrtSqp=false;
                     }
                     else if(power){
@@ -1739,11 +1748,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        power=false;
                     }
                     else if(sqRt){
@@ -1751,11 +1760,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqRt=false;
                     }
                     else{
@@ -1763,11 +1772,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
                     }
                     break;
                 case 'x':
@@ -1778,11 +1787,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
@@ -1792,11 +1801,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqrtSqp=false;
                     }
                     else if(power){
@@ -1804,11 +1813,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        power=false;
                     }
                     else if(sqRt){
@@ -1816,11 +1825,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqRt=false;
                     }
                     else{
@@ -1828,11 +1837,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
                     }
                     break;
                 case '÷':
@@ -1843,11 +1852,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
@@ -1857,11 +1866,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqrtSqp=false;
                     }
                     else if(power){
@@ -1869,11 +1878,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        power=false;
                     }
                     else if(sqRt){
@@ -1881,11 +1890,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqRt=false;
                     }
                     else{
@@ -1893,11 +1902,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
                     }
                     break;
                 default:
@@ -1907,11 +1916,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
@@ -1920,11 +1929,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqrtSqp=false;
                     }
                     else if(power){
@@ -1932,11 +1941,11 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        power=false;
                     }
                     else if(sqRt){
@@ -1944,14 +1953,23 @@ private long expression=0;
                         BigDecimal b1;
                         b1= new BigDecimal(result);
                         if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
+                            jTextField1.setText(String.format("%.7f", result));return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
 //                        sqRt=false;
                     }
             }
+            if("Infinity".equals(String.valueOf(result))){
+                jTextField1.setText("Cannot divide by zero");
+                zeroErrorRatio=true;
+                ratioDisabledOption(false);
+                colorChanger();
+                decimal=false;
+            }
+            else
+                jTextField1.setText(""+result);
         }
         else{
             long result=0;
@@ -1961,14 +1979,14 @@ private long expression=0;
                         result= (long) Math.sqrt(value2);
                         result= (long) Math.pow(result, 2);
                         result=(long) (value1+result);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
 //                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= (long) Math.pow(value2, 2);
                         result= (long) Math.sqrt(result);
                         result=(long) (value1+result);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
 //                        sqrtSqp=false;
                     }
                     else if(power){
@@ -1979,19 +1997,24 @@ private long expression=0;
                             zeroErrorRatio=true;
                             ratioDisabledOption(false);
                             colorChanger();
+                            return;
                         }
-                        else
-                            jTextField1.setText(""+result);
+//                        else
+//                            jTextField1.setText(""+result);
 //                        power=false;
                     }
                     else if(sqRt){
                         if((Math.sqrt(value2)%1)!=0){
-                            double res=value1+Math.sqrt(value2);
-                            jTextField1.setText(""+res);
+                            res=value1+Math.sqrt(value2);
+                            if("Infinity".equals(String.valueOf(res))){
+                            }
+                            else{
+                                jTextField1.setText(""+res);return;}
+//                            jTextField1.setText(""+res);
                         }
                         else{
                             result= (long) (value1+ Math.sqrt(value2));
-                            jTextField1.setText(""+result);
+//                            jTextField1.setText(""+result);
                         }
                     }
                     else{
@@ -2002,10 +2025,11 @@ private long expression=0;
                             zeroErrorRatio=true;
                             ratioDisabledOption(false);
                             colorChanger();
+                            return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
                     }
                     break;
                 case '-':
@@ -2013,34 +2037,38 @@ private long expression=0;
                         result= (long) Math.sqrt(value2);
                         result= (long) Math.pow(result, 2);
                         result=(long) (value1-result);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
 //                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= (long) Math.pow(value2, 2);
                         result= (long) Math.sqrt(result);
                         result=(long) (value1-result);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
 //                        sqrtSqp=false;
                     }
                     else if(power){
                         result=(long)value1- (long)Math.pow(value2, 2);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
 //                        power=false;
                     }
                     else if(sqRt){
                         if((Math.sqrt(value2)%1)!=0){
-                            double res=value1-Math.sqrt(value2);
-                            jTextField1.setText(""+res);
+                            res=value1-Math.sqrt(value2);
+                            if("Infinity".equals(String.valueOf(res))){
+                            }
+                            else{
+                                jTextField1.setText(""+res);return;}
+//                            jTextField1.setText(""+res);
                         }
                         else{
                             result= (long) (value1-Math.sqrt(value2));
-                            jTextField1.setText(""+result);
+//                            jTextField1.setText(""+result);
                         }
                     }
                     else{
                         result=(long) (value1-value2);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
                     }
                     break;
                 case 'x':
@@ -2048,29 +2076,33 @@ private long expression=0;
                         result= (long) Math.sqrt(value2);
                         result= (long) Math.pow(result, 2);
                         result=(long) (value1*result);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
 //                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= (long) Math.pow(value2, 2);
                         result= (long) Math.sqrt(result);
                         result=(long) (value1*result);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
 //                        sqrtSqp=false;
                     }
                     else if(power){
                         result=(long)value1* (long)Math.pow(value2, 2);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
 //                        power=false;
                     }
                     else if(sqRt){
                         if((Math.sqrt(value2)%1)!=0){
-                            double res=value1*Math.sqrt(value2);
-                            jTextField1.setText(""+res);
+                            res=value1*Math.sqrt(value2);
+                            if("Infinity".equals(String.valueOf(res))){
+                            }
+                            else{
+                                jTextField1.setText(""+res);return;}
+//                            jTextField1.setText(""+res);
                         }
                         else{
                             result= (long) (value1* Math.sqrt(value2));
-                            jTextField1.setText(""+result);
+//                            jTextField1.setText(""+result);
                         }
                     }
                     else{
@@ -2081,10 +2113,11 @@ private long expression=0;
                             zeroErrorRatio=true;
                             ratioDisabledOption(false);
                             colorChanger();
+                            return;
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
+//                        else{
+//                            jTextField1.setText(""+result);
+//                        }
                     }
                     break;
                 case '÷':
@@ -2092,14 +2125,14 @@ private long expression=0;
                         result= (long) Math.sqrt(value2);
                         result= (long) Math.pow(result, 2);
                         result=(long) (value1/result);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
 //                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= (long) Math.pow(value2, 2);
                         result= (long) Math.sqrt(result);
                         result=(long) (value1/result);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
 //                        sqrtSqp=false;
                     }
                     else if(power){
@@ -2110,38 +2143,47 @@ private long expression=0;
                             zeroErrorRatio=true;
                             ratioDisabledOption(false);
                             colorChanger();
+                            return;
                         }
-                        else
-                            jTextField1.setText(""+result);
+//                        else
+//                            jTextField1.setText(""+result);
 //                        power=false;
                         
                     }
                     else if(sqRt){
                         if((Math.sqrt(value2)%1)!=0){
-                            double res=value1/Math.sqrt(value2);
-                            jTextField1.setText(""+res);
+                            res=value1/Math.sqrt(value2);
+                            if("Infinity".equals(String.valueOf(res))){
+                            }
+                            else{
+                                jTextField1.setText(""+res);return;}
+//                            jTextField1.setText(""+res);
                         }
                         else{
                             result= (long) (value1/ Math.sqrt(value2));
-                            jTextField1.setText(""+result);
+//                            jTextField1.setText(""+result);
                         }
                     }
                     else{
-                        double res=(value1/value2);
-                        jTextField1.setText(""+res);
+                        res=(value1/value2);
+                        if("Infinity".equals(String.valueOf(res))){
+                        }
+                        else{
+                            jTextField1.setText(""+res);return;}
+//                        jTextField1.setText(""+res);
                     }
                     break;
                 default:
                     if(sqrtSqp){
                         result= (long) Math.sqrt(value2);
                         result= (long) Math.pow(result, 2);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
 //                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= (long) Math.pow(value2, 2);
                         result= (long) Math.sqrt(result);
-                        jTextField1.setText(""+result);
+//                        jTextField1.setText(""+result);
 //                        sqrtSqp=false;
                     }
                     else if(power){
@@ -2152,9 +2194,10 @@ private long expression=0;
                             zeroErrorRatio=true;
                             ratioDisabledOption(false);
                             colorChanger();
+                            return;
                         }
-                        else
-                            jTextField1.setText(""+result);
+//                        else
+//                            jTextField1.setText(""+result);
 //                        power=false;
                     }
                     else if(sqRt){
@@ -2162,11 +2205,20 @@ private long expression=0;
                             jTextField1.setText(""+Math.sqrt(value2));
                         else{
                             result= (long) Math.sqrt(value2);
-                            jTextField1.setText(""+result);
+//                            jTextField1.setText(""+result);
                         }
 //                        sqRt=false;
                     }
+              }
+            if("Infinity".equals(String.valueOf(result))||"Infinity".equals(String.valueOf(res))){
+                jTextField1.setText("Cannot divide by zero");
+                zeroErrorRatio=true;
+                ratioDisabledOption(false);
+                colorChanger();
+                decimal=false;
             }
+            else
+                jTextField1.setText(""+result);
         }
     }
     private String eraseRemover(String text){
