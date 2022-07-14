@@ -1397,19 +1397,21 @@ private long expression=0;
         
         //          BACKSPACE
         else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_BACK_SPACE){
+            Action beep = jTextField1.getActionMap().get(javax.swing.text.DefaultEditorKit.deletePrevCharAction);
             if(zeroErrorRatio){
+                smallTextField.setText("");
                 jTextField1.setText("0");
                 zeroErrorRatio=false;
                 ratioDisabledOption(true);
+                beep.setEnabled(false);
+                return;
             }
             if(equalsToButton) {equalsToButton=false; value1=0; smallTextField.setText(""); jTextField1.setText("0");}
             String text=jTextField1.getText();
             if(!"0".equals(text)){
-                Action beep = jTextField1.getActionMap().get(javax.swing.text.DefaultEditorKit.deletePrevCharAction);
                 beep.setEnabled(false);
             }
             else{
-                Action beep = jTextField1.getActionMap().get(javax.swing.text.DefaultEditorKit.deletePrevCharAction);
                 beep.setEnabled(true);return;}
             str=eraseRemover(text);
             jTextField1.setText(str);
