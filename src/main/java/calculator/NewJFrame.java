@@ -776,14 +776,36 @@ private long expression=0;
         }
         else if(sqrtSqp){
             str=lastCharacterRemover(text);
-            value2=Double.parseDouble(str);
+            if(str.contains("-")){
+                smallTextField.setText(sText+" "+text+" =");
+                jTextField1.setText("Invalid Input");
+                zeroErrorRatio=true;
+                ratioDisabledOption(false);
+                colorChanger();
+                sqrtSqp=false;
+                sqRt=false;
+                power=false;
+                return;
+            }
+            else
+                value2=Double.parseDouble(str);
         }
         else if(power){
             str=lastCharacterRemover(text);
             value2=Double.parseDouble(str);
         }
         else if(sqRt){
-                str=lastCharacterRemover(text);
+            str=lastCharacterRemover(text);
+            if(str.contains("-")){
+                smallTextField.setText(sText+" "+text+" =");
+                jTextField1.setText("Invalid Input");
+                zeroErrorRatio=true;
+                ratioDisabledOption(false);
+                colorChanger();
+                sqRt=false;
+                return;
+            }
+            else
                 value2=Double.parseDouble(str);
         }
         else{
@@ -805,9 +827,17 @@ private long expression=0;
                 else if(sqRt)
                     sqRt=false;
             }
-            else
-                smallTextField.setText(sText+" "+expression+" =");
+            else{
+                if(plusMinus){
+                    smallTextField.setText(sText+" ("+expression+") =");
+                    
+                }
+                else
+                    smallTextField.setText(sText+" "+expression+" =");
+            }
         }
+        if(plusMinus)
+            plusMinus=false;
         if(equalsToButton)
             jTextField1.setText(text);
         equalsToButton=true;
@@ -818,6 +848,7 @@ private long expression=0;
         if(operatorChanged)
             operatorChanged=false;
         if(zeroErrorRatio){
+            smallTextField.setText("");
             jTextField1.setText("");
             ratioDisabledOption(true);
             zeroErrorRatio=false;
@@ -837,6 +868,7 @@ private long expression=0;
         if(operatorChanged)
             operatorChanged=false;
         if(zeroErrorRatio){
+            smallTextField.setText("");
             jTextField1.setText("");
             ratioDisabledOption(true);
             zeroErrorRatio=false;
@@ -856,6 +888,7 @@ private long expression=0;
         if(operatorChanged)
             operatorChanged=false;
         if(zeroErrorRatio){
+            smallTextField.setText("");
             jTextField1.setText("");
             ratioDisabledOption(true);
             zeroErrorRatio=false;
@@ -876,6 +909,7 @@ private long expression=0;
         if(operatorChanged)
             operatorChanged=false;
         if(zeroErrorRatio){
+            smallTextField.setText("");
             jTextField1.setText("");
             ratioDisabledOption(true);
             zeroErrorRatio=false;
@@ -896,6 +930,7 @@ private long expression=0;
         if(operatorChanged)
             operatorChanged=false;
         if(zeroErrorRatio){
+            smallTextField.setText("");
             jTextField1.setText("");
             ratioDisabledOption(true);
             zeroErrorRatio=false;
@@ -915,6 +950,7 @@ private long expression=0;
         if(operatorChanged)
             operatorChanged=false;
         if(zeroErrorRatio){
+            smallTextField.setText("");
             jTextField1.setText("");
             ratioDisabledOption(true);
             zeroErrorRatio=false;
@@ -934,6 +970,7 @@ private long expression=0;
         if(operatorChanged)
             operatorChanged=false;
         if(zeroErrorRatio){
+            smallTextField.setText("");
             jTextField1.setText("");
             ratioDisabledOption(true);
             zeroErrorRatio=false;
@@ -953,6 +990,7 @@ private long expression=0;
         if(operatorChanged)
             operatorChanged=false;
         if(zeroErrorRatio){
+            smallTextField.setText("");
             jTextField1.setText("");
             ratioDisabledOption(true);
             zeroErrorRatio=false;
@@ -972,6 +1010,7 @@ private long expression=0;
         if(operatorChanged)
             operatorChanged=false;
         if(zeroErrorRatio){
+            smallTextField.setText("");
             jTextField1.setText("");
             ratioDisabledOption(true);
             zeroErrorRatio=false;
@@ -991,6 +1030,7 @@ private long expression=0;
         if(operatorChanged)
             operatorChanged=false;
         if(zeroErrorRatio){
+            smallTextField.setText("");
             jTextField1.setText("");
             ratioDisabledOption(true);
             zeroErrorRatio=false;
@@ -1042,10 +1082,6 @@ private long expression=0;
 
     private void btnplusminusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnplusminusActionPerformed
         // TODO add your handling code here:
-        if(operatorChanged)
-            operatorChanged=false;
-        if(equalsToButton)  equalsToButton=false;
-        
         String text=jTextField1.getText();
         
         if(!"0".equals(text)||!"".equals(text)){
@@ -1648,8 +1684,8 @@ private long expression=0;
     }
     
     private void equalsToCalculation(){
-        double res=0;
-        if(decimal){
+//        double res=0;
+//        if(decimal){
             switch(operator){
                 case '+':
                     if(sqrtSqp){
@@ -1661,10 +1697,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));
                         }
-                        else{
-                            jTextField1.setText(""+result);
-                        }
-//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
@@ -1675,10 +1707,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=value1+ Math.pow(value2, 2);
@@ -1687,10 +1715,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        power=false;
                     }
                     else if(sqRt){
                         result=value1+ Math.sqrt(value2);
@@ -1699,10 +1723,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqRt=false;
                     }
                     else{
                         result=value1+value2;
@@ -1711,9 +1731,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
                         break;
                     }
                 case '-':
@@ -1726,10 +1743,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
@@ -1740,10 +1753,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=value1- Math.pow(value2, 2);
@@ -1752,10 +1761,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        power=false;
                     }
                     else if(sqRt){
                         result=value1- Math.sqrt(value2);
@@ -1764,10 +1769,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqRt=false;
                     }
                     else{
                         result=value1-value2;
@@ -1776,9 +1777,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
                     }
                     break;
                 case 'x':
@@ -1791,10 +1789,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
@@ -1805,10 +1799,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=value1* Math.pow(value2, 2);
@@ -1817,10 +1807,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        power=false;
                     }
                     else if(sqRt){
                         result=value1* Math.sqrt(value2);
@@ -1829,10 +1815,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqRt=false;
                     }
                     else{
                         result=value1*value2;
@@ -1841,9 +1823,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
                     }
                     break;
                 case '÷':
@@ -1856,10 +1835,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
@@ -1870,10 +1845,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqrtSqp=false;
                     }
                     else if(power){
                         result=value1/ Math.pow(value2, 2);
@@ -1882,10 +1853,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        power=false;
                     }
                     else if(sqRt){
                         result=value1/ Math.sqrt(value2);
@@ -1894,10 +1861,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqRt=false;
                     }
                     else{
                         result=value1/value2;
@@ -1906,9 +1869,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
                     }
                     break;
                 default:
@@ -1920,10 +1880,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqpSqrt=false;
                     }
                     else if(sqpSqrt){
                         result= Math.pow(value2, 2);
@@ -1933,10 +1889,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqrtSqp=false;
                     }
                     else if(power){
                         result= Math.pow(value2, 2);
@@ -1945,10 +1897,6 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        power=false;
                     }
                     else if(sqRt){
                         result= Math.sqrt(value2);
@@ -1957,11 +1905,9 @@ private long expression=0;
                         if(b1.precision()>7){
                             jTextField1.setText(String.format("%.7f", result));return;
                         }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-//                        sqRt=false;
                     }
+                    else
+                        result=value2;
             }
             if("Infinity".equals(String.valueOf(result))){
                 jTextField1.setText("Cannot divide by zero");
@@ -1970,258 +1916,235 @@ private long expression=0;
                 colorChanger();
                 decimal=false;
             }
-            else
-                jTextField1.setText(""+result);
-        }
-        else{
-            long result=0;
-            switch(operator){
-                case '+':
-                    if(sqrtSqp){
-                        result= (long) Math.sqrt(value2);
-                        result= (long) Math.pow(result, 2);
-                        result=(long) (value1+result);
-//                        jTextField1.setText(""+result);
-//                        sqpSqrt=false;
-                    }
-                    else if(sqpSqrt){
-                        result= (long) Math.pow(value2, 2);
-                        result= (long) Math.sqrt(result);
-                        result=(long) (value1+result);
-//                        jTextField1.setText(""+result);
-//                        sqrtSqp=false;
-                    }
-                    else if(power){
-                        result=(long)value1+ (long)Math.pow(value2, 2);
-                        limit=String.valueOf(result);
-                        if(limit.length()>14){
-                            jTextField1.setText("Error! Limit Exceeded");
-                            zeroErrorRatio=true;
-                            ratioDisabledOption(false);
-                            colorChanger();
-                            return;
-                        }
-//                        else
-//                            jTextField1.setText(""+result);
-//                        power=false;
-                    }
-                    else if(sqRt){
-                        if((Math.sqrt(value2)%1)!=0){
-                            res=value1+Math.sqrt(value2);
-                            if("Infinity".equals(String.valueOf(res))){
-                            }
-                            else{
-                                jTextField1.setText(""+res);return;}
-//                            jTextField1.setText(""+res);
-                        }
-                        else{
-                            result= (long) (value1+ Math.sqrt(value2));
-//                            jTextField1.setText(""+result);
-                        }
-                    }
-                    else{
-                        result=(long) (value1+value2);
-                        limit=String.valueOf(result);
-                        if(limit.length()>14){
-                            jTextField1.setText("Error! Limit Exceeded");
-                            zeroErrorRatio=true;
-                            ratioDisabledOption(false);
-                            colorChanger();
-                            return;
-                        }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-                    }
-                    break;
-                case '-':
-                    if(sqrtSqp){
-                        result= (long) Math.sqrt(value2);
-                        result= (long) Math.pow(result, 2);
-                        result=(long) (value1-result);
-//                        jTextField1.setText(""+result);
-//                        sqpSqrt=false;
-                    }
-                    else if(sqpSqrt){
-                        result= (long) Math.pow(value2, 2);
-                        result= (long) Math.sqrt(result);
-                        result=(long) (value1-result);
-//                        jTextField1.setText(""+result);
-//                        sqrtSqp=false;
-                    }
-                    else if(power){
-                        result=(long)value1- (long)Math.pow(value2, 2);
-//                        jTextField1.setText(""+result);
-//                        power=false;
-                    }
-                    else if(sqRt){
-                        if((Math.sqrt(value2)%1)!=0){
-                            res=value1-Math.sqrt(value2);
-                            if("Infinity".equals(String.valueOf(res))){
-                            }
-                            else{
-                                jTextField1.setText(""+res);return;}
-//                            jTextField1.setText(""+res);
-                        }
-                        else{
-                            result= (long) (value1-Math.sqrt(value2));
-//                            jTextField1.setText(""+result);
-                        }
-                    }
-                    else{
-                        result=(long) (value1-value2);
-//                        jTextField1.setText(""+result);
-                    }
-                    break;
-                case 'x':
-                    if(sqrtSqp){
-                        result= (long) Math.sqrt(value2);
-                        result= (long) Math.pow(result, 2);
-                        result=(long) (value1*result);
-//                        jTextField1.setText(""+result);
-//                        sqpSqrt=false;
-                    }
-                    else if(sqpSqrt){
-                        result= (long) Math.pow(value2, 2);
-                        result= (long) Math.sqrt(result);
-                        result=(long) (value1*result);
-//                        jTextField1.setText(""+result);
-//                        sqrtSqp=false;
-                    }
-                    else if(power){
-                        result=(long)value1* (long)Math.pow(value2, 2);
-//                        jTextField1.setText(""+result);
-//                        power=false;
-                    }
-                    else if(sqRt){
-                        if((Math.sqrt(value2)%1)!=0){
-                            res=value1*Math.sqrt(value2);
-                            if("Infinity".equals(String.valueOf(res))){
-                            }
-                            else{
-                                jTextField1.setText(""+res);return;}
-//                            jTextField1.setText(""+res);
-                        }
-                        else{
-                            result= (long) (value1* Math.sqrt(value2));
-//                            jTextField1.setText(""+result);
-                        }
-                    }
-                    else{
-                        result=(long) (value1*value2);
-                        limit=String.valueOf(result);
-                        if(limit.length()>14){
-                            jTextField1.setText("Error! Limit Exceeded");
-                            zeroErrorRatio=true;
-                            ratioDisabledOption(false);
-                            colorChanger();
-                            return;
-                        }
-//                        else{
-//                            jTextField1.setText(""+result);
-//                        }
-                    }
-                    break;
-                case '÷':
-                    if(sqrtSqp){
-                        result= (long) Math.sqrt(value2);
-                        result= (long) Math.pow(result, 2);
-                        result=(long) (value1/result);
-//                        jTextField1.setText(""+result);
-//                        sqpSqrt=false;
-                    }
-                    else if(sqpSqrt){
-                        result= (long) Math.pow(value2, 2);
-                        result= (long) Math.sqrt(result);
-                        result=(long) (value1/result);
-//                        jTextField1.setText(""+result);
-//                        sqrtSqp=false;
-                    }
-                    else if(power){
-                        result=(long)value1/ (long)Math.pow(value2, 2);
-                        limit=String.valueOf(result);
-                        if(limit.length()>14){
-                            jTextField1.setText("Error! Limit Exceeded");
-                            zeroErrorRatio=true;
-                            ratioDisabledOption(false);
-                            colorChanger();
-                            return;
-                        }
-//                        else
-//                            jTextField1.setText(""+result);
-//                        power=false;
-                        
-                    }
-                    else if(sqRt){
-                        if((Math.sqrt(value2)%1)!=0){
-                            res=value1/Math.sqrt(value2);
-                            if("Infinity".equals(String.valueOf(res))){
-                            }
-                            else{
-                                jTextField1.setText(""+res);return;}
-//                            jTextField1.setText(""+res);
-                        }
-                        else{
-                            result= (long) (value1/ Math.sqrt(value2));
-//                            jTextField1.setText(""+result);
-                        }
-                    }
-                    else{
-                        res=(value1/value2);
-                        if("Infinity".equals(String.valueOf(res))){
-                        }
-                        else{
-                            jTextField1.setText(""+res);return;}
-//                        jTextField1.setText(""+res);
-                    }
-                    break;
-                default:
-                    if(sqrtSqp){
-                        result= (long) Math.sqrt(value2);
-                        result= (long) Math.pow(result, 2);
-//                        jTextField1.setText(""+result);
-//                        sqpSqrt=false;
-                    }
-                    else if(sqpSqrt){
-                        result= (long) Math.pow(value2, 2);
-                        result= (long) Math.sqrt(result);
-//                        jTextField1.setText(""+result);
-//                        sqrtSqp=false;
-                    }
-                    else if(power){
-                        result=(long) Math.pow(value2, 2);
-                        limit=String.valueOf(result);
-                        if(limit.length()>14){
-                            jTextField1.setText("Error! Limit Exceeded");
-                            zeroErrorRatio=true;
-                            ratioDisabledOption(false);
-                            colorChanger();
-                            return;
-                        }
-//                        else
-//                            jTextField1.setText(""+result);
-//                        power=false;
-                    }
-                    else if(sqRt){
-                        if((Math.sqrt(value2)%1)!=0)
-                            jTextField1.setText(""+Math.sqrt(value2));
-                        else{
-                            result= (long) Math.sqrt(value2);
-//                            jTextField1.setText(""+result);
-                        }
-//                        sqRt=false;
-                    }
-              }
-            if("Infinity".equals(String.valueOf(result))||"Infinity".equals(String.valueOf(res))){
-                jTextField1.setText("Cannot divide by zero");
-                zeroErrorRatio=true;
-                ratioDisabledOption(false);
-                colorChanger();
-                decimal=false;
+            else{
+                if((result%1)!=0)
+                    jTextField1.setText(""+result);
+                else
+                    jTextField1.setText(""+(long)result);
             }
-            else
-                jTextField1.setText(""+result);
-        }
+//        }
+//        else{
+//            long result=0;
+//            switch(operator){
+//                case '+':
+//                    if(sqrtSqp){
+//                        result= (long) Math.sqrt(value2);
+//                        result= (long) Math.pow(result, 2);
+//                        result=(long) (value1+result);
+//                    }
+//                    else if(sqpSqrt){
+//                        result= (long) Math.pow(value2, 2);
+//                        result= (long) Math.sqrt(result);
+//                        result=(long) (value1+result);
+//                    }
+//                    else if(power){
+//                        result=(long)value1+ (long)Math.pow(value2, 2);
+//                        limit=String.valueOf(result);
+//                        if(limit.length()>14){
+//                            jTextField1.setText("Error! Limit Exceeded");
+//                            zeroErrorRatio=true;
+//                            ratioDisabledOption(false);
+//                            colorChanger();
+//                            return;
+//                        }
+//                    }
+//                    else if(sqRt){
+//                        if((Math.sqrt(value2)%1)!=0){
+//                            res=value1+Math.sqrt(value2);
+//                            if("Infinity".equals(String.valueOf(res))){
+//                            }
+//                            else{
+//                                if((res%1)!=0)
+//                                    jTextField1.setText(""+res);
+//                                else
+//                                    jTextField1.setText(""+(long)res);
+//                                return;
+//                            }
+//                        }
+//                        else{
+//                            result= (long) (value1+ Math.sqrt(value2));
+//                        }
+//                    }
+//                    else{
+//                        result=(long) (value1+value2);
+//                        limit=String.valueOf(result);
+//                        if(limit.length()>14){
+//                            jTextField1.setText("Error! Limit Exceeded");
+//                            zeroErrorRatio=true;
+//                            ratioDisabledOption(false);
+//                            colorChanger();
+//                            return;
+//                        }
+//                    }
+//                    break;
+//                case '-':
+//                    if(sqrtSqp){
+//                        result= (long) Math.sqrt(value2);
+//                        result= (long) Math.pow(result, 2);
+//                        result=(long) (value1-result);
+//                    }
+//                    else if(sqpSqrt){
+//                        result= (long) Math.pow(value2, 2);
+//                        result= (long) Math.sqrt(result);
+//                        result=(long) (value1-result);
+//                    }
+//                    else if(power){
+//                        result=(long)value1- (long)Math.pow(value2, 2);
+//                    }
+//                    else if(sqRt){
+//                        if((Math.sqrt(value2)%1)!=0){
+//                            res=value1-Math.sqrt(value2);
+//                            if("Infinity".equals(String.valueOf(res))){
+//                            }
+//                            else{
+//                                if((res%1)!=0)
+//                                    jTextField1.setText(""+res);
+//                                else
+//                                    jTextField1.setText(""+(long)res);
+//                                return;
+//                            }
+//                        }
+//                        else{
+//                            result= (long) (value1-Math.sqrt(value2));
+//                        }
+//                    }
+//                    else{
+//                        result=(long) (value1-value2);
+//                    }
+//                    break;
+//                case 'x':
+//                    if(sqrtSqp){
+//                        result= (long) Math.sqrt(value2);
+//                        result= (long) Math.pow(result, 2);
+//                        result=(long) (value1*result);
+//                    }
+//                    else if(sqpSqrt){
+//                        result= (long) Math.pow(value2, 2);
+//                        result= (long) Math.sqrt(result);
+//                        result=(long) (value1*result);
+//                    }
+//                    else if(power){
+//                        result=(long)value1* (long)Math.pow(value2, 2);
+//                    }
+//                    else if(sqRt){
+//                        if((Math.sqrt(value2)%1)!=0){
+//                            res=value1*Math.sqrt(value2);
+//                            if("Infinity".equals(String.valueOf(res))){
+//                            }
+//                            else{
+//                                if((res%1)!=0)
+//                                    jTextField1.setText(""+res);
+//                                else
+//                                    jTextField1.setText(""+(long)res);
+//                                return;
+//                            }
+//                        }
+//                        else{
+//                            result= (long) (value1* Math.sqrt(value2));
+//                        }
+//                    }
+//                    else{
+//                        result=(long) (value1*value2);
+//                        limit=String.valueOf(result);
+//                        if(limit.length()>14){
+//                            jTextField1.setText("Error! Limit Exceeded");
+//                            zeroErrorRatio=true;
+//                            ratioDisabledOption(false);
+//                            colorChanger();
+//                            return;
+//                        }
+//                    }
+//                    break;
+//                case '÷':
+//                    if(sqrtSqp){
+//                        result= (long) Math.sqrt(value2);
+//                        result= (long) Math.pow(result, 2);
+//                        result=(long) (value1/result);
+//                    }
+//                    else if(sqpSqrt){
+//                        result= (long) Math.pow(value2, 2);
+//                        result= (long) Math.sqrt(result);
+//                        result=(long) (value1/result);
+//                    }
+//                    else if(power){
+//                        result=(long)value1/ (long)Math.pow(value2, 2);
+//                        limit=String.valueOf(result);
+//                        if(limit.length()>14){
+//                            jTextField1.setText("Error! Limit Exceeded");
+//                            zeroErrorRatio=true;
+//                            ratioDisabledOption(false);
+//                            colorChanger();
+//                            return;
+//                        }
+//                        
+//                    }
+//                    else if(sqRt){
+//                        if((Math.sqrt(value2)%1)!=0){
+//                            res=value1/Math.sqrt(value2);
+//                            if("Infinity".equals(String.valueOf(res))){
+//                            }
+//                            else{
+//                                if((res%1)!=0)
+//                                    jTextField1.setText(""+res);
+//                                else
+//                                    jTextField1.setText(""+(long)res);
+//                                return;
+//                            }
+//                        }
+//                        else{
+//                            result= (long) (value1/ Math.sqrt(value2));
+//                        }
+//                    }
+//                    else{
+//                        res=(value1/value2);
+//                        if("Infinity".equals(String.valueOf(res))){
+//                        }
+//                        else{
+//                            jTextField1.setText(""+res);return;}
+//                    }
+//                    break;
+//                default:
+//                    if(sqrtSqp){
+//                        result= (long) Math.sqrt(value2);
+//                        result= (long) Math.pow(result, 2);
+//                    }
+//                    else if(sqpSqrt){
+//                        result= (long) Math.pow(value2, 2);
+//                        result= (long) Math.sqrt(result);
+//                    }
+//                    else if(power){
+//                        result=(long) Math.pow(value2, 2);
+//                        limit=String.valueOf(result);
+//                        if(limit.length()>14){
+//                            jTextField1.setText("Error! Limit Exceeded");
+//                            zeroErrorRatio=true;
+//                            ratioDisabledOption(false);
+//                            colorChanger();
+//                            return;
+//                        }
+//                    }
+//                    else if(sqRt){
+//                        if((Math.sqrt(value2)%1)!=0)
+//                            jTextField1.setText(""+Math.sqrt(value2));
+//                        else{
+//                            result= (long) Math.sqrt(value2);
+//                        }
+//                    }
+//              }
+//            if("Infinity".equals(String.valueOf(result))||"Infinity".equals(String.valueOf(res))){
+//                jTextField1.setText("Cannot divide by zero");
+//                zeroErrorRatio=true;
+//                ratioDisabledOption(false);
+//                colorChanger();
+//                decimal=false;
+//            }
+//            else{
+//                if((result%1)!=0)
+//                    jTextField1.setText(""+result);
+//                else
+//                    jTextField1.setText(""+(long)result);
+//            }
+//        }
     }
     private String eraseRemover(String text){
         String[] strSplit=text.split("");
