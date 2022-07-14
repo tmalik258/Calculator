@@ -7,6 +7,7 @@ package calculator;
 import java.awt.Color;
 import java.math.BigDecimal;
 import java.util.*;
+import javax.swing.Action;
 import javax.swing.plaf.metal.MetalButtonUI;
 
 /**
@@ -1294,7 +1295,7 @@ private long expression=0;
                     if(equalsToButton) {equalsToButton=false; value1=0;}
                     String text=jTextField1.getText();
                     if(operatorChanged){
-                        operator='+';
+                        operator='-';
                         str=textFieldOperatorChanger(sText);
                         smallTextField.setText(""+str+operator);
                         return;
@@ -1322,7 +1323,7 @@ private long expression=0;
                     if(errorSolvedInMultiplication){if(value1==0)value1=1; errorSolvedInMultiplication=false;}
                     String text=jTextField1.getText();
                     if(operatorChanged){
-                        operator='+';
+                        operator='x';
                         str=textFieldOperatorChanger(sText);
                         smallTextField.setText(""+str+operator);
                         return;
@@ -1349,7 +1350,7 @@ private long expression=0;
                     if(equalsToButton) {equalsToButton=false; value1=0;}
                     String text=jTextField1.getText();
                     if(operatorChanged){
-                        operator='+';
+                        operator='÷';
                         str=textFieldOperatorChanger(sText);
                         smallTextField.setText(""+str+operator);
                         return;
@@ -1403,6 +1404,13 @@ private long expression=0;
             }
             if(equalsToButton) {equalsToButton=false; value1=0; smallTextField.setText(""); jTextField1.setText("0");}
             String text=jTextField1.getText();
+            if(!"0".equals(text)){
+                Action beep = jTextField1.getActionMap().get(javax.swing.text.DefaultEditorKit.deletePrevCharAction);
+                beep.setEnabled(false);
+            }
+            else{
+                Action beep = jTextField1.getActionMap().get(javax.swing.text.DefaultEditorKit.deletePrevCharAction);
+                beep.setEnabled(true);return;}
             str=eraseRemover(text);
             jTextField1.setText(str);
             if(text.contains("-")){if(str.length()==1)jTextField1.setText("0");  plusMinus=false;   }
