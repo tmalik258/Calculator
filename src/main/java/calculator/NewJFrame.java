@@ -622,7 +622,7 @@ public class NewJFrame extends javax.swing.JFrame {
 private double value1=0, value2=0;
 private char operator;
 private boolean decimal=false, power=false, equalsToButton=false, errorSolvedInMultiplication=false, plusMinus=false;
-private boolean sqRt=false, sqpSqrt=false,sqrtSqp=false, zeroErrorRatio=false;
+private boolean sqRt=false, sqpSqrt=false,sqrtSqp=false, zeroErrorRatio=false ,operatorChanged=false;
 private String str, limit;
 private double result=0;
 private long expression=0;
@@ -647,8 +647,15 @@ private long expression=0;
         // TODO add your handling code here:
         if(equalsToButton) {equalsToButton=false; value1=0;}
         String text=jTextField1.getText(), sText=smallTextField.getText();
+        if(operatorChanged){
+            operator='÷';
+            str=textFieldOperatorChanger(sText);
+            smallTextField.setText(""+str+operator);
+            return;
+        }
         operatorChecker(text);
         operator='÷';
+        operatorChanged=true;
         if(decimal)
             smallTextField.setText(value1+" "+operator);
         else{
@@ -670,8 +677,15 @@ private long expression=0;
         if(equalsToButton) {equalsToButton=false; value1=0;}
         if(errorSolvedInMultiplication){if(value1==0)value1=1; errorSolvedInMultiplication=false;}
         String text=jTextField1.getText(), sText=smallTextField.getText();
+        if(operatorChanged){
+            operator='x';
+            str=textFieldOperatorChanger(sText);
+            smallTextField.setText(""+str+operator);
+            return;
+        }
         operatorChecker(text);
         operator='x';
+        operatorChanged=true;
         if(decimal)
             smallTextField.setText(value1+" "+operator);
         else{
@@ -692,8 +706,15 @@ private long expression=0;
         // TODO add your handling code here:
         if(equalsToButton) {equalsToButton=false; value1=0;}
         String text=jTextField1.getText(), sText=smallTextField.getText();
+        if(operatorChanged){
+            operator='-';
+            str=textFieldOperatorChanger(sText);
+            smallTextField.setText(""+str+operator);
+            return;
+        }
         operatorChecker(text);
         operator='-';
+        operatorChanged=true;
         if(decimal)
             smallTextField.setText(value1+" "+operator);
         else{
@@ -714,8 +735,15 @@ private long expression=0;
         // TODO add your handling code here:
         if(equalsToButton) {equalsToButton=false; value1=0;}
         String text=jTextField1.getText(), sText=smallTextField.getText();
+        if(operatorChanged){
+            operator='+';
+            str=textFieldOperatorChanger(sText);
+            smallTextField.setText(""+str+operator);
+            return;
+        }
         operatorChecker(text);
         operator='+';
+        operatorChanged=true;
         if(decimal)
             smallTextField.setText(value1+" "+operator);
         else{
@@ -734,6 +762,8 @@ private long expression=0;
 
     private void btnEqualsToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsToActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(equalsToButton)
             smallTextField.setText("");
         String text=jTextField1.getText(), sText=smallTextField.getText();
@@ -782,6 +812,8 @@ private long expression=0;
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
@@ -799,6 +831,8 @@ private long expression=0;
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
@@ -816,6 +850,8 @@ private long expression=0;
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
@@ -834,6 +870,8 @@ private long expression=0;
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
@@ -852,6 +890,8 @@ private long expression=0;
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
@@ -869,6 +909,8 @@ private long expression=0;
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
@@ -886,6 +928,8 @@ private long expression=0;
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
@@ -903,6 +947,8 @@ private long expression=0;
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
@@ -920,6 +966,8 @@ private long expression=0;
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
@@ -937,6 +985,8 @@ private long expression=0;
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(zeroErrorRatio){
             jTextField1.setText("");
             ratioDisabledOption(true);
@@ -954,6 +1004,8 @@ private long expression=0;
 
     private void btnDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDecimalActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if((!power)&&(!sqRt)){
             if(equalsToButton){
                 jTextField1.setText("0");
@@ -987,6 +1039,8 @@ private long expression=0;
 
     private void btnplusminusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnplusminusActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(equalsToButton)  equalsToButton=false;
         
         String text=jTextField1.getText();
@@ -1013,6 +1067,8 @@ private long expression=0;
 
     private void btnSquareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSquareActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         String text=jTextField1.getText();
         if(!power){
             if(sqRt)
@@ -1024,6 +1080,8 @@ private long expression=0;
 
     private void btnsqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsqrtActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         if(equalsToButton){
             smallTextField.setText("");
         }
@@ -1038,6 +1096,8 @@ private long expression=0;
 
     private void btnperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnperActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         double temp=0;
         if(value1!=0){
             String text=jTextField1.getText();
@@ -1088,6 +1148,8 @@ private long expression=0;
 
     private void btnratioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnratioActionPerformed
         // TODO add your handling code here:
+        if(operatorChanged)
+            operatorChanged=false;
         double temp;
         String text=jTextField1.getText();
         decimal=true;
@@ -1397,6 +1459,7 @@ private long expression=0;
     
     private void clear(){
         ratioDisabledOption(true);
+        operatorChanged=false;
         zeroErrorRatio=false;
         sqpSqrt=false;
         sqrtSqp=false;
@@ -2271,6 +2334,17 @@ private long expression=0;
                 return Color.DARK_GRAY;
             }
         });
+    }
+    
+    private String textFieldOperatorChanger(String Text){
+        String[] strSplit=Text.split("");
+        ArrayList<String>  strlist=new ArrayList<>(Arrays.asList(strSplit));
+        strlist.remove(strlist.size()-1);
+        str="";
+        for (String temp : strlist) {
+            str+= temp;
+        }
+        return str;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
