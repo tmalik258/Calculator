@@ -1523,7 +1523,10 @@ private long expression=0;
 //                        sqRt=false;
                     }
                     else
-                        value1+=Double.parseDouble(text);
+                        if((Double.parseDouble(text)%1)!=0)
+                            value1+= (long)Double.parseDouble(text);
+                        else
+                            value1+=Double.parseDouble(text);
                     break;
                 case '-':
                     if(power){
