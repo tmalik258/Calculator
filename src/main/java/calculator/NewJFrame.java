@@ -766,6 +766,8 @@ private long expression=0;
             operatorChanged=false;
         if(equalsToButton)
             smallTextField.setText("");
+        if("0".equals(smallTextField.getText()))
+            smallTextField.setText("");
         String text=jTextField1.getText(), sText=smallTextField.getText();
         if(sqpSqrt){
             str=lastCharacterRemover(text);
@@ -1139,11 +1141,14 @@ private long expression=0;
             }
             decimal=true;
         }
-        else if(value1==0){
+        else{
+            smallTextField.setText("0");
             jTextField1.setText("0");
         }
         power=false;
         sqRt=false;
+        sqrtSqp=false;
+        sqpSqrt=false;
     }//GEN-LAST:event_btnperActionPerformed
 
     private void btnratioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnratioActionPerformed
@@ -1158,7 +1163,6 @@ private long expression=0;
             temp= Math.pow(Double.parseDouble(str), 2);
             temp= Math.sqrt(temp);
             temp=1/temp;
-            jTextField1.setText(""+temp);
             power=false;
             sqRt=false;
         }
@@ -1167,7 +1171,6 @@ private long expression=0;
             temp= Math.sqrt(Double.parseDouble(str));
             temp= Math.pow(temp, 2);
             temp=1/temp;
-            jTextField1.setText(""+temp);
             power=false;
             sqRt=false;
         }
@@ -1175,27 +1178,26 @@ private long expression=0;
             str=lastCharacterRemover(text);
             temp= Math.pow(Double.parseDouble(str), 2);
             temp=1/temp;
-            jTextField1.setText(""+temp);
             power=false;
         }
         else if(sqRt){
             str=lastCharacterRemover(text);
             temp= Math.sqrt(Double.parseDouble(str));
             temp=1/temp;
-            jTextField1.setText(""+temp);
             sqRt=false;
         }
-        else if(!"0".equals(text)){
+        else{
             temp=1/Double.parseDouble(text);
-            jTextField1.setText(""+temp);
         }
-        else if("0".equals(text)){
-            jTextField1.setText("Cannot divide by Zero");
+        if("Infinity".equals(String.valueOf(temp))){
+            jTextField1.setText("Cannot divide by zero");
             zeroErrorRatio=true;
             ratioDisabledOption(false);
             colorChanger();
             decimal=false;
         }
+        else
+            jTextField1.setText(""+temp);
     }//GEN-LAST:event_btnratioActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
@@ -1227,6 +1229,8 @@ private long expression=0;
             if(operatorChanged)
                 operatorChanged=false;
             if(equalsToButton)
+                smallTextField.setText("");
+            if("0".equals(smallTextField.getText()))
                 smallTextField.setText("");
             String text=jTextField1.getText(), sText=smallTextField.getText();
             if(power){
