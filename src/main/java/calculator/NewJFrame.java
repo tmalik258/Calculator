@@ -1205,6 +1205,8 @@ private long expression=0;
         
         //          NUMBERS INPUT
         if (ch >= '0' &&ch <= '9') {
+            if(operatorChanged)
+                operatorChanged=false;
             if(zeroErrorRatio){
                 jTextField1.setText("");
                 ratioDisabledOption(true);
@@ -1222,6 +1224,8 @@ private long expression=0;
         
         //          EQUALS TO
         else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
+            if(operatorChanged)
+                operatorChanged=false;
             if(equalsToButton)
                 smallTextField.setText("");
             String text=jTextField1.getText(), sText=smallTextField.getText();
@@ -1258,8 +1262,15 @@ private long expression=0;
                 case '+' -> {
                     if(equalsToButton) {equalsToButton=false; value1=0;}
                     String text=jTextField1.getText();
+                    if(operatorChanged){
+                        operator='+';
+                        str=textFieldOperatorChanger(sText);
+                        smallTextField.setText(""+str+operator);
+                        return;
+                    }
                     operatorChecker(text);
                     operator='+';
+                    operatorChanged=true;
                     if(decimal)
                         smallTextField.setText(value1+" "+operator);
                     else{
@@ -1278,8 +1289,15 @@ private long expression=0;
                 case '-' -> {
                     if(equalsToButton) {equalsToButton=false; value1=0;}
                     String text=jTextField1.getText();
+                    if(operatorChanged){
+                        operator='+';
+                        str=textFieldOperatorChanger(sText);
+                        smallTextField.setText(""+str+operator);
+                        return;
+                    }
                     operatorChecker(text);
                     operator='-';
+                    operatorChanged=true;
                     if(decimal)
                         smallTextField.setText(value1+" "+operator);
                     else{
@@ -1299,8 +1317,15 @@ private long expression=0;
                     if(equalsToButton) {equalsToButton=false; value1=0;}
                     if(errorSolvedInMultiplication){if(value1==0)value1=1; errorSolvedInMultiplication=false;}
                     String text=jTextField1.getText();
+                    if(operatorChanged){
+                        operator='+';
+                        str=textFieldOperatorChanger(sText);
+                        smallTextField.setText(""+str+operator);
+                        return;
+                    }
                     operatorChecker(text);
                     operator='x';
+                    operatorChanged=true;
                     if(decimal)
                         smallTextField.setText(value1+" "+operator);
                     else{
@@ -1319,8 +1344,15 @@ private long expression=0;
                 case '/' -> {
                     if(equalsToButton) {equalsToButton=false; value1=0;}
                     String text=jTextField1.getText();
+                    if(operatorChanged){
+                        operator='+';
+                        str=textFieldOperatorChanger(sText);
+                        smallTextField.setText(""+str+operator);
+                        return;
+                    }
                     operatorChecker(text);
                     operator='÷';
+                    operatorChanged=true;
                     if(decimal)
                         smallTextField.setText(value1+" "+operator);
                     else{
@@ -1337,6 +1369,8 @@ private long expression=0;
                     jTextField1.setText("0");
                 }
                 case '.' -> {
+                    if(operatorChanged)
+                        operatorChanged=false;
                     if(!power){
                         if(equalsToButton){
                             jTextField1.setText("");
