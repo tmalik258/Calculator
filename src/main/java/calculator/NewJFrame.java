@@ -657,7 +657,7 @@ private long expression=0;
         operatorChecker(text);
         operator='÷';
         operatorChanged=true;
-        if(decimal)
+        if(value1%1!=0)
             smallTextField.setText(value1+" "+operator);
         else{
             expression=(long) value1;
@@ -687,7 +687,7 @@ private long expression=0;
         operatorChecker(text);
         operator='x';
         operatorChanged=true;
-        if(decimal)
+        if(value1%1!=0)
             smallTextField.setText(value1+" "+operator);
         else{
             expression=(long) value1;
@@ -716,7 +716,7 @@ private long expression=0;
         operatorChecker(text);
         operator='-';
         operatorChanged=true;
-        if(decimal)
+        if(value1%1!=0)
             smallTextField.setText(value1+" "+operator);
         else{
             expression=(long) value1;
@@ -745,7 +745,7 @@ private long expression=0;
         operatorChecker(text);
         operator='+';
         operatorChanged=true;
-        if(decimal)
+        if(value1%1!=0)
             smallTextField.setText(value1+" "+operator);
         else{
             expression=(long) value1;
@@ -812,7 +812,7 @@ private long expression=0;
                 value2=Double.parseDouble(text);
         }
         equalsToCalculation();
-        if(decimal)
+        if(value1%1!=0)
             smallTextField.setText(sText+" "+value2+" =");
         else{
             expression= (long) value2;
@@ -1278,7 +1278,7 @@ private long expression=0;
                     value2=Double.parseDouble(text);
             }
             equalsToCalculation();
-            if(decimal)
+            if(value1%1!=0)
             smallTextField.setText(sText+" "+value2+" =");
             else{
                 expression= (long) value2;
@@ -1312,7 +1312,7 @@ private long expression=0;
                     operatorChecker(text);
                     operator='+';
                     operatorChanged=true;
-                    if(decimal)
+                    if(value1%1!=0)
                         smallTextField.setText(value1+" "+operator);
                     else{
                         expression=(long) value1;
@@ -1339,7 +1339,7 @@ private long expression=0;
                     operatorChecker(text);
                     operator='-';
                     operatorChanged=true;
-                    if(decimal)
+                    if(value1%1!=0)
                         smallTextField.setText(value1+" "+operator);
                     else{
                         expression=(long) value1;
@@ -1367,7 +1367,7 @@ private long expression=0;
                     operatorChecker(text);
                     operator='x';
                     operatorChanged=true;
-                    if(decimal)
+                    if(value1%1!=0)
                         smallTextField.setText(value1+" "+operator);
                     else{
                         expression=(long) value1;
@@ -1394,7 +1394,7 @@ private long expression=0;
                     operatorChecker(text);
                     operator='÷';
                     operatorChanged=true;
-                    if(decimal)
+                    if(value1%1!=0)
                         smallTextField.setText(value1+" "+operator);
                     else{
                         expression=(long) value1;
@@ -1684,467 +1684,127 @@ private long expression=0;
     }
     
     private void equalsToCalculation(){
-//        double res=0;
-//        if(decimal){
-            switch(operator){
-                case '+':
-                    if(sqrtSqp){
-                        result= Math.sqrt(value2);
-                        result= Math.pow(result, 2);
-                        result=value1+result;
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));
-                        }
-                    }
-                    else if(sqpSqrt){
-                        result= Math.pow(value2, 2);
-                        result= Math.sqrt(result);
-                        result= value1+result;
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(power){
-                        result=value1+ Math.pow(value2, 2);
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(sqRt){
-                        result=value1+ Math.sqrt(value2);
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else{
-                        result=value1+value2;
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                        break;
-                    }
-                case '-':
-                    if(sqrtSqp){
-                        result= Math.sqrt(value2);
-                        result= Math.pow(result, 2);
-                        result=value1-result;
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(sqpSqrt){
-                        result= Math.pow(value2, 2);
-                        result= Math.sqrt(result);
-                        result= value1-result;
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(power){
-                        result=value1- Math.pow(value2, 2);
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(sqRt){
-                        result=value1- Math.sqrt(value2);
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else{
-                        result=value1-value2;
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
+        switch(operator){
+            case '+':
+                if(sqrtSqp){
+                    result= Math.sqrt(value2);
+                    result= Math.pow(result, 2);
+                    result=value1+result;
+                }
+                else if(sqpSqrt){
+                    result= Math.pow(value2, 2);
+                    result= Math.sqrt(result);
+                    result= value1+result;
+                }
+                else if(power){
+                    result=value1+ Math.pow(value2, 2);
+                }
+                else if(sqRt){
+                    result=value1+ Math.sqrt(value2);
+                }
+                else{
+                    result=value1+value2;
                     break;
-                case 'x':
-                    if(sqrtSqp){
-                        result= Math.sqrt(value2);
-                        result= Math.pow(result, 2);
-                        result=value1*result;
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(sqpSqrt){
-                        result= Math.pow(value2, 2);
-                        result= Math.sqrt(result);
-                        result= value1*result;
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(power){
-                        result=value1* Math.pow(value2, 2);
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(sqRt){
-                        result=value1* Math.sqrt(value2);
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else{
-                        result=value1*value2;
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    break;
-                case '÷':
-                    if(sqrtSqp){
-                        result= Math.sqrt(value2);
-                        result= Math.pow(result, 2);
-                        result=value1/result;
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(sqpSqrt){
-                        result= Math.pow(value2, 2);
-                        result= Math.sqrt(result);
-                        result= value1/result;
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(power){
-                        result=value1/ Math.pow(value2, 2);
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(sqRt){
-                        result=value1/ Math.sqrt(value2);
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else{
-                        result=value1/value2;
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    break;
-                default:
-                    if(sqrtSqp){
-                        result= Math.sqrt(value2);
-                        result= Math.pow(result, 2);
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(sqpSqrt){
-                        result= Math.pow(value2, 2);
-                        result= Math.sqrt(result);
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(power){
-                        result= Math.pow(value2, 2);
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else if(sqRt){
-                        result= Math.sqrt(value2);
-                        BigDecimal b1;
-                        b1= new BigDecimal(result);
-                        if(b1.precision()>7){
-                            jTextField1.setText(String.format("%.7f", result));return;
-                        }
-                    }
-                    else
-                        result=value2;
-            }
-            if("Infinity".equals(String.valueOf(result))){
-                jTextField1.setText("Cannot divide by zero");
-                zeroErrorRatio=true;
-                ratioDisabledOption(false);
-                colorChanger();
-                decimal=false;
-            }
-            else{
-                if((result%1)!=0)
-                    jTextField1.setText(""+result);
+                }
+            case '-':
+                if(sqrtSqp){
+                    result= Math.sqrt(value2);
+                    result= Math.pow(result, 2);
+                    result=value1-result;
+                }
+                else if(sqpSqrt){
+                    result= Math.pow(value2, 2);
+                    result= Math.sqrt(result);
+                    result= value1-result;
+                }
+                else if(power){
+                    result=value1- Math.pow(value2, 2);
+                }
+                else if(sqRt){
+                    result=value1- Math.sqrt(value2);
+                }
+                else{
+                    result=value1-value2;
+                }
+                break;
+            case 'x':
+                if(sqrtSqp){
+                    result= Math.sqrt(value2);
+                    result= Math.pow(result, 2);
+                    result=value1*result;
+                }
+                else if(sqpSqrt){
+                    result= Math.pow(value2, 2);
+                    result= Math.sqrt(result);
+                    result= value1*result;
+                }
+                else if(power){
+                    result=value1* Math.pow(value2, 2);
+                }
+                else if(sqRt){
+                    result=value1* Math.sqrt(value2);
+                }
+                else{
+                    result=value1*value2;
+                }
+                break;
+            case '÷':
+                if(sqrtSqp){
+                    result= Math.sqrt(value2);
+                    result= Math.pow(result, 2);
+                    result=value1/result;
+                }
+                else if(sqpSqrt){
+                    result= Math.pow(value2, 2);
+                    result= Math.sqrt(result);
+                    result= value1/result;
+                }
+                else if(power){
+                    result=value1/ Math.pow(value2, 2);
+                }
+                else if(sqRt){
+                    result=value1/ Math.sqrt(value2);
+                }
+                else{
+                    result=value1/value2;
+                }
+                break;
+            default:
+                if(sqrtSqp){
+                    result= Math.sqrt(value2);
+                    result= Math.pow(result, 2);
+                }
+                else if(sqpSqrt){
+                    result= Math.pow(value2, 2);
+                    result= Math.sqrt(result);
+                }
+                else if(power){
+                    result= Math.pow(value2, 2);
+                }
+                else if(sqRt){
+                    result= Math.sqrt(value2);
+                }
                 else
-                    jTextField1.setText(""+(long)result);
+                    result=value2;
+        }
+        if("Infinity".equals(String.valueOf(result))){
+            jTextField1.setText("Cannot divide by zero");
+            zeroErrorRatio=true;
+            ratioDisabledOption(false);
+            colorChanger();
+            decimal=false;
+        }
+        else{
+            if((result%1)!=0){
+                BigDecimal b2 = BigDecimal.valueOf(result); 
+                if((int)(b2.scale())>7){
+                    jTextField1.setText(String.format("%.8f", result));
+                }
+                    jTextField1.setText(""+result);
             }
-//        }
-//        else{
-//            long result=0;
-//            switch(operator){
-//                case '+':
-//                    if(sqrtSqp){
-//                        result= (long) Math.sqrt(value2);
-//                        result= (long) Math.pow(result, 2);
-//                        result=(long) (value1+result);
-//                    }
-//                    else if(sqpSqrt){
-//                        result= (long) Math.pow(value2, 2);
-//                        result= (long) Math.sqrt(result);
-//                        result=(long) (value1+result);
-//                    }
-//                    else if(power){
-//                        result=(long)value1+ (long)Math.pow(value2, 2);
-//                        limit=String.valueOf(result);
-//                        if(limit.length()>14){
-//                            jTextField1.setText("Error! Limit Exceeded");
-//                            zeroErrorRatio=true;
-//                            ratioDisabledOption(false);
-//                            colorChanger();
-//                            return;
-//                        }
-//                    }
-//                    else if(sqRt){
-//                        if((Math.sqrt(value2)%1)!=0){
-//                            res=value1+Math.sqrt(value2);
-//                            if("Infinity".equals(String.valueOf(res))){
-//                            }
-//                            else{
-//                                if((res%1)!=0)
-//                                    jTextField1.setText(""+res);
-//                                else
-//                                    jTextField1.setText(""+(long)res);
-//                                return;
-//                            }
-//                        }
-//                        else{
-//                            result= (long) (value1+ Math.sqrt(value2));
-//                        }
-//                    }
-//                    else{
-//                        result=(long) (value1+value2);
-//                        limit=String.valueOf(result);
-//                        if(limit.length()>14){
-//                            jTextField1.setText("Error! Limit Exceeded");
-//                            zeroErrorRatio=true;
-//                            ratioDisabledOption(false);
-//                            colorChanger();
-//                            return;
-//                        }
-//                    }
-//                    break;
-//                case '-':
-//                    if(sqrtSqp){
-//                        result= (long) Math.sqrt(value2);
-//                        result= (long) Math.pow(result, 2);
-//                        result=(long) (value1-result);
-//                    }
-//                    else if(sqpSqrt){
-//                        result= (long) Math.pow(value2, 2);
-//                        result= (long) Math.sqrt(result);
-//                        result=(long) (value1-result);
-//                    }
-//                    else if(power){
-//                        result=(long)value1- (long)Math.pow(value2, 2);
-//                    }
-//                    else if(sqRt){
-//                        if((Math.sqrt(value2)%1)!=0){
-//                            res=value1-Math.sqrt(value2);
-//                            if("Infinity".equals(String.valueOf(res))){
-//                            }
-//                            else{
-//                                if((res%1)!=0)
-//                                    jTextField1.setText(""+res);
-//                                else
-//                                    jTextField1.setText(""+(long)res);
-//                                return;
-//                            }
-//                        }
-//                        else{
-//                            result= (long) (value1-Math.sqrt(value2));
-//                        }
-//                    }
-//                    else{
-//                        result=(long) (value1-value2);
-//                    }
-//                    break;
-//                case 'x':
-//                    if(sqrtSqp){
-//                        result= (long) Math.sqrt(value2);
-//                        result= (long) Math.pow(result, 2);
-//                        result=(long) (value1*result);
-//                    }
-//                    else if(sqpSqrt){
-//                        result= (long) Math.pow(value2, 2);
-//                        result= (long) Math.sqrt(result);
-//                        result=(long) (value1*result);
-//                    }
-//                    else if(power){
-//                        result=(long)value1* (long)Math.pow(value2, 2);
-//                    }
-//                    else if(sqRt){
-//                        if((Math.sqrt(value2)%1)!=0){
-//                            res=value1*Math.sqrt(value2);
-//                            if("Infinity".equals(String.valueOf(res))){
-//                            }
-//                            else{
-//                                if((res%1)!=0)
-//                                    jTextField1.setText(""+res);
-//                                else
-//                                    jTextField1.setText(""+(long)res);
-//                                return;
-//                            }
-//                        }
-//                        else{
-//                            result= (long) (value1* Math.sqrt(value2));
-//                        }
-//                    }
-//                    else{
-//                        result=(long) (value1*value2);
-//                        limit=String.valueOf(result);
-//                        if(limit.length()>14){
-//                            jTextField1.setText("Error! Limit Exceeded");
-//                            zeroErrorRatio=true;
-//                            ratioDisabledOption(false);
-//                            colorChanger();
-//                            return;
-//                        }
-//                    }
-//                    break;
-//                case '÷':
-//                    if(sqrtSqp){
-//                        result= (long) Math.sqrt(value2);
-//                        result= (long) Math.pow(result, 2);
-//                        result=(long) (value1/result);
-//                    }
-//                    else if(sqpSqrt){
-//                        result= (long) Math.pow(value2, 2);
-//                        result= (long) Math.sqrt(result);
-//                        result=(long) (value1/result);
-//                    }
-//                    else if(power){
-//                        result=(long)value1/ (long)Math.pow(value2, 2);
-//                        limit=String.valueOf(result);
-//                        if(limit.length()>14){
-//                            jTextField1.setText("Error! Limit Exceeded");
-//                            zeroErrorRatio=true;
-//                            ratioDisabledOption(false);
-//                            colorChanger();
-//                            return;
-//                        }
-//                        
-//                    }
-//                    else if(sqRt){
-//                        if((Math.sqrt(value2)%1)!=0){
-//                            res=value1/Math.sqrt(value2);
-//                            if("Infinity".equals(String.valueOf(res))){
-//                            }
-//                            else{
-//                                if((res%1)!=0)
-//                                    jTextField1.setText(""+res);
-//                                else
-//                                    jTextField1.setText(""+(long)res);
-//                                return;
-//                            }
-//                        }
-//                        else{
-//                            result= (long) (value1/ Math.sqrt(value2));
-//                        }
-//                    }
-//                    else{
-//                        res=(value1/value2);
-//                        if("Infinity".equals(String.valueOf(res))){
-//                        }
-//                        else{
-//                            jTextField1.setText(""+res);return;}
-//                    }
-//                    break;
-//                default:
-//                    if(sqrtSqp){
-//                        result= (long) Math.sqrt(value2);
-//                        result= (long) Math.pow(result, 2);
-//                    }
-//                    else if(sqpSqrt){
-//                        result= (long) Math.pow(value2, 2);
-//                        result= (long) Math.sqrt(result);
-//                    }
-//                    else if(power){
-//                        result=(long) Math.pow(value2, 2);
-//                        limit=String.valueOf(result);
-//                        if(limit.length()>14){
-//                            jTextField1.setText("Error! Limit Exceeded");
-//                            zeroErrorRatio=true;
-//                            ratioDisabledOption(false);
-//                            colorChanger();
-//                            return;
-//                        }
-//                    }
-//                    else if(sqRt){
-//                        if((Math.sqrt(value2)%1)!=0)
-//                            jTextField1.setText(""+Math.sqrt(value2));
-//                        else{
-//                            result= (long) Math.sqrt(value2);
-//                        }
-//                    }
-//              }
-//            if("Infinity".equals(String.valueOf(result))||"Infinity".equals(String.valueOf(res))){
-//                jTextField1.setText("Cannot divide by zero");
-//                zeroErrorRatio=true;
-//                ratioDisabledOption(false);
-//                colorChanger();
-//                decimal=false;
-//            }
-//            else{
-//                if((result%1)!=0)
-//                    jTextField1.setText(""+result);
-//                else
-//                    jTextField1.setText(""+(long)result);
-//            }
-//        }
+            else
+                jTextField1.setText(""+(long)result);
+        }
     }
     private String eraseRemover(String text){
         String[] strSplit=text.split("");
