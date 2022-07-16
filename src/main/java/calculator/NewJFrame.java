@@ -812,7 +812,7 @@ private long expression=0;
                 value2=Double.parseDouble(text);
         }
         equalsToCalculation();
-        if(value1%1!=0)
+        if(value2%1!=0)
             smallTextField.setText(sText+" "+value2+" =");
         else{
             expression= (long) value2;
