@@ -1817,7 +1817,16 @@ private long expression=0;
                     result=value1/ Math.sqrt(value2);
                 }
                 else{
-                    result=value1/value2;
+                    if(value1==0&&value2==0){
+                        jTextField1.setText("Result is undefined");
+                        zeroErrorRatio=true;
+                        ratioDisabledOption(false);
+                        colorChanger();
+                        return;
+//                        decimal=false;
+                    }
+                    else
+                        result=value1/value2;
                 }
                 break;
             default:
