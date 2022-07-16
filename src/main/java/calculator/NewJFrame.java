@@ -61,11 +61,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
         smallTextField = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnMC = new javax.swing.JButton();
+        btnMR = new javax.swing.JButton();
+        btnMplus = new javax.swing.JButton();
+        btnMminus = new javax.swing.JButton();
+        btnMS = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculator");
@@ -86,7 +86,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextField1.setText("0");
         jTextField1.setAutoscrolls(false);
         jTextField1.setBorder(null);
-        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextField1.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
         jTextField1.setFocusCycleRoot(true);
         jTextField1.setFocusTraversalPolicyProvider(true);
@@ -466,35 +466,70 @@ public class NewJFrame extends javax.swing.JFrame {
         smallTextField.setFocusable(false);
         smallTextField.setRequestFocusEnabled(false);
 
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("MC");
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setEnabled(false);
+        btnMC.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btnMC.setForeground(new java.awt.Color(153, 153, 153));
+        btnMC.setText("MC");
+        btnMC.setBorderPainted(false);
+        btnMC.setContentAreaFilled(false);
+        btnMC.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMC.setEnabled(false);
+        btnMC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMCActionPerformed(evt);
+            }
+        });
 
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("MR");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setEnabled(false);
-        jButton2.setFocusPainted(false);
-        jButton2.setFocusable(false);
-        jButton2.setRequestFocusEnabled(false);
+        btnMR.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btnMR.setForeground(new java.awt.Color(153, 153, 153));
+        btnMR.setText("MR");
+        btnMR.setBorderPainted(false);
+        btnMR.setContentAreaFilled(false);
+        btnMR.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMR.setEnabled(false);
+        btnMR.setFocusPainted(false);
+        btnMR.setFocusable(false);
+        btnMR.setRequestFocusEnabled(false);
+        btnMR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMRActionPerformed(evt);
+            }
+        });
 
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("M+");
-        jButton3.setBorderPainted(false);
-        jButton3.setContentAreaFilled(false);
+        btnMplus.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btnMplus.setForeground(new java.awt.Color(255, 255, 255));
+        btnMplus.setText("M+");
+        btnMplus.setBorderPainted(false);
+        btnMplus.setContentAreaFilled(false);
+        btnMplus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMplus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMplusActionPerformed(evt);
+            }
+        });
 
-        jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setText("M-");
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
+        btnMminus.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btnMminus.setForeground(new java.awt.Color(255, 255, 255));
+        btnMminus.setText("M-");
+        btnMminus.setBorderPainted(false);
+        btnMminus.setContentAreaFilled(false);
+        btnMminus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMminus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMminusActionPerformed(evt);
+            }
+        });
 
-        jButton5.setForeground(new java.awt.Color(255, 255, 255));
-        jButton5.setText("MS");
-        jButton5.setBorderPainted(false);
-        jButton5.setContentAreaFilled(false);
+        btnMS.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btnMS.setForeground(new java.awt.Color(255, 255, 255));
+        btnMS.setText("MS");
+        btnMS.setBorderPainted(false);
+        btnMS.setContentAreaFilled(false);
+        btnMS.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMSActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Panel1Layout = new javax.swing.GroupLayout(Panel1);
         Panel1.setLayout(Panel1Layout);
@@ -574,15 +609,15 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(Panel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMC, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMR, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMplus, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMminus, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnMS, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Panel1Layout.setVerticalGroup(
@@ -599,19 +634,19 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField1)
                         .addGap(3, 3, 3)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnMC, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel1Layout.createSequentialGroup()
                         .addGap(127, 127, 127)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnMR, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel1Layout.createSequentialGroup()
                         .addGap(127, 127, 127)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnMplus, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel1Layout.createSequentialGroup()
                         .addGap(127, 127, 127)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnMminus, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Panel1Layout.createSequentialGroup()
                         .addGap(127, 127, 127)
-                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnMS, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel1Layout.createSequentialGroup()
@@ -683,7 +718,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private double value1=0, value2=0;
+private double value1=0, value2=0, memory=0;
 private char operator;
 private boolean decimal=false, power=false, equalsToButton=false, plusMinus=false;
 private boolean sqRt=false, sqpSqrt=false,sqrtSqp=false, zeroErrorRatio=false ,operatorChanged=false;
@@ -1637,6 +1672,54 @@ private long expression=0;
         catch(Exception ex){
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void btnMplusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMplusActionPerformed
+        // TODO add your handling code here:
+        String text=jTextField1.getText();
+        memory+=Double.parseDouble(text);
+        btnMC.setEnabled(true);
+        btnMR.setEnabled(true);
+        btnMC.setText("<html><font color=\"white\">MC</font></html>");
+        btnMR.setText("<html><font color=\"white\">MR</font></html>");
+    }//GEN-LAST:event_btnMplusActionPerformed
+
+    private void btnMCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMCActionPerformed
+        // TODO add your handling code here:
+        String text=jTextField1.getText();
+        memory=0;
+        btnMC.setEnabled(false);
+        btnMR.setEnabled(false);
+        btnMC.setText("<html><font color=\"white\">MC</font></html>");
+        btnMR.setText("<html><font color=\"white\">MR</font></html>");
+    }//GEN-LAST:event_btnMCActionPerformed
+
+    private void btnMminusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMminusActionPerformed
+        // TODO add your handling code here:
+        String text=jTextField1.getText();
+        memory-=Double.parseDouble(text);
+        btnMC.setEnabled(true);
+        btnMR.setEnabled(true);
+        btnMC.setText("<html><font color=\"white\">MC</font></html>");
+        btnMR.setText("<html><font color=\"white\">MR</font></html>");
+    }//GEN-LAST:event_btnMminusActionPerformed
+
+    private void btnMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMSActionPerformed
+        // TODO add your handling code here:
+        String text=jTextField1.getText();
+        memory=Double.parseDouble(text);
+        btnMC.setEnabled(true);
+        btnMR.setEnabled(true);
+        btnMC.setText("<html><font color=\"white\">MC</font></html>");
+        btnMR.setText("<html><font color=\"white\">MR</font></html>");
+    }//GEN-LAST:event_btnMSActionPerformed
+
+    private void btnMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMRActionPerformed
+        // TODO add your handling code here:
+        if(memory%1!=0)
+            jTextField1.setText(""+memory);
+        else
+            jTextField1.setText(""+(long)memory);
+    }//GEN-LAST:event_btnMRActionPerformed
     /**
      * @param args the command line arguments
      */
@@ -2163,7 +2246,12 @@ private long expression=0;
     private javax.swing.JButton btnDivide;
     private javax.swing.JButton btnEqualsTo;
     private javax.swing.JButton btnErase;
+    private javax.swing.JButton btnMC;
+    private javax.swing.JButton btnMR;
+    private javax.swing.JButton btnMS;
     private javax.swing.JButton btnMinus;
+    private javax.swing.JButton btnMminus;
+    private javax.swing.JButton btnMplus;
     private javax.swing.JButton btnMultiply;
     private javax.swing.JButton btnPlus;
     private javax.swing.JButton btnSquare;
@@ -2171,11 +2259,6 @@ private long expression=0;
     private javax.swing.JButton btnplusminus;
     private javax.swing.JButton btnratio;
     private javax.swing.JButton btnsqrt;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
