@@ -765,8 +765,44 @@ private long expression=0;
         // TODO add your handling code here:
         if(operatorChanged)
             operatorChanged=false;
-        if(equalsToButton)
+        if(equalsToButton){
+            String text=jTextField1.getText();
             smallTextField.setText("");
+//            String sText=smallTextField.getText();
+//            value2=Double.parseDouble(text);
+            switch(operator){
+                case '+':
+                    result+=value2;
+//                    smallTextField.setText(text+" + "+(long)value2+" =");
+//                    jTextField1.setText((long)result+"");
+                    break;
+                case '-':
+                    result-=value2;
+//                    smallTextField.setText(text+" - "+(long)value2);
+//                    jTextField1.setText((long)result+"");
+                    break;
+                case 'x':
+                    result*=value2;
+//                    smallTextField.setText(text+" x "+(long)value2);
+//                    jTextField1.setText((long)result+"");
+                    break;
+                case '÷':
+                    result/=value2;
+//                    smallTextField.setText(text+" ÷ "+(long)value2);
+//                    jTextField1.setText((long)result+"");
+                    break;
+        }
+            if(result%1!=0){
+                smallTextField.setText(text+" "+operator+" "+value2+" =");
+                jTextField1.setText(result+"");
+            }
+            else{
+                smallTextField.setText(text+" "+operator+" "+(long)value2+" =");
+                jTextField1.setText((long)result+"");
+            }
+            return;
+        }
+//            smallTextField.setText("");
         if("0".equals(smallTextField.getText()))
             smallTextField.setText("");
         String text=jTextField1.getText(), sText=smallTextField.getText();
@@ -838,8 +874,8 @@ private long expression=0;
         }
         if(plusMinus)
             plusMinus=false;
-        if(equalsToButton)
-            jTextField1.setText(text);
+//        if(equalsToButton)
+//            jTextField1.setText(text);
         equalsToButton=true;
     }//GEN-LAST:event_btnEqualsToActionPerformed
 
@@ -1704,8 +1740,8 @@ private long expression=0;
                 }
                 else{
                     result=value1+value2;
-                    break;
                 }
+                    break;
             case '-':
                 if(sqrtSqp){
                     result= Math.sqrt(value2);
@@ -1784,8 +1820,8 @@ private long expression=0;
                 else if(sqRt){
                     result= Math.sqrt(value2);
                 }
-                else
-                    result=value2;
+//                else
+//                    result=value2;
         }
         if("Infinity".equals(String.valueOf(result))){
             jTextField1.setText("Cannot divide by zero");
