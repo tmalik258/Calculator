@@ -622,7 +622,7 @@ public class NewJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 private double value1=0, value2=0;
 private char operator;
-private boolean decimal=false, power=false, equalsToButton=false, errorSolvedInMultiplication=false, plusMinus=false;
+private boolean decimal=false, power=false, equalsToButton=false, plusMinus=false;
 private boolean sqRt=false, sqpSqrt=false,sqrtSqp=false, zeroErrorRatio=false ,operatorChanged=false;
 private String str, limit;
 private double result=0;
@@ -676,7 +676,6 @@ private long expression=0;
     private void btnMultiplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultiplyActionPerformed
         // TODO add your handling code here:
         if(equalsToButton) {equalsToButton=false; value1=0;}
-        if(errorSolvedInMultiplication){if(value1==0)value1=1; errorSolvedInMultiplication=false;}
         String text=jTextField1.getText(), sText=smallTextField.getText();
         if(operatorChanged){
             operator='x';
@@ -1095,7 +1094,6 @@ private long expression=0;
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
         // TODO add your handling code here:
-        errorSolvedInMultiplication=false;
         value1=0;
         operator='&';
         smallTextField.setText("");
@@ -1415,7 +1413,6 @@ private long expression=0;
                 }
                 case '*' -> {
                     if(equalsToButton) {equalsToButton=false; value1=0;}
-                    if(errorSolvedInMultiplication){if(value1==0)value1=1; errorSolvedInMultiplication=false;}
                     String text=jTextField1.getText();
                     if(operatorChanged){
                         operator='x';
@@ -1587,7 +1584,6 @@ private long expression=0;
                 smallTextField.setText("");
                 equalsToButton=false;
                 value1=0;
-                errorSolvedInMultiplication=true;
                 decimal=false;
                 operator='@';
             }
