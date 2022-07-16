@@ -763,46 +763,37 @@ private long expression=0;
 
     private void btnEqualsToActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsToActionPerformed
         // TODO add your handling code here:
-        if(operatorChanged)
-            operatorChanged=false;
+//        if(!operatorChanged)
+//            operatorChanged=true;
         if(equalsToButton){
             String text=jTextField1.getText();
             smallTextField.setText("");
-//            String sText=smallTextField.getText();
-//            value2=Double.parseDouble(text);
-            switch(operator){
-                case '+':
-                    result+=value2;
-//                    smallTextField.setText(text+" + "+(long)value2+" =");
-//                    jTextField1.setText((long)result+"");
-                    break;
-                case '-':
-                    result-=value2;
-//                    smallTextField.setText(text+" - "+(long)value2);
-//                    jTextField1.setText((long)result+"");
-                    break;
-                case 'x':
-                    result*=value2;
-//                    smallTextField.setText(text+" x "+(long)value2);
-//                    jTextField1.setText((long)result+"");
-                    break;
-                case '÷':
-                    result/=value2;
-//                    smallTextField.setText(text+" ÷ "+(long)value2);
-//                    jTextField1.setText((long)result+"");
-                    break;
-        }
-            if(result%1!=0){
-                smallTextField.setText(text+" "+operator+" "+value2+" =");
-                jTextField1.setText(result+"");
+            if(operator=='+'||operator=='-'||operator=='x'||operator=='÷'){
+                switch(operator){
+                    case '+':
+                        result+=value2;
+                        break;
+                    case '-':
+                        result-=value2;
+                        break;
+                    case 'x':
+                        result*=value2;
+                        break;
+                    case '÷':
+                        result/=value2;
+                        break;
             }
-            else{
-                smallTextField.setText(text+" "+operator+" "+(long)value2+" =");
-                jTextField1.setText((long)result+"");
+                if(result%1!=0){
+                    smallTextField.setText(text+" "+operator+" "+value2+" =");
+                    jTextField1.setText(result+"");
+                }
+                else{
+                    smallTextField.setText(text+" "+operator+" "+(long)value2+" =");
+                    jTextField1.setText((long)result+"");
+                }
+                return;
             }
-            return;
         }
-//            smallTextField.setText("");
         if("0".equals(smallTextField.getText()))
             smallTextField.setText("");
         String text=jTextField1.getText(), sText=smallTextField.getText();
@@ -848,7 +839,7 @@ private long expression=0;
                 value2=Double.parseDouble(text);
         }
         equalsToCalculation();
-        if(value1%1!=0)
+        if(value2%1!=0)
             smallTextField.setText(sText+" "+value2+" =");
         else{
             expression= (long) value2;
@@ -874,8 +865,8 @@ private long expression=0;
         }
         if(plusMinus)
             plusMinus=false;
-//        if(equalsToButton)
-//            jTextField1.setText(text);
+        if(equalsToButton)
+            jTextField1.setText(text);
         equalsToButton=true;
     }//GEN-LAST:event_btnEqualsToActionPerformed
 
@@ -1142,8 +1133,13 @@ private long expression=0;
 
     private void btnSquareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSquareActionPerformed
         // TODO add your handling code here:
-        if(operatorChanged)
-            operatorChanged=false;
+//        if(operatorChanged)
+//            operatorChanged=false;
+        if(equalsToButton){
+            smallTextField.setText("");
+            equalsToButton=false;
+            operator='@';
+        }
         String text=jTextField1.getText();
         if(!power){
             if(sqRt)
@@ -1155,10 +1151,12 @@ private long expression=0;
 
     private void btnsqrtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsqrtActionPerformed
         // TODO add your handling code here:
-        if(operatorChanged)
-            operatorChanged=false;
+//        if(operatorChanged)
+//            operatorChanged=false;
         if(equalsToButton){
             smallTextField.setText("");
+            equalsToButton=false;
+            operator='@';
         }
         String text=jTextField1.getText();
         if(!sqRt){
@@ -1171,8 +1169,6 @@ private long expression=0;
 
     private void btnperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnperActionPerformed
         // TODO add your handling code here:
-        if(operatorChanged)
-            operatorChanged=false;
         double temp=0;
         if(value1!=0){
             String text=jTextField1.getText();
@@ -1204,15 +1200,15 @@ private long expression=0;
             }
             else
                 temp= Double.parseDouble(text)/100;
-            BigDecimal b1;
-            b1= new BigDecimal(temp);
-            if(b1.precision()>7){
-                jTextField1.setText(String.format("%.7f", temp));
-            }
-            else{
-                jTextField1.setText(""+temp);
-            }
-            decimal=true;
+            
+            BigDecimal b2 = BigDecimal.valueOf(temp); 
+                if((int)(b2.scale())>7){
+                    jTextField1.setText(String.format("%.8f", temp));
+                }
+                else
+                    jTextField1.setText(""+temp);
+                
+//            decimal=true;
         }
         else{
             smallTextField.setText("0");
@@ -1299,10 +1295,37 @@ private long expression=0;
         
         //          EQUALS TO
         else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-            if(operatorChanged)
-                operatorChanged=false;
-            if(equalsToButton)
-                smallTextField.setText("");
+//            if(operatorChanged)
+//                operatorChanged=false;
+            if(equalsToButton){
+            String text=jTextField1.getText();
+            smallTextField.setText("");
+            if(operatorChanged){
+                switch(operator){
+                    case '+':
+                        result+=value2;
+                        break;
+                    case '-':
+                        result-=value2;
+                        break;
+                    case 'x':
+                        result*=value2;
+                        break;
+                    case '÷':
+                        result/=value2;
+                        break;
+                }
+                    if(result%1!=0){
+                        smallTextField.setText(text+" "+operator+" "+value2+" =");
+                        jTextField1.setText(result+"");
+                    }
+                    else{
+                        smallTextField.setText(text+" "+operator+" "+(long)value2+" =");
+                        jTextField1.setText((long)result+"");
+                    }
+                    return;
+            }
+            }
             if("0".equals(smallTextField.getText()))
                 smallTextField.setText("");
             String text=jTextField1.getText(), sText=smallTextField.getText();
@@ -1566,6 +1589,7 @@ private long expression=0;
                 value1=0;
                 errorSolvedInMultiplication=true;
                 decimal=false;
+                operator='@';
             }
     }
     
@@ -1578,6 +1602,8 @@ private long expression=0;
     }
     
     private void clear(){
+//        operator='@';
+        result=0;
         ratioDisabledOption(true);
         operatorChanged=false;
         zeroErrorRatio=false;
@@ -1591,18 +1617,18 @@ private long expression=0;
     }
     
     private void operatorChecker(String text){
+        if(plusMinus)
+            plusMinus=false;
         if(value1!=0){
             switch(operator){
                 case '+':
                     if(power){
                         str=lastCharacterRemover(text);
                         value1+= Math.pow(Double.parseDouble(str), 2);
-//                        power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
                         value1+= Math.sqrt(Double.parseDouble(str));
-//                        sqRt=false;
                     }
                     else
                         if((Double.parseDouble(text)%1)!=0)
@@ -1614,12 +1640,10 @@ private long expression=0;
                     if(power){
                         str=lastCharacterRemover(text);
                         value1-= Math.pow(Double.parseDouble(str), 2);
-//                        power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
                         value1-= Math.sqrt(Double.parseDouble(str));
-//                        sqRt=false;
                     }
                     else
                         value1-=Double.parseDouble(text);
@@ -1628,12 +1652,10 @@ private long expression=0;
                     if(power){
                         str=lastCharacterRemover(text);
                         value1*=  Math.pow(Double.parseDouble(str), 2);
-//                        power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
                         value1*= Math.sqrt(Double.parseDouble(str));
-//                        sqRt=false;
                     }
                     else
                         value1*=Double.parseDouble(text);
@@ -1642,12 +1664,10 @@ private long expression=0;
                     if(power){
                         str=lastCharacterRemover(text);
                         value1/=  Math.pow(Double.parseDouble(str), 2);
-//                        power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
                         value1/= Math.sqrt(Double.parseDouble(str));
-//                        sqRt=false;
                     }
                     else
                         value1/=Double.parseDouble(text);
@@ -1656,12 +1676,10 @@ private long expression=0;
                     if(power){
                         str=lastCharacterRemover(text);
                         value1=  Math.pow(Double.parseDouble(str), 2);
-//                        power=false;
                     }
                     else if(sqRt){
                         str=lastCharacterRemover(text);
                         value1=  Math.sqrt(Double.parseDouble(str));
-//                        sqRt=false;
                     }
             }
         }
@@ -1669,16 +1687,13 @@ private long expression=0;
             if(power){
                 str=lastCharacterRemover(text);
                 value1=  Math.pow(Double.parseDouble(str), 2);
-//                power=false;
             }
             else if(sqRt){
                 str=lastCharacterRemover(text);
                 value1=  Math.sqrt(Double.parseDouble(str));
-//                sqRt=false;
             }
             else{
                 value1=Double.parseDouble(text);
-//                smallTextField.setText(""+value1);
             }
         }
     }
@@ -1820,8 +1835,8 @@ private long expression=0;
                 else if(sqRt){
                     result= Math.sqrt(value2);
                 }
-//                else
-//                    result=value2;
+                else
+                    result=value2;
         }
         if("Infinity".equals(String.valueOf(result))){
             jTextField1.setText("Cannot divide by zero");
@@ -1836,6 +1851,7 @@ private long expression=0;
                 if((int)(b2.scale())>7){
                     jTextField1.setText(String.format("%.8f", result));
                 }
+                else
                     jTextField1.setText(""+result);
             }
             else
