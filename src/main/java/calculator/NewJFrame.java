@@ -468,7 +468,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         btnMC.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btnMC.setForeground(new java.awt.Color(153, 153, 153));
-        btnMC.setText("MC");
+        btnMC.setText("<html><font color=\"white\">MC</font></html>");
         btnMC.setBorderPainted(false);
         btnMC.setContentAreaFilled(false);
         btnMC.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -480,8 +480,8 @@ public class NewJFrame extends javax.swing.JFrame {
         });
 
         btnMR.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        btnMR.setForeground(new java.awt.Color(153, 153, 153));
-        btnMR.setText("MR");
+        btnMR.setForeground(new java.awt.Color(255, 255, 255));
+        btnMR.setText("<html><font color=\"white\">MR</font></html>");
         btnMR.setBorderPainted(false);
         btnMR.setContentAreaFilled(false);
         btnMR.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -497,7 +497,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         btnMplus.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btnMplus.setForeground(new java.awt.Color(255, 255, 255));
-        btnMplus.setText("M+");
+        btnMplus.setText("<html><font color=\"white\">M+</font></html>");
         btnMplus.setBorderPainted(false);
         btnMplus.setContentAreaFilled(false);
         btnMplus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -509,7 +509,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         btnMminus.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btnMminus.setForeground(new java.awt.Color(255, 255, 255));
-        btnMminus.setText("M-");
+        btnMminus.setText("<html><font color=\"white\">M-</font></html>");
         btnMminus.setBorderPainted(false);
         btnMminus.setContentAreaFilled(false);
         btnMminus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -521,7 +521,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         btnMS.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btnMS.setForeground(new java.awt.Color(255, 255, 255));
-        btnMS.setText("MS");
+        btnMS.setText("<html><font color=\"white\">MS</font></html>");
         btnMS.setBorderPainted(false);
         btnMS.setContentAreaFilled(false);
         btnMS.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -1679,8 +1679,6 @@ private long expression=0;
         memory+=Double.parseDouble(text);
         btnMC.setEnabled(true);
         btnMR.setEnabled(true);
-        btnMC.setText("<html><font color=\"white\">MC</font></html>");
-        btnMR.setText("<html><font color=\"white\">MR</font></html>");
     }//GEN-LAST:event_btnMplusActionPerformed
 
     private void btnMCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMCActionPerformed
@@ -1689,8 +1687,6 @@ private long expression=0;
         memory=0;
         btnMC.setEnabled(false);
         btnMR.setEnabled(false);
-        btnMC.setText("<html><font color=\"white\">MC</font></html>");
-        btnMR.setText("<html><font color=\"white\">MR</font></html>");
     }//GEN-LAST:event_btnMCActionPerformed
 
     private void btnMminusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMminusActionPerformed
@@ -1699,8 +1695,6 @@ private long expression=0;
         memory-=Double.parseDouble(text);
         btnMC.setEnabled(true);
         btnMR.setEnabled(true);
-        btnMC.setText("<html><font color=\"white\">MC</font></html>");
-        btnMR.setText("<html><font color=\"white\">MR</font></html>");
     }//GEN-LAST:event_btnMminusActionPerformed
 
     private void btnMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMSActionPerformed
@@ -1709,8 +1703,6 @@ private long expression=0;
         memory=Double.parseDouble(text);
         btnMC.setEnabled(true);
         btnMR.setEnabled(true);
-        btnMC.setText("<html><font color=\"white\">MC</font></html>");
-        btnMR.setText("<html><font color=\"white\">MR</font></html>");
     }//GEN-LAST:event_btnMSActionPerformed
 
     private void btnMRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMRActionPerformed
@@ -2068,6 +2060,11 @@ private long expression=0;
         btnratio.setEnabled(bool);
         btnDecimal.setEnabled(bool);
         btnEqualsTo.setEnabled(bool);
+        btnMC.setEnabled(bool);
+        btnMR.setEnabled(bool);
+        btnMS.setEnabled(bool);
+        btnMminus.setEnabled(bool);
+        btnMplus.setEnabled(bool);
     }
     
     private void colorChanger(){
