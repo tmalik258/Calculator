@@ -2060,8 +2060,14 @@ private long expression=0;
         btnratio.setEnabled(bool);
         btnDecimal.setEnabled(bool);
         btnEqualsTo.setEnabled(bool);
-        btnMC.setEnabled(bool);
-        btnMR.setEnabled(bool);
+        if(memory==0){
+            btnMC.setEnabled(false);
+            btnMR.setEnabled(false);
+        }
+        else{
+            btnMC.setEnabled(bool);
+            btnMR.setEnabled(bool);
+        }
         btnMS.setEnabled(bool);
         btnMminus.setEnabled(bool);
         btnMplus.setEnabled(bool);
