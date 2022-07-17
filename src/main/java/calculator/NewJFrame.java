@@ -66,13 +66,14 @@ public class NewJFrame extends javax.swing.JFrame {
         btnMplus = new javax.swing.JButton();
         btnMminus = new javax.swing.JButton();
         btnMS = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Calculator");
         setBackground(new java.awt.Color(0, 0, 0));
         setFocusable(false);
         setForeground(new java.awt.Color(102, 102, 102));
-        setIconImages(null);
+        setLocation(new java.awt.Point(800, 60));
         setName("MainFrame"); // NOI18N
         setResizable(false);
 
@@ -86,12 +87,18 @@ public class NewJFrame extends javax.swing.JFrame {
         jTextField1.setText("0");
         jTextField1.setAutoscrolls(false);
         jTextField1.setBorder(null);
+        jTextField1.setCaretColor(new java.awt.Color(255, 255, 255));
         jTextField1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jTextField1.setDebugGraphicsOptions(javax.swing.DebugGraphics.BUFFERED_OPTION);
+        jTextField1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
         jTextField1.setFocusCycleRoot(true);
         jTextField1.setFocusTraversalPolicyProvider(true);
         jTextField1.setHighlighter(null);
         jTextField1.setMargin(new java.awt.Insets(0, 6, 0, 6));
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField1MouseClicked(evt);
+            }
+        });
         jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextField1KeyPressed(evt);
@@ -469,6 +476,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnMC.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btnMC.setForeground(new java.awt.Color(153, 153, 153));
         btnMC.setText("<html><font color=\"white\">MC</font></html>");
+        btnMC.setToolTipText("Clear all memory");
         btnMC.setBorderPainted(false);
         btnMC.setContentAreaFilled(false);
         btnMC.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -482,6 +490,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnMR.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btnMR.setForeground(new java.awt.Color(255, 255, 255));
         btnMR.setText("<html><font color=\"white\">MR</font></html>");
+        btnMR.setToolTipText("Memory recall");
         btnMR.setBorderPainted(false);
         btnMR.setContentAreaFilled(false);
         btnMR.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -498,6 +507,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnMplus.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btnMplus.setForeground(new java.awt.Color(255, 255, 255));
         btnMplus.setText("<html><font color=\"white\">M+</font></html>");
+        btnMplus.setToolTipText("Memory add");
         btnMplus.setBorderPainted(false);
         btnMplus.setContentAreaFilled(false);
         btnMplus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -510,6 +520,7 @@ public class NewJFrame extends javax.swing.JFrame {
         btnMminus.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btnMminus.setForeground(new java.awt.Color(255, 255, 255));
         btnMminus.setText("<html><font color=\"white\">M-</font></html>");
+        btnMminus.setToolTipText("Memory subtract");
         btnMminus.setBorderPainted(false);
         btnMminus.setContentAreaFilled(false);
         btnMminus.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -522,12 +533,27 @@ public class NewJFrame extends javax.swing.JFrame {
         btnMS.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btnMS.setForeground(new java.awt.Color(255, 255, 255));
         btnMS.setText("<html><font color=\"white\">MS</font></html>");
+        btnMS.setToolTipText("Memory store");
         btnMS.setBorderPainted(false);
         btnMS.setContentAreaFilled(false);
         btnMS.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnMS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMSActionPerformed(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/alwaysOnTop.png"))); // NOI18N
+        jButton1.setToolTipText("Always on top");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setFocusPainted(false);
+        jButton1.setFocusable(false);
+        jButton1.setRequestFocusEnabled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -599,34 +625,39 @@ public class NewJFrame extends javax.swing.JFrame {
                         .addComponent(btnEqualsTo, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 6, Short.MAX_VALUE))
             .addGroup(Panel1Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(smallTextField)
-                    .addGroup(Panel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jToggleButton1)))
-                .addContainerGap())
-            .addGroup(Panel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnMC, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMR, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMplus, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMminus, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnMS, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Panel1Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(smallTextField)
+                            .addGroup(Panel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jToggleButton1))))
+                    .addGroup(Panel1Layout.createSequentialGroup()
+                        .addComponent(btnMC, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMR, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMplus, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMminus, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnMS, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         Panel1Layout.setVerticalGroup(
             Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(Panel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jToggleButton1)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToggleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(Panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Panel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -718,14 +749,12 @@ public class NewJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private double value1=0, value2=0, memory=0;
+private double value1=0, value2=0, memory=0, result=0;
 private char operator;
-private boolean decimal=false, power=false, equalsToButton=false, plusMinus=false;
+private boolean decimal=false, power=false, equalsToButton=false, plusMinus=false, alwaysOnTop=false;
 private boolean sqRt=false, sqpSqrt=false,sqrtSqp=false, zeroErrorRatio=false ,operatorChanged=false;
-private String str, limit;
-private double result=0;
+private String str;
 private long expression=0;
-//private enum Operator{p,s,m,d}
 //  ErrorSolvedMultiplication is for equation 4+2=6 +2=8
 
     private void btnEraseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEraseActionPerformed
@@ -942,13 +971,9 @@ private long expression=0;
             expression= (long) value2;
             if(sqRt||power||sqpSqrt||sqrtSqp){
                 smallTextField.setText(sText+" "+text+" =");
-                if(sqrtSqp)
                     sqrtSqp=false;
-                else if(sqpSqrt)
                     sqpSqrt=false;
-                else if(power)
                     power=false;
-                else if(sqRt)
                     sqRt=false;
             }
             else{
@@ -1303,8 +1328,6 @@ private long expression=0;
                 }
                 else
                     jTextField1.setText(""+temp);
-                
-//            decimal=true;
         }
         else{
             smallTextField.setText("0");
@@ -1375,11 +1398,12 @@ private long expression=0;
             if(operatorChanged)
                 operatorChanged=false;
             if(zeroErrorRatio){
+                smallTextField.setText("");
                 jTextField1.setText("");
                 ratioDisabledOption(true);
                 zeroErrorRatio=false;
             }
-            if(!power){
+            if((!power)&&(!sqRt)){
                 equalsToButton();
             
                 String text=jTextField1.getText();
@@ -1391,8 +1415,6 @@ private long expression=0;
         
         //          EQUALS TO
         else if(evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER){
-//            if(operatorChanged)
-//                operatorChanged=false;
             if(equalsToButton){
             String text=jTextField1.getText();
             smallTextField.setText("");
@@ -1658,6 +1680,13 @@ private long expression=0;
             sqRt=false;
         }
         
+        //          CARET
+//        else if(caret){
+//            if(!((evt.getKeyCode() == java.awt.event.KeyEvent.VK_LEFT)||(evt.getKeyCode() == java.awt.event.KeyEvent.VK_RIGHT))){
+//                java.awt.Toolkit.getDefaultToolkit().beep();
+//            }
+//        }
+        
         //          WHEN OTHER KEYS PRESSED, BEEP SOUND GENERATED
         else{
             java.awt.Toolkit.getDefaultToolkit().beep();
@@ -1668,6 +1697,7 @@ private long expression=0;
         // TODO add your handling code here:
         try{
             colorChanger();
+            jToggleButton1.setVisible(false);
         }
         catch(Exception ex){
         }
@@ -1712,6 +1742,24 @@ private long expression=0;
         else
             jTextField1.setText(""+(long)memory);
     }//GEN-LAST:event_btnMRActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(alwaysOnTop){
+            setAlwaysOnTop(false);
+            alwaysOnTop=false;
+        }
+        else{
+            setAlwaysOnTop(true);
+            alwaysOnTop=true;
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
+        // TODO add your handling code here:
+//        jTextField1.getCaret().setVisible(true);
+//        caret=true;
+    }//GEN-LAST:event_jTextField1MouseClicked
     /**
      * @param args the command line arguments
      */
@@ -1957,7 +2005,6 @@ private long expression=0;
                         ratioDisabledOption(false);
                         colorChanger();
                         return;
-//                        decimal=false;
                     }
                     else
                         result=value1/value2;
@@ -2262,6 +2309,7 @@ private long expression=0;
     private javax.swing.JButton btnplusminus;
     private javax.swing.JButton btnratio;
     private javax.swing.JButton btnsqrt;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
