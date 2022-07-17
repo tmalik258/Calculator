@@ -1,2 +1,2 @@
 # Calculator
-Application program "Calculator" for practice using java as programming language.
+Application program "Standard Calculator" for practice using java as programming language.
